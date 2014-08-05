@@ -1,0 +1,1307 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"pin",
+				"pinMode"
+			],
+			[
+				"Mot",
+				"MOTOR_IN_1"
+			],
+			[
+				"MOVE",
+				"MOVE_BLOCK2"
+			],
+			[
+				"LED",
+				"LED_ADJUSTING"
+			],
+			[
+				"is",
+				"isFirstTimeAnimation"
+			],
+			[
+				"FULL",
+				"FULL_OFF"
+			],
+			[
+				"FULL_",
+				"FULL_OFF"
+			],
+			[
+				"LED_CONNEC",
+				"LED_CONNECTED"
+			],
+			[
+				"LED_",
+				"LED_RUNNING_IDLE"
+			],
+			[
+				"LED_RUNNING_",
+				"LED_RUNNING_ACTIVE"
+			],
+			[
+				"set",
+				"setBrightCyan"
+			],
+			[
+				"b",
+				"bIncrement"
+			],
+			[
+				"getCRU",
+				"getCurrentRGB"
+			],
+			[
+				"swit",
+				"switchLED"
+			],
+			[
+				"time",
+				"timeSinceLastSerialRx"
+			],
+			[
+				"POL",
+				"POLL_END_BYTE"
+			],
+			[
+				"un",
+				"unsigned"
+			],
+			[
+				"pass",
+				"passMessageViaDefault"
+			],
+			[
+				"passMessage",
+				"passMessageViaDefault"
+			],
+			[
+				"to",
+				"toStartTimer"
+			],
+			[
+				"comman",
+				"commandMsg"
+			],
+			[
+				"POLL",
+				"POLL_IF"
+			],
+			[
+				"poll",
+				"pollType"
+			],
+			[
+				"if",
+				"IfBlockOpen"
+			],
+			[
+				"LEDB",
+				"LED_DEBUGGING_ACTIVE"
+			],
+			[
+				"get",
+				"getSinusoidalIncrement"
+			],
+			[
+				"IF_CLOSE_",
+				"IF_CLOSE_MASTER"
+			],
+			[
+				"inc",
+				"incomingByte2"
+			],
+			[
+				"soft",
+				"softSerial"
+			],
+			[
+				"send",
+				"sendPollResponseViaDefault"
+			],
+			[
+				"comma",
+				"commandMsg"
+			],
+			[
+				"n",
+				"nCounts"
+			],
+			[
+				"alt",
+				"altSerial"
+			],
+			[
+				"expe",
+				"expectingAnRx"
+			],
+			[
+				"up",
+				"updateMsg"
+			],
+			[
+				"default",
+				"defaultPort"
+			],
+			[
+				"CMD_",
+				"CMD_LENGTH"
+			],
+			[
+				"message",
+				"messageRead"
+			],
+			[
+				"mess",
+				"messageRead"
+			],
+			[
+				"messa",
+				"messageRead"
+			],
+			[
+				"in",
+				"inByte"
+			],
+			[
+				"defa",
+				"defaultOut"
+			],
+			[
+				"de",
+				"defaultOut"
+			],
+			[
+				"read",
+				"readUpstream"
+			],
+			[
+				"def",
+				"defaultSoftSerial"
+			],
+			[
+				"messag",
+				"messageIndex"
+			],
+			[
+				"comm",
+				"command"
+			],
+			[
+				"index",
+				"indexOf"
+			],
+			[
+				"LED_CO",
+				"LED_CONNECTING"
+			],
+			[
+				"setDim",
+				"setDimCyan"
+			],
+			[
+				"fade",
+				"fadeIntoSolidColor"
+			],
+			[
+				"commandM",
+				"commandMsgInt"
+			],
+			[
+				"command",
+				"commandMsgInt"
+			],
+			[
+				"input",
+				"inputLine"
+			],
+			[
+				"new",
+				"new_r"
+			],
+			[
+				"animat",
+				"animationDelayTime"
+			],
+			[
+				"aniom",
+				"animationDelayTime"
+			],
+			[
+				"g",
+				"gIncrement"
+			],
+			[
+				"r",
+				"rIncrement"
+			],
+			[
+				"block",
+				"blockStackLengh"
+			],
+			[
+				"upd",
+				"updateBlockState"
+			],
+			[
+				"M",
+				"MAX_PING_TIME"
+			],
+			[
+				"isEnd",
+				"isEnd_lastTime"
+			],
+			[
+				"blockStack",
+				"blockStackIndex"
+			],
+			[
+				"crea",
+				"createArray"
+			],
+			[
+				"a",
+				"aJson"
+			],
+			[
+				"blockSt",
+				"blockStackIndex"
+			],
+			[
+				"BLOCK",
+				"BLOCK_STACK_RX_LEN"
+			],
+			[
+				"block_",
+				"block_state_false"
+			],
+			[
+				"com",
+				"commandMsg"
+			],
+			[
+				"init",
+				"initBaudRate"
+			],
+			[
+				"_",
+				"_greenPin"
+			],
+			[
+				"IS",
+				"IS_COMPILE"
+			],
+			[
+				"port",
+				"portOut"
+			],
+			[
+				"comput",
+				"computedCheckSum"
+			],
+			[
+				"gener",
+				"generateChecksum"
+			],
+			[
+				"u",
+				"uint8_t"
+			],
+			[
+				"IS_",
+				"IS_COMPILE"
+			],
+			[
+				"Digital",
+				"digitalWrite"
+			],
+			[
+				"ack",
+				"ackReceived"
+			],
+			[
+				"CMD",
+				"CMD_LENGTH"
+			],
+			[
+				"measure",
+				"measureSpeed"
+			],
+			[
+				"incomi",
+				"incomingByte"
+			],
+			[
+				"dec",
+				"decreaseStripeSpeed"
+			],
+			[
+				"increas",
+				"increaseStripeSpeed"
+			],
+			[
+				"str",
+				"strong"
+			],
+			[
+				"max",
+				"max-height"
+			],
+			[
+				"border",
+				"border"
+			],
+			[
+				"min",
+				"min-height"
+			],
+			[
+				"font",
+				"font-size"
+			],
+			[
+				"padding",
+				"padding"
+			],
+			[
+				"dist",
+				"distanceToGo"
+			],
+			[
+				"dis",
+				"distanceToGo"
+			],
+			[
+				"curr",
+				"currPos"
+			],
+			[
+				"cur",
+				"currPos"
+			],
+			[
+				"linear",
+				"linearSpeed"
+			],
+			[
+				"Ste",
+				"STEPS_PER_REV"
+			],
+			[
+				"THI",
+				"WIRE_THICKNESS"
+			],
+			[
+				"SOUND",
+				"SOUND_ENABLE"
+			],
+			[
+				"i2",
+				"I2C_ADDR"
+			],
+			[
+				"begin",
+				"beginTransmission"
+			],
+			[
+				"I2",
+				"I2C_ADDR"
+			],
+			[
+				"sound",
+				"soundFlag"
+			],
+			[
+				"digi",
+				"digitalRead"
+			],
+			[
+				"digit",
+				"digitalRead"
+			],
+			[
+				"di",
+				"digitalRead"
+			],
+			[
+				"capBuff",
+				"capBuffer"
+			],
+			[
+				"capBuf",
+				"capBuffer"
+			],
+			[
+				"capBu",
+				"capBuffer"
+			],
+			[
+				"CAP",
+				"CAP_BUFFER_SIZE"
+			],
+			[
+				"VA",
+				"VALUE_RISE_FOR_TOUCH"
+			],
+			[
+				"capV",
+				"capValFloat"
+			],
+			[
+				"last",
+				"lastTime"
+			],
+			[
+				"capVal",
+				"capValFloat"
+			],
+			[
+				"change",
+				"changeWeaponLED"
+			],
+			[
+				"N",
+				"N_LEDS_RING"
+			],
+			[
+				"MOD",
+				"MODULE_ONE"
+			],
+			[
+				"LE",
+				"LIGHTS_ENABLE"
+			],
+			[
+				"cap",
+				"CAP_BUFFER_SIZE"
+			],
+			[
+				"fal",
+				"fallingEdgeFlag"
+			],
+			[
+				"HIT",
+				"MADE_HIT"
+			],
+			[
+				"VALUE",
+				"VALUE_DROP_FOR_TOUCH"
+			],
+			[
+				"prin",
+				"println	Arduino Serial println"
+			],
+			[
+				"sta",
+				"stage"
+			],
+			[
+				"make",
+				"makeTransition"
+			],
+			[
+				"HAD",
+				"HAD_GOT_HIT"
+			],
+			[
+				"COLOR",
+				"COLOR_CHANGING_DONE"
+			],
+			[
+				"IM",
+				"IM_CHANGING_COLOR_TO_R"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "	",
+			"file": "/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/flower/flower.ino",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 1,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "	",
+			"file": "/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/controller/controller.ino",
+			"file_size": 0,
+			"file_write_time": 130517339120000000,
+			"settings":
+			{
+				"buffer_size": 1,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "",
+			"file": "controller/controller-constants.h",
+			"file_size": -1,
+			"file_write_time": -1,
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/ArduinoUpload/ArduinoUpload.sublime-build",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"ard",
+				"Snippet: Arduino boiler plate"
+			],
+			[
+				"ardu",
+				"Set Syntax: Arduino"
+			],
+			[
+				"css",
+				"Set Syntax: CSS"
+			],
+			[
+				"scs",
+				"Set Syntax: SCSS"
+			],
+			[
+				"c++",
+				"Set Syntax: C++"
+			],
+			[
+				"linter",
+				"SublimeLinter: Disable Linting"
+			],
+			[
+				"java",
+				"Set Syntax: JavaScript"
+			],
+			[
+				"sass",
+				"Set Syntax: Sass"
+			],
+			[
+				"packg",
+				"Package Control: Disable Package"
+			],
+			[
+				"disable",
+				"Package Control: Disable Package"
+			],
+			[
+				"pack",
+				"Package Control: List Packages"
+			],
+			[
+				"pytho",
+				"Set Syntax: Python"
+			],
+			[
+				"package",
+				"Package Control: List Packages"
+			],
+			[
+				"arduino",
+				"Stino: Select Arduino Folder..."
+			],
+			[
+				"",
+				"Build: Build"
+			],
+			[
+				"stino",
+				"Stino: New Sketch..."
+			],
+			[
+				"remov",
+				"Package Control: Remove Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"packa",
+				"Package Control: List Packages"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"horiz",
+				"Snippet: Arduino horizontal separator"
+			],
+			[
+				"proc",
+				"Set Syntax: Processing"
+			],
+			[
+				"ardui",
+				"Snippet: Arduino horizontal separator"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"git",
+				"Git: Status"
+			],
+			[
+				"git ad",
+				"Git: Add Current File"
+			],
+			[
+				"html",
+				"Set Syntax: HTML"
+			],
+			[
+				"ardi",
+				"Set Syntax: Arduino"
+			],
+			[
+				"packag",
+				"Package Control: Install Package"
+			],
+			[
+				"align",
+				"Preferences: Alignment Key Bindings – Default"
+			],
+			[
+				"con",
+				"Package Control: Remove Package"
+			],
+			[
+				"set ht",
+				"Set Syntax: HTML"
+			],
+			[
+				"print",
+				"Snippet: Arduino println"
+			],
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"re",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"inde",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"ind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"snippp	",
+				"Snippet: Arduino print"
+			],
+			[
+				"alig",
+				"Preferences: Alignment Key Bindings – Default"
+			],
+			[
+				"ar",
+				"Set Syntax: Arduino"
+			],
+			[
+				"snip",
+				"Snippet: ArduinoSetup"
+			],
+			[
+				"setup",
+				"Snippet: setup"
+			],
+			[
+				"snippet: ",
+				"Snippet: loop"
+			],
+			[
+				"bui",
+				"Build: Build"
+			],
+			[
+				"build",
+				"Build: Build"
+			],
+			[
+				"snipp",
+				"Snippet: For Loop"
+			],
+			[
+				"process",
+				"Set Syntax: Processing"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"git push",
+				"Git: Push"
+			],
+			[
+				"git quick",
+				"Git: Quick Commit"
+			],
+			[
+				"git com",
+				"Git: Commit"
+			],
+			[
+				"git add",
+				"Git: Add Current File"
+			],
+			[
+				"git pul",
+				"Git: Pull"
+			],
+			[
+				"pacak",
+				"Package Control: Install Package"
+			],
+			[
+				"package ins",
+				"Package Control: Install Package"
+			],
+			[
+				"contro",
+				"Package Control: Install Package"
+			],
+			[
+				"Package Control: ",
+				"Package Control: List Packages"
+			],
+			[
+				"C++",
+				"Set Syntax: C++"
+			],
+			[
+				"if",
+				"Snippet: If Condition"
+			],
+			[
+				"set syntax C++",
+				"Set Syntax: C++"
+			]
+		],
+		"width": 593.0
+	},
+	"console":
+	{
+		"height": 125.0,
+		"history":
+		[
+			"import urllib.request,os,hashlib; h = '7183a2d3e96f11eeadd761d777e62404' + 'e330c659d4bb41d3bdf022e94cab3cd0'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/LEDTest/LEDTest.ino",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/ComputerControl/ComputerControl.ino",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/MotorTest/MotorTest.ino",
+		"/Users/jchion/Dropbox (ideo.com)/Fence_Fence_Revolution/02 design prototypes/code/ffr_final/animations.ino",
+		"/Users/jchion/Documents/Arduino/libraries/RF24/examples/GettingStarted/GettingStarted.pde",
+		"/Users/jchion/Documents/side projects/web/type-experiments/js/index.js",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/static/sass/jenga-line-illusion.scss",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/MoveBlock2.h",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/MoveBlock2.cpp",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/IfBlockCloserMaster.h",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/IfBlockCloserMaster.cpp",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/IfBlockOpen.h",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/MoveBlockTester.cpp",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/MoveBlockTester.h",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/MoveBlock.cpp",
+		"/Users/jchion/Library/Application Support/Sublime Text 3/Packages/User/Preferences.sublime-settings",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/TurnBlock.cpp",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/TurnBlock.h",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/Kubo.ino",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/CompileBlock.cpp",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/RepeatBlockOpen.h",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/KuboAnimations.h",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/KuboAnimations.cpp",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/RepeatBlockOpen.cpp",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/MoveBlock.h",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/IfBlockSlave/IfBlockSlave.ino",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/IfBlockOpen.cpp",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/CompileTesterBlock.h",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/IfBlockCloserSlave/IfBlockCloserSlave.ino",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/CompileBlock.h",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/i2ctest/SlaveB/SlaveB.ino",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/IfBlockCloserSlave.h",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/IfBlockCloserSlave.cpp",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/CompileTesterBlock.cpp",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/BloxConstants.h",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/LED_tuner/LED_tuner.ino",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/SpecialBlock.cpp",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/DummyBlock.cpp",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/SpecialBlock.h",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/DummyBlock.h",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/RepeatBlockOpenTester.h",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/RepeatBlockOpenTester.cpp",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/RepeatBlockCloser.cpp",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/IfBlockCloser.cpp",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/IfBlockCloser.h",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/RepeatBlockCloser.h",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/IfBlock.cpp",
+		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/IfBlock.h",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/Kubo/KuboBlock.cpp",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/Kubo/IfBlock.h",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/Kubo/IfBlock.cpp",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/Kubo/KuboBlock.h",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/KuboBlock/BloxConstants.h",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/KuboBlock/CompileBlock.h",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/KuboBlock/CompileBlock.cpp",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/KuboBlock/Kubo.ino",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/KuboBlock/KuboBlock.cpp",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/KuboBlock/KuboAnimations.cpp",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/KuboBlock/KuboBlock.h",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/Kubo/KuboAnimations.cpp",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/KuboBlock/KuboAnimations.h",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/Generalized_Block_code/KuboAnimations.h",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/Generalized_Block_code/KuboAnimations.cpp",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/Generalized_Block_code/CompileBlock.h",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/Generalized_Block_code/CompileBlock.cpp",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/Generalized_Block_code/KuboBlock.cpp",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/Generalized_Block_code/KuboBlock.h",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/Generalized_Block_code/KuboBlock.ino",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/bluetoothExp/bluetoothExp.ino",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/Generalized_Block_code/debuggingcharbyte.txt",
+		"/Users/jchion/Documents/Arduino/libraries/SoftwareSerial/SoftwareSerial.cpp",
+		"/Users/jchion/Documents/Arduino/libraries/SoftwareSerial/SoftwareSerial.h",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/Generalized_Block_code/BloxAnimations.ino",
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/Generalized_Block_code/BloxDebugFunctions.ino",
+		"/Users/jchion/Google Drive/Arduino Code copy 2/Kubo_Blox_C_Condition_Start/Kubo_Blox_C_Condition_Start.ino",
+		"/Users/jchion/Downloads/app/config.rb",
+		"/Users/jchion/Downloads/app/scss/_modules.scss",
+		"/Users/jchion/Downloads/app/scss/_states.scss",
+		"/Users/jchion/Downloads/app/scss/styles.scss",
+		"/Users/jchion/Desktop/msi.txt",
+		"/Users/jchion/Downloads/app/scss/_layout.scss",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/static/js/ps.js",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/templates/nav.html",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/pages/musicposters.html",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/pages/eggshells.html",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/static/js/index.js",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/templates/base.html",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/pages/onesqonecircle.html",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/pages/index.html",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/pages/dizzytype.html",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/pages/randomsubtlepatterns.html",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/pages/typewriterprinter.html",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/templates/footer.html",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/pages/rotatingillusion.html",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/pages/typeexperiments.html",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/pages/hello.html",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/pages/lightchimes.html",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/pages/cubes.html",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/js/index.js",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/sass/type-experiments-style.scss",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/js/ps.js",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/js/type-experiments.js",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/typeexperiments.php",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/rotatingillusion.php",
+		"/Users/jchion/Documents/side projects/web/portfoliosite/sass/screen.scss",
+		"/Users/jchion/Documents/side projects/web/portfolio/rotatingillusion.php",
+		"/Users/jchion/Documents/side projects/web/portfolio/onesqonecircle.php",
+		"/Users/jchion/Documents/side projects/web/portfolio/musicposters.php",
+		"/Users/jchion/Documents/side projects/web/portfolio/lightchimes.php",
+		"/Users/jchion/Documents/side projects/web/portfolio/hello.php",
+		"/Users/jchion/Documents/side projects/web/portfolio/dizzytype.php",
+		"/Users/jchion/Documents/side projects/web/portfolio/cubes.php",
+		"/Users/jchion/Documents/side projects/web/portfolio/index.php",
+		"/Users/jchion/Documents/side projects/web/portfolio/randomsubtlepatterns.php",
+		"/Users/jchion/Documents/side projects/web/portfolio/nav.php",
+		"/Users/jchion/Documents/side projects/web/portfolio/sass/index.html",
+		"/Users/jchion/Documents/side projects/web/portfolio/eggshells.php",
+		"/Users/jchion/Documents/side projects/web/portfolio/sass/rotating-illusion-style.scss",
+		"/Users/jchion/Documents/side projects/web/portfolio/js/ps.js",
+		"/Users/jchion/Documents/side projects/web/portfolio/header.php",
+		"/Users/jchion/Documents/side projects/web/portfolio/stylesheets/rotating-illusion-style.css",
+		"/Users/jchion/Library/Application Support/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/Users/jchion/Documents/side projects/web/portfolio/fonts/glyphicons-halflings-regular.svg",
+		"/Users/jchion/Documents/side projects/web/portfolio/index.html",
+		"/Users/jchion/Documents/side projects/web/portfolio/stylesheets/screen.css",
+		"/Users/jchion/Documents/Dropbox/Fence_Fence_Revolution/02 design prototypes/code/design changes for 1-1.txt",
+		"/Users/jchion/Documents/Arduino/libraries/XBee/examples/Series1_Rx/Series1_Rx.pde",
+		"/Users/jchion/Documents/Arduino/libraries/XBee/examples/Series1_Tx/Series1_Tx.pde"
+	],
+	"find":
+	{
+		"height": 23.0
+	},
+	"find_in_files":
+	{
+		"height": 93.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+			"IN_2",
+			"MoveBlock",
+			"DummyBlock",
+			"Move2Block",
+			"TurnBlock",
+			"Move2Block",
+			"TurnBlock",
+			"SpecialBlock",
+			"pausePolling",
+			"parse",
+			"currAnimation",
+			"uint8_t",
+			"LED_CONNECTING",
+			"red",
+			"setRed",
+			"LED_ERROR",
+			"Serial",
+			"prevAnimation",
+			"			prevAnimation = currAnimation;",
+			"			prevAnimation = currAnimation; //-- special case because on start up\n",
+			"switchLED",
+			"currAnimation",
+			"prevAnimation",
+			"currAnimation",
+			"isHueChange",
+			"animations",
+			"switch",
+			"false",
+			"shouldFadeOutThenIn",
+			"	_r = getCurrentRed();\n	_g = getCurrentGreen();	\n	_b = getCurrentBlue();",
+			"LED_CONNECTED",
+			"			prevAnimation = currAnimation;\n",
+			"LED",
+			"startStopTimer",
+			"readDownstream",
+			"DEBUG_LED",
+			"readDownstream",
+			"animations.setBrightGreen",
+			"startStopTimer",
+			"sendPollResponse",
+			"sendPoll",
+			"pollType",
+			"this->",
+			"_isTerminalBlock",
+			"toStartTimer",
+			"startStopTimer",
+			"fullQuery",
+			"queryStack",
+			"pausePolling",
+			"_sendResponsePoll",
+			"=",
+			"runLEDan",
+			"animations",
+			"255",
+			"200",
+			"255",
+			"0",
+			"200",
+			"255",
+			"= _",
+			"- 1",
+			">",
+			"Factor",
+			"r",
+			"updateProcessed",
+			"updateMsg",
+			"updateIndex",
+			"insideUpdate",
+			"incomingByte",
+			"defaultPort",
+			"	defaultPort.flush();\n	delay(2);",
+			"ifPort",
+			"	ifPort.flush();\n	delay(2);",
+			"softSerial",
+			"inByte",
+			"IfBlockCloser",
+			"delay",
+			"while",
+			"	delay(2);\n",
+			"DEBUG_LED",
+			"debug_led",
+			"	// defaultPort.flush();\n	// delay(2);",
+			"	// ifPort.flush();\n	// delay(2);",
+			"	defaultPort.flush();\n	delay(2);",
+			"	ifPort.flush();\n	delay(2);",
+			"Serial",
+			"ifPort",
+			"updateMsg",
+			"updateIndex",
+			"updateProcessed",
+			"insideUpdate",
+			"incomingByte",
+			"startStopTimer",
+			");\n",
+			"isSerialConnected",
+			"altSerial",
+			"ifPort",
+			"startStop",
+			"ifPort",
+			"portOut",
+			"AltSoftSerial",
+			"SoftwareSerial",
+			"portOut",
+			"defaultPort",
+			"Serial",
+			"updateProcessed",
+			"DEBUG_LED",
+			"debug_led",
+			"ifOut",
+			"defaultOut",
+			"bool",
+			"isMsgProcessed",
+			"commandMsg",
+			"upStreamIndex",
+			"isInMsg",
+			"commandMsg",
+			"ledState",
+			"defaultSoftSerialOut",
+			"parse",
+			"_sendResponseInit",
+			"pecial",
+			"SpecialBlock",
+			"0x",
+			"A",
+			"true",
+			"currAnimation",
+			"_isDone",
+			"_isDone	"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"mySerial",
+			"bool"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/flower/flower.ino",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1,
+								1
+							]
+						],
+						"settings":
+						{
+							"syntax": "Cache/User/Arduino/Syntaxes/Arduino.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/controller/controller.ino",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1,
+								1
+							]
+						],
+						"settings":
+						{
+							"syntax": "Cache/User/Arduino/Syntaxes/Arduino.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "controller/controller-constants.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.arduino_panel":
+	{
+		"height": 100.0
+	},
+	"output.exec":
+	{
+		"height": 73.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.git":
+	{
+		"height": 100.0
+	},
+	"project": "blumenlumen-hardware.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				".cpp",
+				"/Users/jchion/Documents/Arduino/libraries/BLEcontroller/BLEcontroller.cpp"
+			],
+			[
+				"ble",
+				"/Users/jchion/Documents/Arduino/libraries/BLEcontroller/BLEcontroller.cpp"
+			],
+			[
+				"",
+				"/Users/jchion/Documents/Arduino/libraries/BLEcontroller/BLEcontroller.cpp"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 308.0,
+		"selected_items":
+		[
+		],
+		"width": 334.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 141.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

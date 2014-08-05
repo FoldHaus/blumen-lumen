@@ -1,0 +1,17 @@
+{
+	"folders":
+	[
+		{
+			"follow_symlinks": true,
+			"path": "controller"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "flower"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "tests"
+		}
+	]
+}
