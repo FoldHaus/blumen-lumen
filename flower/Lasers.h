@@ -7,6 +7,8 @@
 #include "FlowerConstants.h"
 
 
+#define LASER_DUTY_ON_TIME 60000
+#define LASER_DUTY_OFF_TIME 3000
 
 class Lasers {
 
@@ -15,15 +17,17 @@ public:
 	virtual ~Lasers();
 	void init();
 	void update(); //-- to be called every cycle in state machine
-	// void on(); //-- implements duty cycle 60s 2s off
-	// void off();
-	// void pulseToMusic();
- 	// void setMusicThreshold();
+	void on(); //-- implements duty cycle 60s 2s off
+	void off();
+	// void pulseAtBPM(unsigned int bpm);
 
 	// void pattern()
 	
 
 private:
-
+	unsigned long onStartTime;
+	unsigned long dutyPauseStartTime;
+	bool lasersOn;
+	bool dutyPausing;
 };
 

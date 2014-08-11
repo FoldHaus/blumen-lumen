@@ -15,11 +15,12 @@ public:
 	virtual ~Sensors();
 	void init();
 	void update();	
-	// bool isSomeonePresent(); //-- uses a combination of PIR and ultrasound
-	// void setUltrasoundThreshold();
+	unsigned int getDistance();
+	bool isSomeonePresent(); //-- uses a combination of PIR and ultrasound
+	bool setUltrasoundThreshold( int _thresh );
+
 
 private:
-	// bool readPIR();
-	// uint8_t readUltrasound();
+	uint8_t ultrasonicThreshold;
 };
 

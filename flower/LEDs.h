@@ -16,16 +16,21 @@ public:
 	void init();
 	void update();
 	// void on(); //-- resets to last animation/color state
-	// void off();
-	// void setRGB(uint8_t r, uint8_t g, uint8_t b);
+	void off();
+	void setRGB(uint8_t r, uint8_t g, uint8_t b);
 	// void setHSV(uint8_t h, uint8_t s, uint8_t v);
 	// void pulseToMusic();
 	// void setMusicThreshold();
 
 	//-- animations (have to be non-blocking)
-	// void doRainbow();
+	void doRainbow();
+	void startRainbow();
+	void breathe();
 	
 
 private:
+	bool isRainbowing;
+	void HSBToRGB(unsigned int inHue, unsigned int inSaturation, unsigned int inBrightness, unsigned int *oR, unsigned int *oG, unsigned int *oB );
+
 
 };

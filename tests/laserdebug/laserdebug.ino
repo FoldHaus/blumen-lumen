@@ -1,7 +1,7 @@
 /*-------------------------------------
-	Arduino code for the controller(master) and remote controllers
+	description of the program
 	
-	Written by: Jimmy | 08/2014
+	Written by: name | date
 ---------------------------------------*/
 
 //------------
@@ -9,7 +9,7 @@
 //------------
 
 //-- pin assignments
-#define pin
+#define PIN 3
 
 
 //-----------------------------------------------
@@ -17,11 +17,13 @@ void setup() {
 	#ifdef DEBUG 
 	Serial.begin(9600);
 	#endif
-	//pinMode(pin, INPUT);
+	pinMode(PIN, OUTPUT);
 }
 
 //-----------------------------------------------
 void loop() {
-	//digitalWrite(pin, HIGH);
-	//digitalRead(pin);
+	digitalWrite(PIN, HIGH);
+	delay(1000);
+	digitalWrite(PIN, LOW);
+	delay(1000);
 }
