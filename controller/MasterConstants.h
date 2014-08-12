@@ -33,3 +33,13 @@
 #define CdS_IN			A2
 #define WIND_SIG		A3
 
+#define DEBOUNCE_DELAY 100
+
+// Anemomenter details:
+// range from 0.4V (0 m/s wind) up to 2.0V (for 32.4m/s wind speed)
+// 0.4V is 82
+// 2.0V is 409
+#define MIN_WIND		80
+#define MAX_WIND		409
+#define MIN_SPEED		0
+#define MAX_SPEED		32.4

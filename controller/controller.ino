@@ -8,20 +8,32 @@
 #define DEBUG
 //------------
 
+#include "HMI.h"
+#include "NeopixelMap.h"
+#include "EnvSensors.h"
+
+
 //-- pin assignments
-#define pin
+
+HMI hmi;
+NeopixelMap neopixelMap;
+EnvSensors sensors;
 
 
 //-----------------------------------------------
 void setup() {
 	#ifdef DEBUG 
-	Serial.begin(9600);
+	Serial.begin(57600);
 	#endif
-	//pinMode(pin, INPUT);
+
+	hmi.init();
+	neopixelMap.init();
+	sensors.init();
 }
 
 //-----------------------------------------------
 void loop() {
-	//digitalWrite(pin, HIGH);
-	//digitalRead(pin);
+	// Serial.println(sensors.getWindSpeed());
+	// Serial.println(sensors.getLightValue());
+	// Serial.println(sensors.getSoundAmplitude());
 }

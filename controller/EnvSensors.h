@@ -18,9 +18,10 @@ public:
 	void setLightThreshold(uint8_t _thresh);
 	void setSoundThreshold(uint8_t _thresh);
 
-private:
-	uint8_t getWindSpeed(); //-- maybe uint16_t?
-	uint8_t getLightValue();
+	int getWindSpeed(); //-- maybe uint16_t?
+	int getLightValue();
 	int getSoundAmplitude();
+private:
+	float mapAnemometer(float x, float in_min, float in_max, float out_min, float out_max);
 
 };
