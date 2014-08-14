@@ -14,7 +14,7 @@ public:
 	bool isCloseBtnPushed();
 	bool isLEDTogglePushed();
 	bool isModeTogglePushed();
-	uint8_t getFlowerSelection(); //-- from 12pole rotary switch
+	int getFlowerSelection(); //-- from 12pole rotary switch
 
 private:
 

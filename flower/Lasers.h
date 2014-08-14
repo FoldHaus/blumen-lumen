@@ -19,15 +19,21 @@ public:
 	void update(); //-- to be called every cycle in state machine
 	void on(); //-- implements duty cycle 60s 2s off
 	void off();
-	// void pulseAtBPM(unsigned int bpm);
+	void startPulsing(unsigned int _millisOn, unsigned int _millisOff);
 
 	// void pattern()
 	
 
 private:
+	void pulse();
+
 	unsigned long onStartTime;
 	unsigned long dutyPauseStartTime;
 	bool lasersOn;
 	bool dutyPausing;
+
+	bool isPulsing;
+	unsigned int millisOn;
+	unsigned int millisOff;
 };
 

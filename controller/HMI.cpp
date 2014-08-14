@@ -100,6 +100,20 @@ bool HMI::isModeTogglePushed() {
 }
 
 //-----------------------------------------------
-uint8_t HMI::getFlowerSelection() {
+int HMI::getFlowerSelection() {
+    int val = analogRead(ROTARY_SELECT);
+    if ( val >= ROTARY_SELECT_1 - ANALOG_MARGIN ) return 1;
+    if ( val >= ROTARY_SELECT_2 - ANALOG_MARGIN && val <= ROTARY_SELECT_2 + ANALOG_MARGIN) return 2;
+    if ( val >= ROTARY_SELECT_3 - ANALOG_MARGIN && val <= ROTARY_SELECT_3 + ANALOG_MARGIN) return 3;
+    if ( val >= ROTARY_SELECT_4 - ANALOG_MARGIN && val <= ROTARY_SELECT_4 + ANALOG_MARGIN) return 4;
+    if ( val >= ROTARY_SELECT_5 - ANALOG_MARGIN && val <= ROTARY_SELECT_5 + ANALOG_MARGIN) return 5;
+    if ( val >= ROTARY_SELECT_6 - ANALOG_MARGIN && val <= ROTARY_SELECT_6 + ANALOG_MARGIN) return 6;
+    if ( val >= ROTARY_SELECT_7 - ANALOG_MARGIN && val <= ROTARY_SELECT_7 + ANALOG_MARGIN) return 7;
+    if ( val >= ROTARY_SELECT_8 - ANALOG_MARGIN && val <= ROTARY_SELECT_8 + ANALOG_MARGIN) return 8;
+    if ( val >= ROTARY_SELECT_9 - ANALOG_MARGIN && val <= ROTARY_SELECT_9 + ANALOG_MARGIN) return 9;
+    if ( val >= ROTARY_SELECT_10 - ANALOG_MARGIN && val <= ROTARY_SELECT_10 + ANALOG_MARGIN) return 10;
+    if ( val >= ROTARY_SELECT_11 - ANALOG_MARGIN && val <= ROTARY_SELECT_11 + ANALOG_MARGIN) return 11;
+    if ( val <= ROTARY_SELECT_12 + ANALOG_MARGIN) return 12;
+    return 0;
 
 }

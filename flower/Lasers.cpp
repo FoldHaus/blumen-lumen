@@ -15,6 +15,7 @@ void Lasers::init() {
 	off();
 	onStartTime = millis();
 	dutyPauseStartTime = 0;
+	isPulsing = false;
 }
 
 
@@ -30,6 +31,11 @@ void Lasers::update() {
 		on();
 		dutyPausing = false;
 	} 
+
+	if(isPulsing) {
+		pulse();
+	}
+
 }
 
 void Lasers::on() {
@@ -42,8 +48,27 @@ void Lasers::off() {
 	digitalWrite(LASER_SIG, LOW);
 	lasersOn = false;
 	dutyPausing = false;
+	isPulsing = false;
 }
 
-// void Lasers::pulseAtBPM(unsigned int bpm) {
-	
-// }
+void Lasers::startPulsing(unsigned int _millisOn, unsigned int _millisOff) {
+	isPulsing = true;
+	millisOn = _millisOn;
+	millisOff = _millisOff;
+}
+
+void Lasers::pulse() {
+	static bool inHighState = false;
+	static unsigned long lastTime;
+
+	if( inHighState && millis() - lastTime > millisOn) { //-- if on, and time has exceed how long it should be on
+		off();
+		inHighState = false; //-- switch to off
+		lastTime = millis();
+	} else if ( !inHighState && millis() - lastTime > millisOff ) { //-- if off, and has been off for _millisOff time
+		isPulsing = true;
+		on();
+		inHighState = true; //-- switch to On
+		lastTime = millis();
+	}
+}

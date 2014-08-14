@@ -8,6 +8,7 @@
 #define DEBUG
 //------------
 
+#include <Adafruit_NeoPixel.h> //-- Neopixel LEDs
 #include "HMI.h"
 #include "NeopixelMap.h"
 #include "EnvSensors.h"
@@ -29,6 +30,7 @@ void setup() {
 	hmi.init();
 	neopixelMap.init();
 	sensors.init();
+	Serial.println("start");
 }
 
 //-----------------------------------------------
@@ -36,4 +38,9 @@ void loop() {
 	// Serial.println(sensors.getWindSpeed());
 	// Serial.println(sensors.getLightValue());
 	// Serial.println(sensors.getSoundAmplitude());
+	// hmi.getFlowerSelection());
+	// delay(100);
+	// neopixelMap.breatheChecker();
+	// neopixelMap.breathe(hmi.getFlowerSelection()-1);
+
 }

@@ -20,8 +20,8 @@
 
 //-- for nRF24L01
 #include <SPI.h>
-#include "nRF24L01.h"
-#include "RF24.h"
+// #include "nRF24L01.h"
+// #include "RF24.h"
 // #include "printf.h"
 
 #include "FlowerConstants.h"
@@ -81,7 +81,7 @@ void loop() {
 	sensors.update();
 
 	checkSerialInputs(); //-- check for Serial Monitor input
-	checkIncomingMessages(); //-- check for RF messages
+	// checkIncomingMessages(); //-- check for RF messages
 
 
 }
@@ -98,9 +98,13 @@ void checkSerialInputs() {
 
 		switch(key) {
 			case 'q':
-				if(++lasersOnOff % 2 == 1) {
+				lasersOnOff++;
+				if(lasersOnOff % 3 == 1) {
 					Serial.println("> laser on");
 					lasers.on();
+				} else if (lasersOnOff % 3 == 2) {
+					Serial.println("> laser strobe.");
+					lasers.startPulsing(100, 60);
 				} else {
 					Serial.println("> laser off");
 					lasers.off();

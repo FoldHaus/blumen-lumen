@@ -1,5 +1,7 @@
 #pragma once
 
+#include <Adafruit_NeoPixel.h> //-- Neopixel LEDs
+
 #include "Arduino.h"
 #include "MasterConstants.h"
 
@@ -11,9 +13,11 @@ public:
 	virtual ~NeopixelMap();	
 	void init();
 	void off();
-	void setNeopixel(uint8_t flowerNum, uint8_t r, uint8_t g, uint8_t b);
-
+	void setFlowerRGB(uint8_t flowerNum, uint8_t r, uint8_t g, uint8_t b);
+	void breathe(uint8_t flowerNum);
+	void breatheChecker();
+	void setColorAll(uint8_t r, uint8_t g, uint8_t b);
 
 private:
-
+	float getEasedDelayTime(int i, int min_i, int max_i);
 };
