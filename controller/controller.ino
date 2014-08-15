@@ -30,7 +30,6 @@ void setup() {
 	hmi.init();
 	neopixelMap.init();
 	sensors.init();
-	Serial.println("start");
 }
 
 //-----------------------------------------------
@@ -41,6 +40,7 @@ void loop() {
 	// hmi.getFlowerSelection());
 	// delay(100);
 	// neopixelMap.breatheChecker();
-	// neopixelMap.breathe(hmi.getFlowerSelection()-1);
+	// neopixelMap.comboAnimation();
+	neopixelMap.breathe(hmi.getFlowerSelection()-1);
 
 }

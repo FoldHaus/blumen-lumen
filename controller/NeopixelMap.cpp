@@ -1,6 +1,15 @@
 #include "NeopixelMap.h"
 
+//===============================================
+//-- LIGHTING ANIMATIONS for Blumen Lumen, 2014
+//-- animations the NeoPixel Rings with 10 LEDs
+//-- !These are non-blocking animations! 
+//-- (i.e. they must be called repeatedly in a non-blocking loop)
+//===============================================
+
+
 //-- handles the RGB LED map made up of Neopixels
+
 
 
 Adafruit_NeoPixel birdseyeMap = Adafruit_NeoPixel(N_LEDS, LED_MAP, NEO_GRB + NEO_KHZ800);
@@ -15,7 +24,7 @@ NeopixelMap::~NeopixelMap() {
 
 //-----------------------------------------------
 void NeopixelMap::init() {
-	pinMode(LED_MAP, OUTPUT);
+		pinMode(LED_MAP, OUTPUT);
 	off();
 }
 
@@ -62,7 +71,7 @@ void NeopixelMap::breathe(uint8_t flowerNum) {
 	}
 }
 
-//-- breathe lights from 30-180, slow pulse, easing function
+//-- breathe alternating lights from 30-180, slow pulse, easing function
 //-----------------------------------------------
 void NeopixelMap::breatheChecker() {
 	const uint8_t startIntensity = 30;
@@ -100,12 +109,78 @@ void NeopixelMap::breatheChecker() {
 	}
 }
 
+//-- spinning slowly, spinning quickly, and eventually breath in
+//-----------------------------------------------
+void NeopixelMap::comboAnimation() {
+
+	const uint8_t cycles = 10;
+	const uint8_t startPixel = 0;
+	const uint8_t endPixel = N_LEDS;
+	const uint8_t nLEDsOn = 4;
+
+	static unsigned int delayTime = 45;
+	static bool isDelayDone = false;
+	static uint8_t i = startPixel;
+	static unsigned long lastTime = millis();
+	static uint8_t stage = 0;
+
+	if ( millis()-lastTime > delayTime ) {
+		isDelayDone = true;
+		lastTime = millis();
+	}
+	
+	if ( isDelayDone ) {
+		if(stage == 0) { 	//-- spin slowly
+			if(i < endPixel*cycles) {
+				//-- pick a random pixel and change the intensity randomly
+				if (i < endPixel*cycles) setColorAll(0,0,0);
+				for(uint8_t j = 0; j < nLEDsOn; j++ ) {
+					birdseyeMap.setPixelColor((i+j)%endPixel, birdseyeMap.Color(0,255-j*50,0));
+				}
+				birdseyeMap.show();
+				i++;	
+				isDelayDone = false;
+			} else if (i >= endPixel*cycles) {
+				delayTime = 15;
+				stage = 1;
+				i = startPixel;
+			}
+		}
+
+		else if (stage == 1) { 	//-- spin faster
+			if (i < endPixel*cycles) { //-- nonblocking for loop
+				if (i < endPixel*(cycles-1)) setColorAll(0,0,0);
+				for(uint8_t j = 0; j < nLEDsOn; j++ ) {
+					birdseyeMap.setPixelColor((i+j)%endPixel, birdseyeMap.Color(0,255-j*50,0));
+				}
+				isDelayDone = false;
+				i++;
+				birdseyeMap.show();
+			} else if ( i >= endPixel*cycles ) {
+				isDelayDone = false;
+				i = startPixel;
+				delayTime = 1000;
+				stage = 2;
+			}
+		}
+		// else if (stage == 2) { //-- i don't know what this does
+		// 	if ( i <= endPixel ) {
+		// 		birdseyeMap.setPixelColor(i, birdseyeMap.Color(255,0,0));
+		// 		isDelayDone = false;
+		// 		i++;
+		// 		birdseyeMap.show();
+		// 	}
+		// }
+	}
+
+}
+
 
 //-- Easing function, modeled with cos[0,pi]
 //-- returns the eased delay time between intervals
 //-----------------------------------------------
 float NeopixelMap::getEasedDelayTime(int i, int min_i, int max_i) {
-	return sin((i - min_i) * 3.1415/2 / (max_i - min_i)); //-- t = map(i, min_i, max_i, 0, 3.1415) 
+	return sin((i - min_i) * 3.1415/2 / (max_i - min_i)); //-- essentially t = map(i, min_i, max_i, 0, 3.1415) 
 }
 
 //-- set color for guard NeoPixel ring
