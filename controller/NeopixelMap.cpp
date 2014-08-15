@@ -175,6 +175,55 @@ void NeopixelMap::comboAnimation() {
 
 }
 
+//-----------------------------------------------
+//-- Functions added by Tobias
+//-- Do not trust
+//-----------------------------------------------
+
+
+//-- Start at high intensity then fade out slowly
+//-- Make it seem somewhat random which flower comes on when
+//-- Try different configs, swapping start and end, other easing algo's etc.
+//-----------------------------------------------
+void NeopixelMap::droplets() {
+	const uint8_t startIntensity = 0;
+	const uint8_t endIntensity = 255;
+	const uint8_t delayTime = 20;
+	const uint8_t duration = 200;
+	const uint8_t startTimes[] = {0, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800}; //offset for individual timelines
+
+	static uint8_t i = 0; //global timeline/playhead
+	static uint8_t currentTimes[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; //individual timeline positions
+	static unsigned long lastTime = millis();
+	
+	if (millis()-lastTime > delayTime){
+		for( uint8_t flowerNum=0; flowerNum < birdseyeMap.numPixels(); flowerNum++) {
+
+			//increment individual timelines
+			if (i > startTimes[flowerNum]){
+				currentTimes[flowerNum]++;
+
+				//fade
+				uint8_t r = Easing::easeInBounce(currentTimes[flowerNum], endIntensity, (startIntensity-endIntensity), duration);
+				uint8_t g = Easing::easeInOutBounce(currentTimes[flowerNum], endIntensity, (startIntensity-endIntensity), duration);
+				uint8_t b = Easing::easeOutBounce(currentTimes[flowerNum], endIntensity, (startIntensity-endIntensity), duration);
+				setFlowerRGB(flowerNum, r, g, b);
+			}
+			
+			//reset individual timeline
+			if (currentTimes[flowerNum] > duration){
+				currentTimes[flowerNum] = 0;
+			}
+		}
+
+		i++;
+		lastTime = millis();
+	}
+}
+
+
+//------------- End Tobias edit -----------------
+
 
 //-- Easing function, modeled with cos[0,pi]
 //-- returns the eased delay time between intervals

@@ -9,6 +9,7 @@
 //------------
 
 #include <Adafruit_NeoPixel.h> //-- Neopixel LEDs
+#include <Easing.h>
 #include "HMI.h"
 #include "NeopixelMap.h"
 #include "EnvSensors.h"
@@ -41,6 +42,7 @@ void loop() {
 	// delay(100);
 	// neopixelMap.breatheChecker();
 	// neopixelMap.comboAnimation();
-	neopixelMap.breathe(hmi.getFlowerSelection()-1);
+	//neopixelMap.breathe(hmi.getFlowerSelection()-1);
+	neopixelMap.droplets();
 
 }
