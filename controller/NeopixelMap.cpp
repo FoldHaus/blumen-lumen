@@ -184,6 +184,7 @@ void NeopixelMap::comboAnimation() {
 //-- Start at high intensity then fade out slowly
 //-- Make it seem somewhat random which flower comes on when
 //-- Try different configs, swapping start and end, other easing algo's etc.
+//-- Note: Requries this Easing library: https://github.com/tobiastoft/ArduinoEasing
 //-----------------------------------------------
 void NeopixelMap::droplets() {
 	const uint8_t startIntensity = 0;
