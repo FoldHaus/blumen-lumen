@@ -190,7 +190,7 @@ void NeopixelMap::droplets() {
 	const uint8_t startIntensity = 0;
 	const uint8_t endIntensity = 255;
 	const uint8_t delayTime = 20;
-	const uint8_t duration = 200;
+	const uint8_t duration = 300;
 	const uint8_t startTimes[] = {0, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800}; //offset for individual timelines
 
 	static uint8_t i = 0; //global timeline/playhead
