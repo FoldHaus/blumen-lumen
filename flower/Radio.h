@@ -19,30 +19,29 @@ public:
 	virtual ~Radio();
 	void init(uint8_t _addr);	
 	void update();
-	// readBuffer()
+	void receiveMode();
+	void transmitMode();
+	bool available();
+	uint8_t readByte();
+	void readBytes();
+	bool sendByte(uint8_t _byt);
+	void sendMessage(uint8_t data[], uint8_t dataLength);
+	ROLE_t getRole();
+	void testMode();
+	uint8_t* getMessage();
 
+	uint8_t commandMsg[CMD_LENGTH]; 
 private:
-	uint8_t thisAddr;
-
-	// Radio pipe addresses for the 2 nodes to communicate.
-	uint64_t pipes[2];
-
-
-	//
-	// Role management
-	//
-	// Set up role.  This sketch uses the same software for all the nodes
-	// in this system.  Doing so greatly simplifies testing.  
-	//
-
-	// The various roles supported by this sketch
-	typedef enum { 
-		role_ping_out = 1, 
-		role_pong_back 
-	} role_e;
+	bool verifyChecksum(uint8_t arr[], uint8_t arrLength);
+	uint8_t generateChecksum( uint8_t arr[], uint8_t arrLength );
+	
+	uint64_t pipes[2]; 	// Radio pipe addresses for the 2 nodes to communicate, one master, many slaves
 
 	char* role_friendly_name[]; // The debug-friendly names of those roles
-	role_e role; // The role of the current running sketch
+	ROLE_t currRole; // The role of the current running sketch
 
+	uint8_t msgIndex;
+	bool isMsgProcessed;
+	bool isInMsg;
 
 };

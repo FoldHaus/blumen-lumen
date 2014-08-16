@@ -21,7 +21,11 @@ public:
 	int getWindSpeed(); //-- maybe uint16_t?
 	int getLightValue();
 	int getSoundAmplitude();
+	
 private:
 	float mapAnemometer(float x, float in_min, float in_max, float out_min, float out_max);
+	int windThreshold;
+	int lightThreshold;
+	int soundThreshold;
 
 };

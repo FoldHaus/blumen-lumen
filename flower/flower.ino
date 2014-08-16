@@ -68,6 +68,11 @@ void setup() {
 	Serial.println("\n--LED commands--");
 	Serial.println("toggle modes[L]");
 
+	Serial.println("\n--Radio commands--");
+	Serial.println("receive mode [r]");
+	Serial.println("transmit mode [t]");
+	
+
 }
 
 //-----------------------------------------------
@@ -80,9 +85,14 @@ void loop() {
 	lasers.update();
 	sensors.update();
 
-	checkSerialInputs(); //-- check for Serial Monitor input
-	// checkIncomingMessages(); //-- check for RF messages
 
+	checkSerialInputs(); //-- check for Serial Monitor input
+	if ( comm.getRole() == ROLE_RECEIVER ) {
+		checkIncomingMessages(); //-- check for RF messagee
+	} else {
+		uint8_t arr[] = {0x10,0x20,0x30};
+		comm.sendMessage(arr, 3);
+	}
 
 }
 //-----------------------------------------------
@@ -134,21 +144,34 @@ void checkSerialInputs() {
 			case 'l':
 			case 'L':
 				Serial.println("> LEDs on.");
-				if (++i%5 == 1){
+				if (++i%3 == 0){
 					leds.setRGB(0,255,0);
 				} 
-				else if (i%5 == 2){
+				else if (i%3 == 1){
 					leds.setRGB(255,0,0);
 				}
-				else if (i%5 == 3){
+				else if (i%3 == 2){
 					leds.setRGB(0,0,255);
-				}else if (i%5 == 4){
-					Serial.println("> LEDs off.");
-					leds.off();
 				}
-				else {
-					leds.startRainbow();
-				} 
+				// else if (i%5 == 4){
+				// 	Serial.println("> LEDs off.");
+				// 	leds.off();
+				// }
+				// else {
+				// 	// leds.startRainbow();
+				// } 
+				break;
+
+			case 't':
+			case 'T':
+				Serial.println("transmit mode.");
+				comm.transmitMode();
+				break;
+
+			case 'r':
+			case 'R':
+				Serial.println("receive mode");
+				comm.receiveMode();
 				break;
 
 			default:
@@ -158,9 +181,30 @@ void checkSerialInputs() {
 }
 
 void checkIncomingMessages() {
-	// if( comm.available() ) {
-	// 	comm.getNextMessage();
-	// }
+	comm.readBytes();
+	parseMessage();
+}
+
+
+void parseMessage() {
+	//-- ignore bytes 0, N-1, and N-2 (Start byte, checksum, end byte)
+
+	// -- byte 1: see if it's meant for me or a broadcast
+	if (comm.commandMsg[1] == CMD_BROADCAST || comm.commandMsg[1] == THIS_FLOWER_ID ) {
+		// switch( comm.commandMsg[2] ) {
+		// 	case CMD_MOTOR_OPEN:
+		// 		motor.openFlower();
+		// 		break;
+		// 	case CMD_MOTOR_CLOSE:
+		// 		motor.closeFlower();
+		// 		break;
+		// 	case CMD_MOTOR_STOP:
+		// 		motor.stop();
+		// 		break;
+		// 	default:
+		// 		break;
+		// } 
+    } 	
 }
 
 
