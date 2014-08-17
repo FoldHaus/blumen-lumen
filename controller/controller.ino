@@ -43,12 +43,13 @@ void setup() {
 //-----------------------------------------------
 void loop() {
 	// Serial.println(sensors.getWindSpeed());
-	// Serial.println(sensors.getLightValue());
+	// Serial.prinxtln(sensors.getLightValue());
 	// Serial.println(sensors.getSoundAmplitude());
 	// hmi.getFlowerSelection());
 	// delay(100);
 	// neopixelMap.breatheChecker();
 	// neopixelMap.comboAnimation();
+
 	//neopixelMap.breathe(hmi.getFlowerSelection()-1);
 
 	int intensity = 100;

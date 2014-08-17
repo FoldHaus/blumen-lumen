@@ -36,18 +36,18 @@
 #define DEBOUNCE_DELAY 100
 
 //-- values for the 12pos rotary switch analog
-#define  ROTARY_SELECT_1 1023
-#define  ROTARY_SELECT_2 950
-#define  ROTARY_SELECT_3 854
-#define  ROTARY_SELECT_4 759
-#define  ROTARY_SELECT_5 664
-#define  ROTARY_SELECT_6 568
-#define  ROTARY_SELECT_7 474
-#define  ROTARY_SELECT_8 377
-#define  ROTARY_SELECT_9 282
-#define  ROTARY_SELECT_10 183
-#define  ROTARY_SELECT_11 90
-#define  ROTARY_SELECT_12 0
+#define  ROTARY_SELECT_1 	1023
+#define  ROTARY_SELECT_2 	950
+#define  ROTARY_SELECT_3 	854
+#define  ROTARY_SELECT_4 	759
+#define  ROTARY_SELECT_5 	664
+#define  ROTARY_SELECT_6 	568
+#define  ROTARY_SELECT_7 	474
+#define  ROTARY_SELECT_8 	377
+#define  ROTARY_SELECT_9 	282
+#define  ROTARY_SELECT_10 	183
+#define  ROTARY_SELECT_11 	90
+#define  ROTARY_SELECT_12 	0
 
 #define ANALOG_MARGIN 30
 
