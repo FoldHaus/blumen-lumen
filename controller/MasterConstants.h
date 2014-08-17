@@ -52,6 +52,7 @@
 #define ANALOG_MARGIN 30
 
 #define N_LEDS 10
+#define N_FLOWERS 10
 
 
 // Anemomenter details:
