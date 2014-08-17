@@ -19,8 +19,8 @@ public:
 	virtual ~Radio();
 	void init(uint8_t _addr);	
 	void update();
-	void swtichToPipeRx(uint8_t flowerNum);
-	void switchToPipeTx(uint8_t flowerNum);
+	void switchToPipeRx(uint8_t flowerNum = ID_MASTER);
+	void switchToPipeTx(uint8_t flowerNum = ID_MASTER);
 	bool available();
 	uint8_t readByte();
 	void readBytes();
@@ -29,13 +29,17 @@ public:
 	ROLE_t getRole();
 	void testMode();
 	uint8_t* getMessage();
+	bool isMsgReady();
 
 	uint8_t commandMsg[CMD_LENGTH]; 
 private:
 	bool verifyChecksum(uint8_t arr[], uint8_t arrLength);
 	uint8_t generateChecksum( uint8_t arr[], uint8_t arrLength );
 	
-	uint64_t pipes[2]; 	// Radio pipe addresses for the 2 nodes to communicate, one master, many slaves
+	uint64_t pipes[3]; 	// Radio pipe addresses for the 2 nodes to communicate, one master, many slaves
+
+	uint8_t myID;
+
 
 	char* role_friendly_name[]; // The debug-friendly names of those roles
 	ROLE_t currRole; // The role of the current running sketch
@@ -43,5 +47,6 @@ private:
 	uint8_t msgIndex;
 	bool isMsgProcessed;
 	bool isInMsg;
+	bool hasBeenRead;
 
 };

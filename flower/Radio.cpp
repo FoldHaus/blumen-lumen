@@ -1,4 +1,6 @@
 #include "Radio.h"
+#include <EEPROM.h>
+
 
 RF24 radio(9,10);
 
@@ -18,8 +20,7 @@ void Radio::init(uint8_t _addr) {
 	role_friendly_name[1] = "transmitter";
 
 	radio.begin();
-	receiveMode(); //-- flower defaults to listening, controller to transmitting
-
+	
 
 	radio.setRetries(15,15); 	// optionally, increase the delay between retries & # of retries
 
@@ -28,26 +29,48 @@ void Radio::init(uint8_t _addr) {
 	msgIndex = 0;
 	isMsgProcessed = true;
 	isInMsg = false;
+	hasBeenRead = false;
+
+    uint8_t reading = EEPROM.read(EEPROM_ADDR_LOCATION);
+    if (reading >= 0 && reading <= 15) {
+    	myID = reading;
+    	Serial.print("ID read: ");
+    	Serial.println(myID);
+    }
+
+    if (myID == ID_MASTER ) {
+    	switchToPipeTx(0);
+    } else {
+    	switchToPipeRx(myID);
+    }
 
 }
 
 void Radio::switchToPipeRx(uint8_t flowerNum){
-	if(currRole != ROLE_RECEIVER) {
+	// if(currRole != ROLE_RECEIVER) {
+		if (myID != ID_MASTER) {
+			flowerNum = myID;
+		}
 		currRole = ROLE_RECEIVER;
-		// radio.openWritingPipe(pipes[1]);
 		radio.openReadingPipe(1,pipes[flowerNum]);
 		radio.startListening();
-	}
+	// }
 }
 
 
 void Radio::switchToPipeTx( uint8_t flowerNum) {
-	if(currRole != ROLE_TRANSMITTER) {
+	// if(currRole != ROLE_TRANSMITTER) {
+		if (myID != ID_MASTER) {
+			flowerNum = myID;
+		}
+		Serial.print("trying to swtich to ");
+		Serial.println(flowerNum);
 		currRole = ROLE_TRANSMITTER;
 		radio.stopListening();
 		radio.openWritingPipe(pipes[flowerNum]);
-		// radio.openReadingPipe(1,pipes[1]);
-	}
+		Serial.print("switched sending to ");
+		Serial.println(flowerNum);
+	// }
 }
 
 bool Radio::available() {
@@ -61,7 +84,7 @@ uint8_t Radio::readByte() {
 }
 
 bool Radio::sendByte(uint8_t _b) {
-	transmitMode();
+	// transmitMode();
 	return radio.write( &_b, sizeof(uint8_t) );
 }
 
@@ -110,12 +133,17 @@ uint8_t* Radio::getMessage() {
 }
 
 
+bool Radio::isMsgReady() {
+	bool valueAtTimeOfCall = hasBeenRead;
+	hasBeenRead = false;
+	return valueAtTimeOfCall;
+}
 
 void Radio::readBytes() {
 //-------------------------------
 	static uint8_t bufferArr[CMD_LENGTH]; //-- warning: multiple instances share this
 	
-	if( available() ) {
+	if( radio.available() ) {
 	 	uint8_t incomingByte = readByte();
 	 	if( incomingByte == CMD_START_BYTE  && !isInMsg ) { //-- start of message
 	 		isInMsg = true;
@@ -138,6 +166,7 @@ void Radio::readBytes() {
 	    		for(uint8_t i = 0; i < CMD_LENGTH; ++i) { //-- if all good, transfer to public commandMsg
 	    			commandMsg[i] = bufferArr[i];
 	    		}
+		    	hasBeenRead = true;
 	    		Serial.println("------received message-------");
 	    		for(int i = 0; i < CMD_LENGTH; ++i) {
 			  		Serial.print(commandMsg[i], HEX);

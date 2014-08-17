@@ -20,6 +20,8 @@
 
 //-- for nRF24L01
 #include <SPI.h>
+#include <EEPROM.h>
+
 // #include "nRF24L01.h"
 // #include "RF24.h"
 // #include "printf.h"
@@ -90,7 +92,7 @@ void loop() {
 	if ( comm.getRole() == ROLE_RECEIVER ) {
 		checkIncomingMessages(); //-- check for RF messagee
 	} else {
-		uint8_t arr[] = {0x10,0x20,0x30};
+		uint8_t arr[] = {0x10,0x21,0x31};
 		comm.sendMessage(arr, 3);
 	}
 
@@ -102,6 +104,7 @@ void loop() {
 //-----------------------------------------------
 void checkSerialInputs() {
 	static int i = 0;
+	static int k = 0;
 	static uint8_t lasersOnOff = 0;
 	if ( Serial.available() ) {
 		int key = Serial.read();
@@ -164,14 +167,31 @@ void checkSerialInputs() {
 
 			case 't':
 			case 'T':
-				Serial.println("transmit mode.");
-				comm.transmitMode();
+				k++;
+				if ( k%2 == 0) {
+					comm.switchToPipeTx(0);
+
+					// //-- wait for response
+					// unsigned long timeOut = 1000;
+					// unsigned long lastTime = millis();
+					// while( comm.available() || (millis() - lastTime < timeOut) ) {
+					// 	if( comm.available() ) {
+					// 		comm.readBytes();
+					// 		Serial.println("received response.");
+					// 	}
+					// }
+					// //-- switch back to sending
+					// comm.switchToPipeTx(0);
+				} else if (k%2 == 1) {
+					comm.switchToPipeTx(1);
+		
+				} 
 				break;
 
 			case 'r':
 			case 'R':
-				Serial.println("receive mode");
-				comm.receiveMode();
+				// Serial.println("receive mode");
+				// comm.switchToPipeRx();
 				break;
 
 			default:
@@ -182,7 +202,9 @@ void checkSerialInputs() {
 
 void checkIncomingMessages() {
 	comm.readBytes();
-	parseMessage();
+	if ( comm.isMsgReady() ){
+		parseMessage();
+	}
 }
 
 
@@ -190,7 +212,13 @@ void parseMessage() {
 	//-- ignore bytes 0, N-1, and N-2 (Start byte, checksum, end byte)
 
 	// -- byte 1: see if it's meant for me or a broadcast
-	if (comm.commandMsg[1] == CMD_BROADCAST || comm.commandMsg[1] == THIS_FLOWER_ID ) {
+	if (comm.commandMsg[1] == 0x10 ) {
+		comm.switchToPipeTx(); //-- switch to sending
+		uint8_t arr[] = {0xBA, 0xFF};
+		comm.sendMessage(arr, 2);
+		comm.switchToPipeRx();
+
+
 		// switch( comm.commandMsg[2] ) {
 		// 	case CMD_MOTOR_OPEN:
 		// 		motor.openFlower();
@@ -205,6 +233,19 @@ void parseMessage() {
 		// 		break;
 		// } 
     } 	
+}
+
+void writeEEPROMAddress() {
+	if (Serial.available()){
+		char c = Serial.read();
+		EEPROM.write(EEPROM_ADDR_LOCATION, c-'0');
+
+		// And we are done right now (no easy way to soft reset)
+		Serial.print("\n\rManually reset address to: Press RESET to continue!");
+		Serial.println(c);
+		while(1) ;
+		// }
+	}
 }
 
 

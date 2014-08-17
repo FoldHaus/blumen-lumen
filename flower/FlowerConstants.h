@@ -71,8 +71,33 @@ typedef enum {
 // 
 
 
+#define EEPROM_ADDR_LOCATION 0
 
 
+//-- 13 boards (0-12):
+// 10 for blumen lumen
+// 1 for camp
+// 2 extra (not yet programmed with ID)
+
+//-- ultrasound boards:
+//-- 0,2,4
+
+//-- master repeater:
+//-- 0
+#define ID_MASTER_REPEATER 0
+
+//-- 3 controllers (13-15):
+// 1 master brain
+// 2 remote controls
+
+//-- master brain:
+//-- 13
+#define ID_MASTER 	13
+
+//-- remote controls:
+//-- 14, 15
+#define ID_RC_A 	14
+#define ID_RC_B 	15
 
 
 
