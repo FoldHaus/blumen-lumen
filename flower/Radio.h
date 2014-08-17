@@ -19,8 +19,8 @@ public:
 	virtual ~Radio();
 	void init(uint8_t _addr);	
 	void update();
-	void receiveMode();
-	void transmitMode();
+	void swtichToPipeRx(uint8_t flowerNum);
+	void switchToPipeTx(uint8_t flowerNum);
 	bool available();
 	uint8_t readByte();
 	void readBytes();

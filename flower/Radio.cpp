@@ -11,8 +11,9 @@ Radio::~Radio() {
 }
 
 void Radio::init(uint8_t _addr) {
-	pipes[0] = 0xF0F0F0F0E1LL;
-	pipes[1] = 0xF0F0F0F0D2LL;
+	pipes[0] = 0xF0F0F0F0A0LL;
+	pipes[1] = 0xF0F0F0F0A1LL;
+	pipes[2] = 0xF0F0F0F0A2LL;
 	role_friendly_name[0] = "receiever";
 	role_friendly_name[1] = "transmitter";
 
@@ -30,22 +31,22 @@ void Radio::init(uint8_t _addr) {
 
 }
 
-void Radio::receiveMode(){
+void Radio::switchToPipeRx(uint8_t flowerNum){
 	if(currRole != ROLE_RECEIVER) {
 		currRole = ROLE_RECEIVER;
-		radio.openWritingPipe(pipes[1]);
-		radio.openReadingPipe(1,pipes[0]);
+		// radio.openWritingPipe(pipes[1]);
+		radio.openReadingPipe(1,pipes[flowerNum]);
 		radio.startListening();
 	}
 }
 
 
-void Radio::transmitMode() {
+void Radio::switchToPipeTx( uint8_t flowerNum) {
 	if(currRole != ROLE_TRANSMITTER) {
 		currRole = ROLE_TRANSMITTER;
-		radio.openWritingPipe(pipes[0]);
-		radio.openReadingPipe(1,pipes[1]);
 		radio.stopListening();
+		radio.openWritingPipe(pipes[flowerNum]);
+		// radio.openReadingPipe(1,pipes[1]);
 	}
 }
 
@@ -116,7 +117,6 @@ void Radio::readBytes() {
 	
 	if( available() ) {
 	 	uint8_t incomingByte = readByte();
-	 	// Serial.println(incomingByte, HEX);
 	 	if( incomingByte == CMD_START_BYTE  && !isInMsg ) { //-- start of message
 	 		isInMsg = true;
 	 		msgIndex = 0;
@@ -138,13 +138,11 @@ void Radio::readBytes() {
 	    		for(uint8_t i = 0; i < CMD_LENGTH; ++i) { //-- if all good, transfer to public commandMsg
 	    			commandMsg[i] = bufferArr[i];
 	    		}
-	    		#ifdef DEBUG
 	    		Serial.println("------received message-------");
 	    		for(int i = 0; i < CMD_LENGTH; ++i) {
 			  		Serial.print(commandMsg[i], HEX);
 			  		Serial.print(" ");
 			  	}
-			  	#endif
 		    } else {
 		    	//-- Throw error somewhere, i think
 		    }
