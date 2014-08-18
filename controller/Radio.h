@@ -49,5 +49,6 @@ private:
 	bool isMsgProcessed;
 	bool isInMsg;
 	bool hasBeenRead;
+	unsigned long msgStartTimestamp;
 
 };

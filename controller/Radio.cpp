@@ -159,9 +159,11 @@ void Radio::readBytes() {
 	if( radio.available() ) {
 	 	uint8_t incomingByte = readByte();
 	 	// Serial.println(incomingByte, HEX);
-	 	if( incomingByte == CMD_START_BYTE  && !isInMsg ) { //-- start of message
+	 	//if( incomingByte == CMD_START_BYTE && !isInMsg )
+	 	if( incomingByte == CMD_START_BYTE ) { //-- start of message (no matter when received)
 	 		isInMsg = true;
 	 		msgIndex = 0;
+	 		msgStartTimestamp = millis();
 	 	} else if ( incomingByte == CMD_END_BYTE && isInMsg ) { //-- end of message
 	 		isInMsg = false;
 	 		bufferArr[msgIndex] = incomingByte;
@@ -192,6 +194,15 @@ void Radio::readBytes() {
 		    }
 
 	 	}
+	}
+	else {
+		// timeout! reset everything
+		if( isInMsg && millis() - msgStartTimestamp > CMD_TIMEOUT ) {
+			Serial.println("Communication Timeout");
+			isInMsg = false;
+	 		msgIndex = 0;
+	 		isMsgProcessed = false;
+		}
 	}
 }
 

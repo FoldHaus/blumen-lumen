@@ -66,6 +66,7 @@ typedef enum {
 #define CMD_LENGTH 				8 //-- includes checksum, everything
 // 
 
+#define CMD_TIMEOUT				800
 
 #define EEPROM_ADDR_LOCATION 0
 
