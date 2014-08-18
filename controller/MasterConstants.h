@@ -52,10 +52,25 @@
 #define ANALOG_MARGIN 30
 
 #define N_LEDS 10
+<<<<<<< Updated upstream:controller/MasterConstants.h
 #define N_FLOWERS 10
+=======
 
 
-// Anemomenter details:
+/*** SENSORS ***/
+#define SENSORS_UPDATE_PERIOD 3000
+
+// Ultrasonic distance sensor
+#define ULTRASONIC_REQUEST_TIMEOUT 500
+#define N_ULTRASONIC 3
+>>>>>>> Stashed changes:controller/ControllerConstants.h
+
+// Sound detector
+// Output voltage range: 0.01V to 2.69V
+#define MIN_BPM 100
+#define MAX_BPM 250
+
+// Anemomenter
 // range from 0.4V (0 m/s wind) up to 2.0V (for 32.4m/s wind speed)
 // 0.4V is 82
 // 2.0V is 409

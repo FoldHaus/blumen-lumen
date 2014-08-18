@@ -4,7 +4,13 @@
 //-- of messages, message protocol parsing, and buffering
 
 #include "Arduino.h"
+<<<<<<< Updated upstream:flower/Radio.h
 #include "FlowerConstants.h"
+=======
+#include "RadioConstants.h"
+#include "RF24.h"
+
+>>>>>>> Stashed changes:controller/Radio.h
 
 //-- for nRF24L01
 // #include <SPI.h>

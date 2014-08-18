@@ -12,6 +12,8 @@ EnvSensors::~EnvSensors() {
 
 void EnvSensors::init() {
 	//-- sound detector, CdS resistor and anemometer on analog
+
+	// TODO set thresholds
 }
 
 bool EnvSensors::isTooWindy() {
