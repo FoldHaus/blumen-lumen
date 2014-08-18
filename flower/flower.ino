@@ -12,6 +12,8 @@
 #include "RF24.h"
 // #include "printf.h"
 
+#include <Easing.h>
+
 #include "FlowerConstants.h"
 #include "LEDs.h"
 #include "Lasers.h"
@@ -114,7 +116,17 @@ void parseMessage() {
 			break;
 
 		case CMD_TYPE_LED:
-
+			switch(data0) {
+				case CMD_LED_OFF:
+					leds.setAnimationMode( ANIMATION_OFF );
+					break;
+				case CMD_LED_RAINBOW:
+					leds.setAnimationMode( ANIMATION_RAINBOW );
+					break;
+				case CMD_LED_DROPLET:
+					leds.setAnimationMode( ANIMATION_DROPLET );
+					break;
+			}
 			break;
 
 		case CMD_SET_ULT_THRESH:

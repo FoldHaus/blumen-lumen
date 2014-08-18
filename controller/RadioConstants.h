@@ -52,7 +52,9 @@ typedef enum {
 #define CMD_MOTOR_STOP			0x22
 
 //-- LED animations
-#define CMD_LED_RAINBOW			0x30
+#define CMD_LED_OFF				0x30
+#define CMD_LED_RAINBOW			0x31
+#define CMD_LED_DROPLET			0x32
 //-- etc
 
 //-- LASER commands

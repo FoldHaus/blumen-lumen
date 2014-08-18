@@ -5,14 +5,18 @@
 
 #include "Arduino.h"
 #include "ControllerConstants.h"
+#include "Radio.h"
 
 
 class NeopixelMap {
+
+Radio *comm;
 
 public:
 	NeopixelMap();
 	virtual ~NeopixelMap();	
 	void init();
+	void setComm(Radio *_comm);
 	void off();
 	void setFlowerRGB(uint8_t flowerNum, uint8_t r, uint8_t g, uint8_t b);
 	void breathe(uint8_t flowerNum);

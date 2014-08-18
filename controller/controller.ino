@@ -45,6 +45,7 @@ void setup() {
 
 	hmi.init();
 	neopixelMap.init();
+	neopixelMap.setComm(&comm);
 
 	sensors.init();
 	comm.init();
