@@ -52,9 +52,7 @@
 #define ANALOG_MARGIN 30
 
 #define N_LEDS 10
-<<<<<<< Updated upstream:controller/MasterConstants.h
 #define N_FLOWERS 10
-=======
 
 
 /*** SENSORS ***/
@@ -63,7 +61,6 @@
 // Ultrasonic distance sensor
 #define ULTRASONIC_REQUEST_TIMEOUT 500
 #define N_ULTRASONIC 3
->>>>>>> Stashed changes:controller/ControllerConstants.h
 
 // Sound detector
 // Output voltage range: 0.01V to 2.69V

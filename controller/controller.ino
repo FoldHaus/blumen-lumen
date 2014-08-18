@@ -43,17 +43,14 @@ void setup() {
 	neopixelMap.init();
 	sensors.init();
 
-<<<<<<< Updated upstream
 	// just for tests
 	beginningOfTime = millis();
-=======
 	// Sound Detector
 	TIMSK0 = 0; // turn off timer0 for lower jitter
 	ADCSRA = 0xe5; // set the adc to free running mode
 	ADMUX = 0x41; // use adc0
 	DIDR0 = 0x01; // turn off the digital input for adc0
 
->>>>>>> Stashed changes
 }
 
 //-----------------------------------------------
@@ -65,8 +62,6 @@ void loop() {
 	// delay(100);
 	// neopixelMap.breatheChecker();
 	// neopixelMap.comboAnimation();
-<<<<<<< Updated upstream
-=======
 	// neopixelMap.breathe(hmi.getFlowerSelection()-1);
 
 	
@@ -110,9 +105,6 @@ void loop() {
 		Serial.write((uint8_t *)fht_lin_out, FHT_N/2); // send out the data //fht_log_out
 		//Serial.println();
 	}
-
-}
->>>>>>> Stashed changes
 
 	//neopixelMap.breathe(hmi.getFlowerSelection()-1);
 
