@@ -1,0 +1,71 @@
+#pragma once
+
+//-- Jimmy Chion
+//-- Blumen Lumen, flower arduino code
+//-- IDEO, 2014
+
+
+typedef enum { 
+	ROLE_RECEIVER, 
+	ROLE_TRANSMITTER
+} ROLE_t;
+
+
+
+// command protocol:
+//--------------------------------
+// START_BYTE 		0xAA
+// RECEIVER_ID		0x10, 0x11,0x12... 0x1B, 0x1C (broadcast)
+// MOTOR_MSG		0x20...0x2F
+// LED_MSG			0x30...0x3F
+// LASER_MSG		0x40...0x4F
+// DATA_0			
+// DATA_1			
+// DATA_2		
+// CHECKSUM			-	
+// END_BYTE 		0xFF
+
+
+// NULL_BYTE 		0x00
+
+
+
+#define CMD_WAKEUP_BYTE 		0xAB
+#define CMD_START_BYTE 			0xAA
+#define CMD_MOTOR_OPEN			0x20
+#define CMD_MOTOR_CLOSE			0x21
+#define CMD_MOTOR_STOP			0x22
+#define CMD_END_BYTE 			0xFF
+#define CMD_REQUEST_ULTRASONIC	0xC0
+
+#define CMD_LENGTH 7 //-- includes checksum, everything
+// 
+
+
+#define EEPROM_ADDR_LOCATION 0
+
+
+//-- 13 boards (0-12):
+// 10 for blumen lumen
+// 1 for camp
+// 2 extra (not yet programmed with ID)
+
+//-- ultrasound boards:
+//-- 0,2,4
+
+//-- master repeater:
+//-- 0
+#define ID_MASTER_REPEATER 0
+
+//-- 3 controllers (13-15):
+// 1 master brain
+// 2 remote controls
+
+//-- master brain:
+//-- 13
+#define ID_MASTER 	13
+
+//-- remote controls:
+//-- 14, 15
+#define ID_RC_A 	14
+#define ID_RC_B 	15
