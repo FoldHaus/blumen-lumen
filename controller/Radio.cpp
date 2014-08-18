@@ -195,9 +195,8 @@ void Radio::readBytes() {
 
 	 	}
 	}
-	else {
-		// timeout! reset everything
-		if( isInMsg && millis() - msgStartTimestamp > CMD_TIMEOUT ) {
+	else { // nothing has been received
+		if( isInMsg && millis() - msgStartTimestamp > CMD_TIMEOUT ) { //timeout
 			Serial.println("Communication Timeout");
 			isInMsg = false;
 	 		msgIndex = 0;
