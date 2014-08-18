@@ -20,5 +20,6 @@
 *.out
 *.app
 
+flower/Radio*
 
 *.DS_Store
