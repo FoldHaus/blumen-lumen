@@ -18,7 +18,7 @@ void Sensors::update() {
 }
 
 void Sensors::readUltrasonic() {
-	if ( (analogRead( ULTRASONIC ) < ultrasonicThreshold) ) {
+	if ( analogRead( ULTRASONIC ) < ultrasonicThreshold ) {
 		setPresence(true);
 	} else {
 		setPresence(false);
@@ -45,6 +45,7 @@ bool Sensors::setUltrasoundThreshold(int _thresh) {
 		ultrasonicThreshold = _thresh;
 		return true;
 	} else {
+		ultrasonicThreshold = 0;
 		return false;
 	}
 }

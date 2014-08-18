@@ -50,6 +50,7 @@ void setup() {
 //-----------------------------------------------
 void loop() {
 
+
 	//-- update calls to each system
 	motor.update();
 	leds.update();
@@ -157,11 +158,11 @@ void respondToUltrasoundRequest() {
 	arr[0] = CMD_TYPE_REPLY;
 	sensors.readUltrasonic();
 	if(sensors.getPresence()) {
-		arr[1] = 1;
+		arr[1] = 0x01;
 	} else {
-		arr[2] = 0;
+		arr[1] = 0x02;
 	}
-	comm.sendMessage(arr, 1);
+	comm.sendMessage(arr, 2);
 	comm.switchToPipeRx();
 }
 

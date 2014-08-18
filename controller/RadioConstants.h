@@ -17,10 +17,10 @@ typedef enum {
 // WAKEUP_BYTE (not seen) 0xAB
 // 0: START_BYTE 		0xAA
 // 1: CMD_TYPE			0x10 (motor command)
-// 					0x11 (LED command)
-//					0x12 (laser command)
-//					0x13 (request for ultrasound)
-//					0x14 (response to ultrasound request)
+// 						0x11 (LED command)
+//						0x12 (laser command)
+//						0x13 (request for ultrasound)
+//						0x14 (response to ultrasound request)
 // 2: DATA_0			
 // 3: DATA_1			
 // 4: DATA_2		
