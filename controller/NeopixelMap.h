@@ -1,5 +1,6 @@
 #pragma once
 
+#include <Easing.h> //-- Tobias' old easing library
 #include <Adafruit_NeoPixel.h> //-- Neopixel LEDs
 
 #include "Arduino.h"
@@ -18,6 +19,8 @@ public:
 	void breatheChecker();
 	void setColorAll(uint8_t r, uint8_t g, uint8_t b);
 	void comboAnimation();
+	//-- Tobias --
+	void droplets();
 
 private:
 	float getEasedDelayTime(int i, int min_i, int max_i);
