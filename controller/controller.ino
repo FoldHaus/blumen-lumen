@@ -76,7 +76,7 @@ void loop() {
 
 	// Lights
 	// neopixelMap.breathe(hmi.getFlowerSelection()-1);
-	neopixelMap.droplets();
+	// neopixelMap.droplets();
 
 }
 
@@ -169,6 +169,10 @@ void checkSerialInputs() {
 			case '7':
 			case '8':
 			case '9':
+			case ':':
+			case ';':
+			case '<':
+			case '=':
 				comm.switchToPipeTx(key-'0');
 				selectedFlower = key-'0';
 				break;

@@ -37,7 +37,7 @@ private:
 	bool verifyChecksum(uint8_t arr[], uint8_t arrLength);
 	uint8_t generateChecksum( uint8_t arr[], uint8_t arrLength );
 	
-	uint64_t pipes[10]; 	// Radio pipe addresses for the 2 nodes to communicate, one master, many slaves
+	uint64_t pipes[14]; 	// Radio pipe addresses for the 2 nodes to communicate, one master, many slaves
 
 	uint8_t myID;
 

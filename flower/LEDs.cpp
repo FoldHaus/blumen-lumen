@@ -17,6 +17,8 @@ void LEDs::init() {
 
 void LEDs::update() {
 	switch( animationMode ) {
+		case ANIMATION_MANUAL:	
+		break;
 		case ANIMATION_OFF:
 			off();
 		break;

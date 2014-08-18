@@ -51,7 +51,7 @@ void setup() {
 
 //-----------------------------------------------
 void loop() {
-
+	// writeEEPROMAddress();
 
 	//-- update calls to each system
 	motor.update();
@@ -113,6 +113,7 @@ void parseMessage() {
 			break;
 
 		case CMD_TYPE_LED_RGB:
+			leds.setAnimationMode( ANIMATION_MANUAL );
 			leds.setRGB(data0, data1, data2);
 			break;
 

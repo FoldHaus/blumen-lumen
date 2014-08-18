@@ -24,6 +24,10 @@ void Radio::init() {
 	pipes[7] = 0xF0F0F0F0A7LL;
 	pipes[8] = 0xF0F0F0F0A8LL;
 	pipes[9] = 0xF0F0F0F0A9LL;
+	pipes[10] = 0xF0F0F0F0AALL;
+	pipes[11] = 0xF0F0F0F0ABLL;
+	pipes[12] = 0xF0F0F0F0ACLL;
+	pipes[13] = 0xF0F0F0F0ADLL;
 	role_friendly_name[0] = "receiever";
 	role_friendly_name[1] = "transmitter";
 
@@ -100,6 +104,7 @@ ROLE_t Radio::getRole() {
 
 void Radio::sendMessage(uint8_t data[], uint8_t dataLength ) {
 	radio.powerUp();
+	sendByte(CMD_WAKEUP_BYTE);
 	sendByte(CMD_WAKEUP_BYTE);
 	sendByte(CMD_START_BYTE);
 	for(uint8_t i = 0; i < CMD_LENGTH-3; i++) { // 3 = start + checksum + end
