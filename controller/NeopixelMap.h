@@ -3,7 +3,7 @@
 #include <Adafruit_NeoPixel.h> //-- Neopixel LEDs
 
 #include "Arduino.h"
-#include "MasterConstants.h"
+#include "ControllerConstants.h"
 
 
 class NeopixelMap {

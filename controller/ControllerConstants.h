@@ -53,6 +53,10 @@
 
 #define N_LEDS 10
 
+#define SENSORS_UPDATE_PERIOD 3000
+#define ULTRASONIC_REQUEST_TIMEOUT 500
+#define N_ULTRASONIC 3
+
 
 // Anemomenter details:
 // range from 0.4V (0 m/s wind) up to 2.0V (for 32.4m/s wind speed)

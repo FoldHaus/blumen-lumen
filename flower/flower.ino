@@ -23,7 +23,7 @@
 #include <EEPROM.h>
 
 // #include "nRF24L01.h"
-// #include "RF24.h"
+#include "RF24.h"
 // #include "printf.h"
 
 #include "FlowerConstants.h"
@@ -32,6 +32,7 @@
 #include "Radio.h"
 #include "Motor.h"
 #include "Sensors.h"
+
 
 //------------
 #define DEBUG
@@ -53,7 +54,7 @@ void setup() {
 
 	motor.init();
 	leds.init();
-	comm.init(THIS_FLOWER_ID);
+	comm.init();
 	lasers.init();
 	sensors.init();
 
@@ -92,8 +93,7 @@ void loop() {
 	if ( comm.getRole() == ROLE_RECEIVER ) {
 		checkIncomingMessages(); //-- check for RF messagee
 	} else {
-		uint8_t arr[] = {0x10,0x21,0x31};
-		comm.sendMessage(arr, 3);
+
 	}
 
 }
@@ -105,6 +105,7 @@ void loop() {
 void checkSerialInputs() {
 	static int i = 0;
 	static int k = 0;
+	static int j = 0;
 	static uint8_t lasersOnOff = 0;
 	if ( Serial.available() ) {
 		int key = Serial.read();
@@ -170,21 +171,25 @@ void checkSerialInputs() {
 				k++;
 				if ( k%2 == 0) {
 					comm.switchToPipeTx(0);
-
-					// //-- wait for response
-					// unsigned long timeOut = 1000;
-					// unsigned long lastTime = millis();
-					// while( comm.available() || (millis() - lastTime < timeOut) ) {
-					// 	if( comm.available() ) {
-					// 		comm.readBytes();
-					// 		Serial.println("received response.");
-					// 	}
-					// }
-					// //-- switch back to sending
-					// comm.switchToPipeTx(0);
+					uint8_t arr[] = {0x10,0x21,0x31,0xFA};
+					comm.sendMessage(arr, 4);
+					
 				} else if (k%2 == 1) {
 					comm.switchToPipeTx(1);
-		
+					// for(int i = 0; i < 5; i++) {
+					uint8_t arr[] = {0x10,0x21,0x30,0xFA};
+					comm.sendMessage(arr, 4);
+					// }
+					comm.switchToPipeRx(1);
+					// //-- wait for response
+					unsigned long timeOut = 1000;
+					unsigned long lastTime = millis();
+					while( (millis() - lastTime < timeOut) ) {
+						comm.readBytes();
+						Serial.println("received response.");
+					}
+					// //-- switch back to sending
+					// comm.switchToPipeTx(0);
 				} 
 				break;
 
@@ -194,11 +199,23 @@ void checkSerialInputs() {
 				// comm.switchToPipeRx();
 				break;
 
+			case 'p':
+				j++;
+				if ( j %2 == 0) {
+					sensors.setPresence(true);
+					Serial.println("person present");
+				} else if (j %2 ==1) {
+					sensors.setPresence(false);
+					Serial.println("person not present");
+				}
+				break;
+
 			default:
 				break;
 		}
 	}
 }
+
 
 void checkIncomingMessages() {
 	comm.readBytes();
@@ -212,10 +229,15 @@ void parseMessage() {
 	//-- ignore bytes 0, N-1, and N-2 (Start byte, checksum, end byte)
 
 	// -- byte 1: see if it's meant for me or a broadcast
-	if (comm.commandMsg[1] == 0x10 ) {
+	if (comm.commandMsg[1] == CMD_REQUEST_ULTRASONIC) {
 		comm.switchToPipeTx(); //-- switch to sending
-		uint8_t arr[] = {0xBA, 0xFF};
-		comm.sendMessage(arr, 2);
+		uint8_t arr[1];
+		if(sensors.getPresence()) {
+			arr[0] = 1;
+		} else {
+			arr[0] = 0;
+		}
+		comm.sendMessage(arr, 1);
 		comm.switchToPipeRx();
 
 
