@@ -158,7 +158,7 @@ void Radio::readBytes() {
 	
 	if( radio.available() ) {
 	 	uint8_t incomingByte = readByte();
-	 	Serial.println(incomingByte, HEX);
+	 	// Serial.println(incomingByte, HEX);
 	 	if( incomingByte == CMD_START_BYTE  && !isInMsg ) { //-- start of message
 	 		isInMsg = true;
 	 		msgIndex = 0;

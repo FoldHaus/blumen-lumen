@@ -14,16 +14,19 @@ typedef enum {
 
 // command protocol:
 //--------------------------------
-// START_BYTE 		0xAA
-// RECEIVER_ID		0x10, 0x11,0x12... 0x1B, 0x1C (broadcast)
-// MOTOR_MSG		0x20...0x2F
-// LED_MSG			0x30...0x3F
-// LASER_MSG		0x40...0x4F
-// DATA_0			
-// DATA_1			
-// DATA_2		
-// CHECKSUM			-	
-// END_BYTE 		0xFF
+// WAKEUP_BYTE (not seen) 0xAB
+// 0: START_BYTE 		0xAA
+// 1: CMD_TYPE			0x10 (motor command)
+// 					0x11 (LED command)
+//					0x12 (laser command)
+//					0x13 (request for ultrasound)
+//					0x14 (response to ultrasound request)
+// 2: DATA_0			
+// 3: DATA_1			
+// 4: DATA_2		
+// 5: DATA_3		
+// 6: CHECKSUM			-	
+// 7: END_BYTE 		0xEE
 
 
 // NULL_BYTE 		0x00
@@ -32,13 +35,35 @@ typedef enum {
 
 #define CMD_WAKEUP_BYTE 		0xAB
 #define CMD_START_BYTE 			0xAA
+
+#define CMD_TYPE_MOTOR 			0x10 //-- Data1 should then be open, close, or stop
+#define CMD_TYPE_LED_RGB 		0x11 //-- data1,2,3 should be r,g,b 
+#define CMD_TYPE_LED 			0x12 //-- data 1 should be animation
+#define CMD_TYPE_LASER 			0x13 //-- data1 should be on, off, or pulse, data 2 millisOn, data3 millisOff
+#define CMD_TYPE_ULT_RQ			0x14 //-- no data
+#define CMD_TYPE_REPLY 			0x15 //-- data1 should be response
+#define CMD_SET_ULT_THRESH		0x16 //-- data1 should be threshold value
+#define CMD_SET_MOTOR_OPEN_TIME	0x17 //-- data1,2,3,4 should be unsigned long time
+#define CMD_SET_MOTOR_CLOSE_TIME 0x18 //-- data1,2,3,4 should be unsigned long time
+
+//-- motor commands
 #define CMD_MOTOR_OPEN			0x20
 #define CMD_MOTOR_CLOSE			0x21
 #define CMD_MOTOR_STOP			0x22
-#define CMD_END_BYTE 			0xFF
-#define CMD_REQUEST_ULTRASONIC	0xC0
 
-#define CMD_LENGTH 7 //-- includes checksum, everything
+//-- LED animations
+#define CMD_LED_RAINBOW			0x30
+//-- etc
+
+//-- LASER commands
+#define CMD_LASER_ON			0x40
+#define CMD_LASER_OFF			0x41
+#define CMD_LASER_PULSE			0x42
+
+//-- 
+#define CMD_END_BYTE 			0xEE
+
+#define CMD_LENGTH 				8 //-- includes checksum, everything
 // 
 
 
@@ -52,10 +77,6 @@ typedef enum {
 
 //-- ultrasound boards:
 //-- 0,2,4
-
-//-- master repeater:
-//-- 0
-#define ID_MASTER_REPEATER 0
 
 //-- 3 controllers (13-15):
 // 1 master brain

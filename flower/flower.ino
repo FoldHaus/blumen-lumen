@@ -4,20 +4,6 @@
 	Written by: jimmy chion | 08/2014
 ---------------------------------------*/
 
-//-- FLOWER UNIQUE ID
-//--------------------
-#define THIS_FLOWER_ID 0x10
-// #define THIS_FLOWER_ID 0x20
-// #define THIS_FLOWER_ID 0x30
-// #define THIS_FLOWER_ID 0x40
-// #define THIS_FLOWER_ID 0x50
-// #define THIS_FLOWER_ID 0x60
-// #define THIS_FLOWER_ID 0x70
-// #define THIS_FLOWER_ID 0x80
-// #define THIS_FLOWER_ID 0x90
-// #define THIS_FLOWER_ID 0xA0
-// #define THIS_FLOWER_ID 0xB0
-
 //-- for nRF24L01
 #include <SPI.h>
 #include <EEPROM.h>
@@ -57,23 +43,6 @@ void setup() {
 	comm.init();
 	lasers.init();
 	sensors.init();
-
-	Serial.println("Key commands");
-	Serial.println("\n--Flower motor commands--");
-	// Serial.println("toggle modes [m]")
-	Serial.println("open [o]");
-	Serial.println("close [c]");
-	Serial.println("stop [s]");
-
-	Serial.println("\n--Laser commands--");
-	Serial.println("toggle lasers [q]");
-
-	Serial.println("\n--LED commands--");
-	Serial.println("toggle modes[L]");
-
-	Serial.println("\n--Radio commands--");
-	Serial.println("receive mode [r]");
-	Serial.println("transmit mode [t]");
 	
 
 }
@@ -88,157 +57,82 @@ void loop() {
 	lasers.update();
 	sensors.update();
 
-
-	checkSerialInputs(); //-- check for Serial Monitor input
 	if ( comm.getRole() == ROLE_RECEIVER ) {
 		checkIncomingMessages(); //-- check for RF messagee
-	} else {
-
-	}
+	} 
 
 }
 //-----------------------------------------------
 // void stateMachine() {
 // }
-
 //-----------------------------------------------
-void checkSerialInputs() {
-	static int i = 0;
-	static int k = 0;
-	static int j = 0;
-	static uint8_t lasersOnOff = 0;
-	if ( Serial.available() ) {
-		int key = Serial.read();
-
-		switch(key) {
-			case 'q':
-				lasersOnOff++;
-				if(lasersOnOff % 3 == 1) {
-					Serial.println("> laser on");
-					lasers.on();
-				} else if (lasersOnOff % 3 == 2) {
-					Serial.println("> laser strobe.");
-					lasers.startPulsing(100, 60);
-				} else {
-					Serial.println("> laser off");
-					lasers.off();
-				}
-				break;
-
-			case 'm':
-				Serial.println("> toggle motor mode");
-				motor.continuallyOpenClose();
-				break;
-			case 'o':
-			case 'O':
-				Serial.println("> opening flower.");
-				motor.openFlower();
-				break;
-			case 'c':
-			case 'C':
-				Serial.println("> closing flower.");
-				motor.closeFlower();
-				break;
-			case 's':
-			case 'S':
-				Serial.println("> stopping.");
-				motor.stop();
-				break;
-
-			case 'l':
-			case 'L':
-				Serial.println("> LEDs on.");
-				if (++i%3 == 0){
-					leds.setRGB(0,255,0);
-				} 
-				else if (i%3 == 1){
-					leds.setRGB(255,0,0);
-				}
-				else if (i%3 == 2){
-					leds.setRGB(0,0,255);
-				}
-				// else if (i%5 == 4){
-				// 	Serial.println("> LEDs off.");
-				// 	leds.off();
-				// }
-				// else {
-				// 	// leds.startRainbow();
-				// } 
-				break;
-
-			case 't':
-			case 'T':
-				k++;
-				if ( k%2 == 0) {
-					comm.switchToPipeTx(0);
-					uint8_t arr[] = {0x10,0x21,0x31,0xFA};
-					comm.sendMessage(arr, 4);
-					
-				} else if (k%2 == 1) {
-					comm.switchToPipeTx(1);
-					// for(int i = 0; i < 5; i++) {
-					uint8_t arr[] = {0x10,0x21,0x30,0xFA};
-					comm.sendMessage(arr, 4);
-					// }
-					comm.switchToPipeRx(1);
-					// //-- wait for response
-					unsigned long timeOut = 1000;
-					unsigned long lastTime = millis();
-					while( (millis() - lastTime < timeOut) ) {
-						comm.readBytes();
-						Serial.println("received response.");
-					}
-					// //-- switch back to sending
-					// comm.switchToPipeTx(0);
-				} 
-				break;
-
-			case 'r':
-			case 'R':
-				// Serial.println("receive mode");
-				// comm.switchToPipeRx();
-				break;
-
-			case 'p':
-				j++;
-				if ( j %2 == 0) {
-					sensors.setPresence(true);
-					Serial.println("person present");
-				} else if (j %2 ==1) {
-					sensors.setPresence(false);
-					Serial.println("person not present");
-				}
-				break;
-
-			default:
-				break;
-		}
-	}
-}
 
 
 void checkIncomingMessages() {
+//-----------------------------------------------
 	comm.readBytes();
 	if ( comm.isMsgReady() ){
 		parseMessage();
 	}
 }
 
-
 void parseMessage() {
+//-----------------------------------------------
 	//-- ignore bytes 0, N-1, and N-2 (Start byte, checksum, end byte)
 
 	// -- byte 1: see if it's meant for me or a broadcast
-	if (comm.commandMsg[1] == CMD_REQUEST_ULTRASONIC) {
-		comm.switchToPipeTx(); //-- switch to sending
-		uint8_t arr[1];
-		if(sensors.getPresence()) {
-			arr[0] = 1;
-		} else {
-			arr[0] = 0;
-		}
-		comm.sendMessage(arr, 1);
-		comm.switchToPipeRx();
+	uint8_t data0 = comm.commandMsg[2];
+	uint8_t data1 = comm.commandMsg[3];
+	uint8_t data2 = comm.commandMsg[4];
+	uint8_t data3 = comm.commandMsg[5];
+	switch (comm.commandMsg[1]) {
+		case CMD_TYPE_ULT_RQ:
+			respondToUltrasoundRequest();
+			break;
+		case CMD_TYPE_MOTOR:
+			if (data0 == CMD_MOTOR_OPEN) {
+				motor.openFlower();
+			} else if (data0 == CMD_MOTOR_CLOSE){
+				motor.closeFlower();
+			} else if (data0 == CMD_MOTOR_STOP ) {
+				motor.stop();
+			}
+			break;
+
+		case CMD_TYPE_LASER:
+			if (data0 == CMD_LASER_ON) {
+				lasers.on();
+			} else if (data0 == CMD_LASER_OFF) {
+				lasers.off();
+			} else if (data0 == CMD_LASER_PULSE) {
+				lasers.startPulsing(500, 800);//-- TODO use data 1-2
+			}
+			break;
+
+		case CMD_TYPE_LED_RGB:
+			leds.setRGB(data0, data1, data2);
+			break;
+
+		case CMD_TYPE_LED:
+
+			break;
+
+		case CMD_SET_ULT_THRESH:
+			// sensors.setUltrasoundThreshold();
+			break;
+			
+		case CMD_SET_MOTOR_CLOSE_TIME:
+			// motor.setOpenRunTime();//-- TODO combine bytes data 0-3
+			break;
+
+		case CMD_SET_MOTOR_OPEN_TIME:
+			// motor.setOpenRunTime();//-- TODO combine bytes data 0-3
+			break;
+
+		default:
+			break;
+
+	}
 
 
 		// switch( comm.commandMsg[2] ) {
@@ -254,7 +148,21 @@ void parseMessage() {
 		// 	default:
 		// 		break;
 		// } 
-    } 	
+    // } 	
+}
+
+void respondToUltrasoundRequest() {
+	comm.switchToPipeTx(); //-- switch to sending
+	uint8_t arr[2];
+	arr[0] = CMD_TYPE_REPLY;
+	sensors.readUltrasonic();
+	if(sensors.getPresence()) {
+		arr[1] = 1;
+	} else {
+		arr[2] = 0;
+	}
+	comm.sendMessage(arr, 1);
+	comm.switchToPipeRx();
 }
 
 void writeEEPROMAddress() {
