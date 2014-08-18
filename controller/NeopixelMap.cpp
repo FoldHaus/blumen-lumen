@@ -28,6 +28,11 @@ void NeopixelMap::init() {
 	off();
 }
 
+void NeopixelMap::setComm(Radio *_comm) {
+	comm = _comm;
+
+}
+
 //-----------------------------------------------
 void  NeopixelMap::off() {
 	setColorAll(0,0,0);
@@ -174,6 +179,74 @@ void NeopixelMap::comboAnimation() {
 	}
 
 }
+
+//-----------------------------------------------
+//-- Functions added by Tobias
+//-- Do not trust
+//-----------------------------------------------
+
+
+//-- Start at high intensity then fade out slowly
+//-- Make it seem somewhat random which flower comes on when
+//-- Try different configs, swapping start and end, other easing algo's etc.
+//-- Note: Requries this Easing library: https://github.com/tobiastoft/ArduinoEasing
+//-----------------------------------------------
+void NeopixelMap::droplets() {
+	static unsigned long startTime = millis();
+	static bool hasBeenActivated[] = { false, false, false, false, false, false, false, false, false, false };
+	const uint8_t startTimes[] = {0, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800}; //offset for individual timelines
+
+
+	for( uint8_t flowerNum=0; flowerNum < birdseyeMap.numPixels(); flowerNum++) {
+		if( millis() - startTime > startTimes[ flowerNum ] && !hasBeenActivated[ flowerNum ] ) {
+			Serial.print("Enabling DROPLET mode on flower ");
+			Serial.println(flowerNum);
+
+			// Query current ultrasonic
+			comm->switchToPipeTx( CMD_TYPE_LED );
+
+			// Send request
+			uint8_t arr[] = { CMD_TYPE_LED, CMD_LED_DROPLET };
+			comm->sendMessage(arr, 2);
+		}
+	}
+
+
+	// const uint8_t startIntensity = 0;
+	// const uint8_t endIntensity = 255;
+	// const uint8_t delayTime = 40;
+	// const uint8_t duration = 300;
+	// const uint8_t startTimes[] = {0, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800}; //offset for individual timelines
+
+	// static uint8_t i = 0; //global timeline/playhead
+	// static uint8_t currentTimes[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; //individual timeline positions
+	// static unsigned long lastTime = millis();
+	
+	// if (millis()-lastTime > delayTime){
+	// 	for( uint8_t flowerNum=0; flowerNum < birdseyeMap.numPixels(); flowerNum++) {
+
+	// 		//increment individual timelines
+	// 		if (i > startTimes[flowerNum]){
+	// 			currentTimes[flowerNum]++;
+
+	// 			//fade
+	// 			uint8_t r = Easing::easeInBounce(currentTimes[flowerNum], endIntensity, (startIntensity-endIntensity), duration);
+	// 			uint8_t g = Easing::easeInOutBounce(currentTimes[flowerNum], endIntensity, (startIntensity-endIntensity), duration);
+	// 			uint8_t b = Easing::easeOutBounce(currentTimes[flowerNum], endIntensity, (startIntensity-endIntensity), duration);
+	// 			setFlowerRGB(flowerNum, r, g, b);
+	// 		}
+			
+	// 		//reset individual timeline
+	// 		if (currentTimes[flowerNum] > duration){
+	// 			currentTimes[flowerNum] = 0;
+	// 		}
+	// 	}
+
+	// 	i++;
+	// 	lastTime = millis();
+	// }
+}
+
 
 
 //-- Easing function, modeled with cos[0,pi]

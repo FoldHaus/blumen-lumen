@@ -33,3 +33,13 @@
 #define MOT_IN_2	8
 #define ULTRASONIC 	A0
 //-- pins 9-13 are defined by RF24 library
+
+#define DEFAULT_ANIM_DURATION 300
+#define DEFAULT_ANIM_DELAY 40
+
+
+typedef enum { 
+	ANIMATION_OFF,
+	ANIMATION_RAINBOW,
+	ANIMATION_DROPLET
+} ANIMATION_t;

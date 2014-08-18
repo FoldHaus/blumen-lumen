@@ -52,7 +52,9 @@ typedef enum {
 #define CMD_MOTOR_STOP			0x22
 
 //-- LED animations
-#define CMD_LED_RAINBOW			0x30
+#define CMD_LED_OFF				0x30
+#define CMD_LED_RAINBOW			0x31
+#define CMD_LED_DROPLET			0x32
 //-- etc
 
 //-- LASER commands
@@ -66,6 +68,7 @@ typedef enum {
 #define CMD_LENGTH 				8 //-- includes checksum, everything
 // 
 
+#define CMD_TIMEOUT				800
 
 #define EEPROM_ADDR_LOCATION 0
 
