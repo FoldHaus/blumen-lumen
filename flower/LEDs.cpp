@@ -29,7 +29,7 @@ void LEDs::update() {
 		break;
 
 		case ANIMATION_DROPLET:
-			//doDroplet(); //TODO enable
+			doDroplet();
 		break;
 	}
 }
@@ -116,6 +116,31 @@ void LEDs::doRainbow() {
 	}
 
 }
+
+void LEDs::doDroplet(int delayTime, int duration) {
+
+	const uint8_t startIntensity = 0;
+	const uint8_t endIntensity = 255;
+
+	static uint8_t currentTime = 0; //timeline position
+	static unsigned long lastTime = millis();
+	
+	if (millis()-lastTime > delayTime){
+		//fade
+		uint8_t r = Easing::easeInBounce(currentTime, endIntensity, (startIntensity-endIntensity), duration);
+		uint8_t g = Easing::easeInOutBounce(currentTime, endIntensity, (startIntensity-endIntensity), duration);
+		uint8_t b = Easing::easeOutBounce(currentTime, endIntensity, (startIntensity-endIntensity), duration);
+		setRGB(r, g, b);
+	}
+		
+	//reset individual timeline
+	if (currentTime++ > duration){
+		currentTime = 0;
+	}
+
+	lastTime = millis();
+}
+
 
 //-------------------------------------------------
 

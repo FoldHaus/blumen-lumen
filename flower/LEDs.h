@@ -7,6 +7,7 @@
 #include "Arduino.h"
 #include "RadioConstants.h"
 #include "FlowerConstants.h"
+#include <Easing.h>
 
 
 class LEDs {
