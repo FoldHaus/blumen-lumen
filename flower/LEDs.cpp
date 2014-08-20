@@ -184,6 +184,7 @@ void LEDs::doBeat() {
 		startIntensity_g = 220 + random(0, 35);
 		startIntensity_b = 220 + random(0, 35);
 		endIntensity = 0;
+		return;
 	}
 	else if (currentTime > duration && !doBeatNow) {
 		return;

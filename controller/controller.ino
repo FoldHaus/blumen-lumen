@@ -119,6 +119,7 @@ void printKeyboardCommands() {
 
 	Serial.println("\n--LED commands--");
 	Serial.println("off [f]");
+	Serial.println("all off [F]");
 	Serial.println("rainbow [g]");
 	Serial.println("droplets [h]");
 	Serial.println("slow fade [v]");
@@ -207,6 +208,11 @@ void checkSerialInputs() {
 				Serial.println("leds off");
 				flowers.off();
 				break;
+
+			case 'F':
+				Serial.println("all leds off");
+				flowers.allOff();
+				break;
 			
 			case 'g':
 				Serial.println("leds rainbow");
@@ -218,19 +224,19 @@ void checkSerialInputs() {
 				flowers.startAnimationDroplets();
 				break;
 
-			case 'v': //TODO enable
+			case 'v':
 				Serial.println("leds slow fade");
-				//flowers.startAnimationSlowFade();
+				flowers.startAnimationSlowFade();
 				break;
 			
 			case 'b':
 				Serial.println("leds beat");
-				//flowers.startAnimationBeat();
+				flowers.startAnimationBeat();
 				break;
 
 			case 'n':
 				Serial.println("leds lsd");
-				//flowers.startAnimationLSD();
+				flowers.startAnimationLSD();
 				break;
 
 			case '#':

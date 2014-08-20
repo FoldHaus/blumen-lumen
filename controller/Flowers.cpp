@@ -109,6 +109,27 @@ void Flowers::startAnimationRainbow() {
 	comm.sendMessage(arr, 2);
 }
 
+void Flowers::startAnimationSlowFade() {
+	uint8_t arr[5];
+	arr[0] = CMD_TYPE_LED;
+	arr[1] = CMD_LED_SLOWFADE;
+	comm.sendMessage(arr, 2);
+}
+
+void Flowers::startAnimationBeat() {
+	uint8_t arr[5];
+	arr[0] = CMD_TYPE_LED;
+	arr[1] = CMD_LED_BEAT;
+	comm.sendMessage(arr, 2);
+}
+
+void Flowers::startAnimationLSD() {
+	uint8_t arr[5];
+	arr[0] = CMD_TYPE_LED;
+	arr[1] = CMD_LED_LSD;
+	comm.sendMessage(arr, 2);
+}
+
 void Flowers::update() {
 	switch( animationMode ) {
 		case ANIMATION_OFF:
@@ -121,6 +142,21 @@ void Flowers::update() {
 
 		case ANIMATION_DROPLET:
 			doDroplets();
+		break;
+
+		case ANIMATION_SLOWFADE:
+			doSlowFade();
+		break;
+
+		case ANIMATION_BEAT:
+			doBeat();
+		break;
+
+		case ANIMATION_LSD:
+			doLSD();
+		break;
+
+		default:
 		break;
 	}
 }
@@ -164,7 +200,7 @@ void Flowers::printUltrasonicState() {
 }
 
 //-----------------------------------------------
-void  Flowers::off() {
+void  Flowers::allOff() {
 	setColorAll(0,0,0);
 	Serial.println("Turning OFF mode all flowers");
 
@@ -178,6 +214,12 @@ void  Flowers::off() {
 		comm.sendMessage(arr, 2);
 
 	}
+}
+
+void  Flowers::off() {
+
+	uint8_t arr[] = { CMD_TYPE_LED, CMD_LED_OFF };
+	comm.sendMessage(arr, 2);
 }
 
 //-----------------------------------------------
@@ -371,27 +413,53 @@ void Flowers::doRainbow() {
 	}
 }
 
-// void Flowers::doSlowFade() {
-// 	static unsigned long startTime = millis();
-// 	static bool hasBeenActivated[] = { false, false, false, false, false, false, false, false, false, false };
-// 	const int startTimes[] = {0, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800}; //offset for individual timelines
+
+void Flowers::doSlowFade() {
+	doAnimationOnAllFlowers( ANIMATION_SLOWFADE );
+}
+
+void Flowers::doBeat() {
+	doAnimationOnAllFlowers( ANIMATION_BEAT );
+}
+
+void Flowers::doLSD() {
+	doAnimationOnAllFlowers( ANIMATION_LSD );
+}
 
 
-// 	for( uint8_t flowerNum=0; flowerNum < birdseyeMap.numPixels(); flowerNum++) {
-// 		if( millis() - startTime > startTimes[ flowerNum ] && !hasBeenActivated[ flowerNum ] ) {
-// 			Serial.print("Enabling DROPLET mode on flower ");
-// 			Serial.println(flowerNum);
+void Flowers::doAnimationOnAllFlowers(ANIMATION_t animation) {
 
-// 			// Query current flower
-// 			comm.switchToPipeTx( 0 );
+	for( uint8_t flowerNum=0; flowerNum < birdseyeMap.numPixels(); flowerNum++) {
+		communicateWithFlower(flowerNum);
 
-// 			// Send request
-// 			uint8_t arr[] = { CMD_TYPE_LED, CMD_LED_DROPLET };
-// 			comm.sendMessage(arr, 2);
-// 		}
-// 	}
-	
-// }
+		switch( animation ) {
+
+			case ANIMATION_RAINBOW:
+				startAnimationRainbow();
+			break;
+
+			case ANIMATION_DROPLET:
+				startAnimationDroplets();
+			break;
+
+			case ANIMATION_SLOWFADE:
+				startAnimationSlowFade();
+			break;
+
+			case ANIMATION_BEAT:
+				startAnimationBeat();
+			break;
+
+			case ANIMATION_LSD:
+				startAnimationLSD();
+			break;
+
+			default:
+			break;
+		}
+	}
+
+}
 
 
 

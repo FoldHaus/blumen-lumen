@@ -23,6 +23,7 @@ public:
 	void init();
 	void update();
 	void off();
+	void allOff();
 
 	// commands
 	void communicateWithFlower(uint8_t flowerNum);
@@ -46,8 +47,15 @@ public:
 	void comboAnimation();
 	void startAnimationRainbow();
 	void startAnimationDroplets();
+	void startAnimationSlowFade();
+	void startAnimationBeat();
+	void startAnimationLSD();
 	void doDroplets();
 	void doRainbow();
+	void doSlowFade();
+	void doBeat();
+	void doLSD();
+	void doAnimationOnAllFlowers(ANIMATION_t anim);
 
 private:
 	float getEasedDelayTime(int i, int min_i, int max_i);
