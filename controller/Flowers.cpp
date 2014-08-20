@@ -346,7 +346,7 @@ void Flowers::doDroplets() {
 			comm.sendMessage(arr, 2);
 		}
 	}
-	
+
 }
 
 
@@ -370,6 +370,28 @@ void Flowers::doRainbow() {
 		}
 	}
 }
+
+// void Flowers::doSlowFade() {
+// 	static unsigned long startTime = millis();
+// 	static bool hasBeenActivated[] = { false, false, false, false, false, false, false, false, false, false };
+// 	const int startTimes[] = {0, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800}; //offset for individual timelines
+
+
+// 	for( uint8_t flowerNum=0; flowerNum < birdseyeMap.numPixels(); flowerNum++) {
+// 		if( millis() - startTime > startTimes[ flowerNum ] && !hasBeenActivated[ flowerNum ] ) {
+// 			Serial.print("Enabling DROPLET mode on flower ");
+// 			Serial.println(flowerNum);
+
+// 			// Query current flower
+// 			comm.switchToPipeTx( 0 );
+
+// 			// Send request
+// 			uint8_t arr[] = { CMD_TYPE_LED, CMD_LED_DROPLET };
+// 			comm.sendMessage(arr, 2);
+// 		}
+// 	}
+	
+// }
 
 
 
