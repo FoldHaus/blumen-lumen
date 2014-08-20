@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Arduino.h"
-#include "MasterConstants.h"
+#include "ControllerConstants.h"
 
 
 class EnvSensors {

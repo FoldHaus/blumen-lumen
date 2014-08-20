@@ -19,7 +19,8 @@ public:
 	void update(); //-- to be called every cycle in state machine
 	void on(); //-- implements duty cycle 60s 2s off
 	void off();
-	void startPulsing(unsigned int _millisOn, unsigned int _millisOff);
+	void startPulsing(unsigned int _millisOn = 500, unsigned int _millisOff = 800);
+	void randomize();
 
 	// void pattern()
 	

@@ -75,3 +75,5 @@
 #define MAX_WIND		409
 #define MIN_SPEED		0
 #define MAX_SPEED		32.4
+
+#define CONTROLLER_ANIM_TIMEOUT 30000 //TODO is this enough/too much?

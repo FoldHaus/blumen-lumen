@@ -16,9 +16,26 @@ void LEDs::init() {
 }
 
 void LEDs::update() {
-	if (isRainbowing) {
-		doRainbow();
+	switch( animationMode ) {
+		case ANIMATION_MANUAL:
+		break;
+
+		case ANIMATION_OFF:
+			off();
+		break;
+
+		case ANIMATION_RAINBOW:
+			doRainbow();
+		break;
+
+		case ANIMATION_DROPLET:
+			//doDroplet(); //TODO enable
+		break;
 	}
+}
+
+void LEDs::setAnimationMode( ANIMATION_t mode ) {
+	animationMode = mode;
 }
 
 void LEDs::setRGB(uint8_t r, uint8_t g, uint8_t b) {

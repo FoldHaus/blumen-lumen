@@ -72,3 +72,19 @@ void Lasers::pulse() {
 		lastTime = millis();
 	}
 }
+
+void Lasers::randomize() {
+	uint8_t newLaser = random(10); //0–9
+	if(newLaser < 5) { // 50% of times
+		Serial.println("rand: lasers ON");
+		on();
+	}
+	else if (newLaser >= 5 && newLaser < 7) {
+		Serial.println("rand: lasers to strobe");
+		startPulsing( random(300, 1000), random(500, 2000));
+	}
+	else if (newLaser >= 7 && newLaser < 10) {
+		Serial.println("rand: lasers OFF");
+		off();
+	}
+}

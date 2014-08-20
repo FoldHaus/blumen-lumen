@@ -5,16 +5,20 @@
 //-- complete a given animation
 
 #include "Arduino.h"
+#include "RadioConstants.h"
 #include "FlowerConstants.h"
 
 
 class LEDs {
+
+ANIMATION_t animationMode;
 
 public:
 	LEDs();
 	virtual ~LEDs();
 	void init();
 	void update();
+	void setAnimationMode( ANIMATION_t mode );
 	// void on(); //-- resets to last animation/color state
 	void off();
 	void setRGB(uint8_t r, uint8_t g, uint8_t b);
@@ -26,6 +30,7 @@ public:
 	void doRainbow();
 	void startRainbow();
 	void breathe();
+	void doDroplet( int delay = DEFAULT_ANIM_DELAY, int duration = DEFAULT_ANIM_DURATION );
 	
 
 private:
