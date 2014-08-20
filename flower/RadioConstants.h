@@ -90,7 +90,7 @@ typedef enum {
 
 //-- master brain:
 //-- 13
-#define ID_MASTER 	13
+#define ID_MASTER 	12 // TODO switch back to 13
 
 //-- remote controls:
 //-- 14, 15

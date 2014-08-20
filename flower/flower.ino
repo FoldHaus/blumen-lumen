@@ -108,6 +108,7 @@ void checkIncomingMessages() {
 }
 
 void parseMessage() {
+	Serial.println("Parsing messages...");
 //-----------------------------------------------
 	//-- ignore bytes 0, N-1, and N-2 (Start byte, checksum, end byte)
 
@@ -260,7 +261,6 @@ void printKeyboardCommands() {
 	Serial.println("lsd [n]");
 
 	Serial.println("toggle anim auto switch [#]");
-
 
 }
 

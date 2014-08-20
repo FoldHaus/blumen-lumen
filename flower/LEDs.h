@@ -31,10 +31,11 @@ public:
 	void doRainbow();
 	void startRainbow();
 	void breathe();
-	void doDroplet( int delay = DEFAULT_ANIM_DELAY, int duration = DEFAULT_ANIM_DURATION );
+	void doDroplet();
 	void doSlowFade();
 	void doBeat();
 	void doLSD();
+	void doAnimation(int min, int maxDuration);
 	
 
 private:
