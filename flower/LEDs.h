@@ -32,6 +32,9 @@ public:
 	void startRainbow();
 	void breathe();
 	void doDroplet( int delay = DEFAULT_ANIM_DELAY, int duration = DEFAULT_ANIM_DURATION );
+	void doSlowFade();
+	void doBeat();
+	void doLSD();
 	
 
 private:

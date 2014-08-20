@@ -32,7 +32,7 @@ void LEDs::update() {
 			doDroplet();
 		break;
 
-		case ANIMATION_SLOW_FADE:
+		case ANIMATION_SLOWFADE:
 			doSlowFade();
 		break;
 

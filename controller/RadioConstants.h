@@ -55,7 +55,10 @@ typedef enum {
 #define CMD_LED_OFF				0x30
 #define CMD_LED_RAINBOW			0x31
 #define CMD_LED_DROPLET			0x32
-//-- etc
+#define CMD_LED_SLOWFADE		0x33
+#define CMD_LED_BEAT			0x34
+#define CMD_LED_LSD				0x35
+
 
 //-- LASER commands
 #define CMD_LASER_ON			0x40
@@ -102,7 +105,7 @@ typedef enum {
 	ANIMATION_OFF,
 	ANIMATION_RAINBOW,
 	ANIMATION_DROPLET,
-	ANIMATION_SLOW_FADE,
+	ANIMATION_SLOWFADE,
 	ANIMATION_BEAT,
 	ANIMATION_LSD
 } ANIMATION_t;

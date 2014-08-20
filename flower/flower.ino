@@ -338,17 +338,17 @@ void checkSerialInputs() {
 				leds.setAnimationMode( ANIMATION_DROPLET );
 				break;
 
-			case 'f':
+			case 'v':
 				Serial.println("leds slow fade");
 				leds.setAnimationMode( ANIMATION_SLOWFADE );
 				break;
 			
-			case 'g':
+			case 'b':
 				Serial.println("leds beat");
 				leds.setAnimationMode( ANIMATION_BEAT );
 				break;
 
-			case 'h':
+			case 'n':
 				Serial.println("leds lsd");
 				leds.setAnimationMode( ANIMATION_LSD );
 				break;
