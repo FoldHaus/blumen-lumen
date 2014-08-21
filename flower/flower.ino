@@ -71,7 +71,7 @@ void loop() {
 
 	//-- possibly switch to a new animation
 	if ( switchAnimAutomatically &&
-		 millis() - lastAnimationSwitch > ANIMATION_TIMEOUT ) {
+		millis() - lastAnimationSwitch > ANIMATION_TIMEOUT ) {
 		Serial.print("Automatically switching to new animation #");
 
 		// set new light animation (random)
@@ -81,7 +81,7 @@ void loop() {
 
 		// set new lasers behavior
 		Serial.print(", ");
-		lasers.randomize();
+		lasers.randomize(); // TODO remove if lasers cmds come from controller?
 
 		lastAnimationSwitch = millis();
 	}
@@ -108,6 +108,7 @@ void checkIncomingMessages() {
 }
 
 void parseMessage() {
+	Serial.println("Parsing messages...");
 //-----------------------------------------------
 	//-- ignore bytes 0, N-1, and N-2 (Start byte, checksum, end byte)
 
@@ -141,11 +142,13 @@ void parseMessage() {
 			break;
 
 		case CMD_TYPE_LED_RGB:
+			lastAnimationSwitch = millis();
 			leds.setAnimationMode( ANIMATION_MANUAL );
 			leds.setRGB(data0, data1, data2);
 			break;
 
 		case CMD_TYPE_LED:
+			lastAnimationSwitch = millis();
 			switch(data0) {
 				case CMD_LED_OFF:
 					leds.setAnimationMode( ANIMATION_OFF );
@@ -155,6 +158,15 @@ void parseMessage() {
 					break;
 				case CMD_LED_DROPLET:
 					leds.setAnimationMode( ANIMATION_DROPLET );
+					break;
+				case CMD_LED_SLOWFADE:
+					leds.setAnimationMode( ANIMATION_SLOWFADE );
+					break;
+				case CMD_LED_BEAT:
+					leds.setAnimationMode( ANIMATION_BEAT );
+					break;
+				case CMD_LED_LSD:
+					leds.setAnimationMode( ANIMATION_LSD );
 					break;
 			}
 			break;
@@ -244,14 +256,18 @@ void printKeyboardCommands() {
 	Serial.println("off [f]");
 	Serial.println("rainbow [g]");
 	Serial.println("droplets [h]");
+	Serial.println("slow fade [v]");
+	Serial.println("beat [b]");
+	Serial.println("lsd [n]");
 
 	Serial.println("toggle anim auto switch [#]");
-
 
 }
 
 //-----------------------------------------------
 void checkSerialInputs() {
+	lastAnimationSwitch = millis();
+
 	static int k = 0;
 	if ( Serial.available() ) {
 		int key = Serial.read();
@@ -320,6 +336,21 @@ void checkSerialInputs() {
 			case 'h':
 				Serial.println("leds droplets");
 				leds.setAnimationMode( ANIMATION_DROPLET );
+				break;
+
+			case 'v':
+				Serial.println("leds slow fade");
+				leds.setAnimationMode( ANIMATION_SLOWFADE );
+				break;
+			
+			case 'b':
+				Serial.println("leds beat");
+				leds.setAnimationMode( ANIMATION_BEAT );
+				break;
+
+			case 'n':
+				Serial.println("leds lsd");
+				leds.setAnimationMode( ANIMATION_LSD );
 				break;
 
 			case '#':

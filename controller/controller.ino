@@ -53,7 +53,7 @@ bool switchAnimAutomatically = true;
 //-----------------------------------------------
 void setup() {
 	#ifdef DEBUG 
-	Serial.begin(115200); //57600);
+	Serial.begin(57600);
 	#endif
 
 	hmi.init();
@@ -67,6 +67,10 @@ void setup() {
 
 //-----------------------------------------------
 void loop() {
+
+	// writeEEPROMAddress();
+	// return;
+
 	// Serial.println(sensors.getWindSpeed());
 	// Serial.prinxtln(sensors.getLightValue());
 	// Serial.println(sensors.getSoundAmplitude());
@@ -94,6 +98,8 @@ void loop() {
 }
 
 
+
+
 void printKeyboardCommands() {
 	Serial.println("CONTROLLER commands");
 	Serial.println("---------------");
@@ -113,8 +119,12 @@ void printKeyboardCommands() {
 
 	Serial.println("\n--LED commands--");
 	Serial.println("off [f]");
+	Serial.println("all off [F]");
 	Serial.println("rainbow [g]");
 	Serial.println("droplets [h]");
+	Serial.println("slow fade [v]");
+	Serial.println("beat [b]");
+	Serial.println("lsd [n]");
 
 	Serial.println("toggle anim auto switch [#]");
 
@@ -198,6 +208,11 @@ void checkSerialInputs() {
 				Serial.println("leds off");
 				flowers.off();
 				break;
+
+			case 'F':
+				Serial.println("all leds off");
+				flowers.allOff();
+				break;
 			
 			case 'g':
 				Serial.println("leds rainbow");
@@ -207,6 +222,21 @@ void checkSerialInputs() {
 			case 'h':
 				Serial.println("leds droplets");
 				flowers.startAnimationDroplets();
+				break;
+
+			case 'v':
+				Serial.println("leds slow fade");
+				flowers.startAnimationSlowFade();
+				break;
+			
+			case 'b':
+				Serial.println("leds beat");
+				flowers.startAnimationBeat();
+				break;
+
+			case 'n':
+				Serial.println("leds lsd");
+				flowers.startAnimationLSD();
 				break;
 
 			case '#':
@@ -277,3 +307,16 @@ void runStateMachine(uint8_t event) {
   }
 
 }
+
+// void writeEEPROMAddress() {
+// 	if (Serial.available()){
+// 		char c = Serial.read();
+// 		EEPROM.write(EEPROM_ADDR_LOCATION, c-'0');
+
+// 		// And we are done right now (no easy way to soft reset)
+// 		Serial.print("\n\rManually reset address to: Press RESET to continue!");
+// 		Serial.println(c);
+// 		while(1) ;
+// 		// }
+// 	}
+// }

@@ -109,6 +109,27 @@ void Flowers::startAnimationRainbow() {
 	comm.sendMessage(arr, 2);
 }
 
+void Flowers::startAnimationSlowFade() {
+	uint8_t arr[5];
+	arr[0] = CMD_TYPE_LED;
+	arr[1] = CMD_LED_SLOWFADE;
+	comm.sendMessage(arr, 2);
+}
+
+void Flowers::startAnimationBeat() {
+	uint8_t arr[5];
+	arr[0] = CMD_TYPE_LED;
+	arr[1] = CMD_LED_BEAT;
+	comm.sendMessage(arr, 2);
+}
+
+void Flowers::startAnimationLSD() {
+	uint8_t arr[5];
+	arr[0] = CMD_TYPE_LED;
+	arr[1] = CMD_LED_LSD;
+	comm.sendMessage(arr, 2);
+}
+
 void Flowers::update() {
 	switch( animationMode ) {
 		case ANIMATION_OFF:
@@ -121,6 +142,21 @@ void Flowers::update() {
 
 		case ANIMATION_DROPLET:
 			doDroplets();
+		break;
+
+		case ANIMATION_SLOWFADE:
+			doSlowFade();
+		break;
+
+		case ANIMATION_BEAT:
+			doBeat();
+		break;
+
+		case ANIMATION_LSD:
+			doLSD();
+		break;
+
+		default:
 		break;
 	}
 }
@@ -164,7 +200,7 @@ void Flowers::printUltrasonicState() {
 }
 
 //-----------------------------------------------
-void  Flowers::off() {
+void  Flowers::allOff() {
 	setColorAll(0,0,0);
 	Serial.println("Turning OFF mode all flowers");
 
@@ -178,6 +214,12 @@ void  Flowers::off() {
 		comm.sendMessage(arr, 2);
 
 	}
+}
+
+void  Flowers::off() {
+
+	uint8_t arr[] = { CMD_TYPE_LED, CMD_LED_OFF };
+	comm.sendMessage(arr, 2);
 }
 
 //-----------------------------------------------
@@ -347,40 +389,6 @@ void Flowers::doDroplets() {
 		}
 	}
 
-
-	// const uint8_t startIntensity = 0;
-	// const uint8_t endIntensity = 255;
-	// const uint8_t delayTime = 40;
-	// const uint8_t duration = 300;
-	// const uint8_t startTimes[] = {0, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800}; //offset for individual timelines
-
-	// static uint8_t i = 0; //global timeline/playhead
-	// static uint8_t currentTimes[] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0}; //individual timeline positions
-	// static unsigned long lastTime = millis();
-	
-	// if (millis()-lastTime > delayTime){
-	// 	for( uint8_t flowerNum=0; flowerNum < birdseyeMap.numPixels(); flowerNum++) {
-
-	// 		//increment individual timelines
-	// 		if (i > startTimes[flowerNum]){
-	// 			currentTimes[flowerNum]++;
-
-	// 			//fade
-	// 			uint8_t r = Easing::easeInBounce(currentTimes[flowerNum], endIntensity, (startIntensity-endIntensity), duration);
-	// 			uint8_t g = Easing::easeInOutBounce(currentTimes[flowerNum], endIntensity, (startIntensity-endIntensity), duration);
-	// 			uint8_t b = Easing::easeOutBounce(currentTimes[flowerNum], endIntensity, (startIntensity-endIntensity), duration);
-	// 			setFlowerRGB(flowerNum, r, g, b);
-	// 		}
-			
-	// 		//reset individual timeline
-	// 		if (currentTimes[flowerNum] > duration){
-	// 			currentTimes[flowerNum] = 0;
-	// 		}
-	// 	}
-
-	// 	i++;
-	// 	lastTime = millis();
-	// }
 }
 
 
@@ -403,6 +411,54 @@ void Flowers::doRainbow() {
 			comm.sendMessage(arr, 2);
 		}
 	}
+}
+
+
+void Flowers::doSlowFade() {
+	doAnimationOnAllFlowers( ANIMATION_SLOWFADE );
+}
+
+void Flowers::doBeat() {
+	doAnimationOnAllFlowers( ANIMATION_BEAT );
+}
+
+void Flowers::doLSD() {
+	doAnimationOnAllFlowers( ANIMATION_LSD );
+}
+
+
+void Flowers::doAnimationOnAllFlowers(ANIMATION_t animation) {
+
+	for( uint8_t flowerNum=0; flowerNum < birdseyeMap.numPixels(); flowerNum++) {
+		communicateWithFlower(flowerNum);
+
+		switch( animation ) {
+
+			case ANIMATION_RAINBOW:
+				startAnimationRainbow();
+			break;
+
+			case ANIMATION_DROPLET:
+				startAnimationDroplets();
+			break;
+
+			case ANIMATION_SLOWFADE:
+				startAnimationSlowFade();
+			break;
+
+			case ANIMATION_BEAT:
+				startAnimationBeat();
+			break;
+
+			case ANIMATION_LSD:
+				startAnimationLSD();
+			break;
+
+			default:
+			break;
+		}
+	}
+
 }
 
 
