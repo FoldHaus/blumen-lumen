@@ -224,3 +224,56 @@ void checkSerialInputs() {
 		}
 	}
 }
+
+
+void runStateMachine(uint8_t event) {
+  static uint8_t currState = READY;
+  boolean makeTransition = false;
+  uint8_t nextState = currState;
+
+
+  switch ( currState ) {
+		case READY:
+			event = duringWatchingForEvents(event);
+			if ( event != NO_EVENT ) {
+			  switch ( event ){
+			  case WIND_SPEED_EXCESSIVE:
+			    makeTransition = true;
+			    nextState = CYCLING_POWER;
+			    break;
+
+			  case VMOT_ERROR:
+			    makeTransition = true;
+			    nextState = CYCLING_POWER;
+			    break;
+
+			  case VLED_ERROR:
+			    makeTransition = true;
+			    nextState = CYCLING_POWER;
+			    break;
+
+			  case PULSE_ERROR:
+			    makeTransition = true;
+			    nextState = GIVING_BBB_A_CHANCE_TO_RESTART;
+			    break;
+
+			  case MANUAL_PULSE_ERROR:
+			    makeTransition = true;
+			    nextState = DISABLE_HEARTBEAT;
+			    break;
+			  }
+			}
+		break;
+
+		case DISABLE_HEARTBEAT:
+		break;
+  }
+
+
+  if ( makeTransition ) {
+    runStateMachine(EV_EXIT); //-- Execute exit function for current state
+    currState = nextState; 
+    runStateMachine(EV_ENTRY); //-- Execute entry function for new state
+  }
+
+}
