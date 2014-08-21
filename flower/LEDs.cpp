@@ -13,6 +13,7 @@ void LEDs::init() {
 	pinMode(LED_G, OUTPUT);
 	pinMode(LED_B, OUTPUT);
 	isRainbowing = false;
+	doBeatNow = false;
 }
 
 void LEDs::update() {
