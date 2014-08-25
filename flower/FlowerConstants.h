@@ -38,3 +38,4 @@
 
 #define ANIMATION_TIMEOUT 120000  // TODO is this enough/too much?
 
+#define NO_COMM_TIMEOUT 180000

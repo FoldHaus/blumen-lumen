@@ -10,7 +10,7 @@ Sensors::~Sensors() {
 
 void Sensors::init() {
 	pinMode(PIR_SIG, INPUT);
-	setUltrasoundThreshold(300);
+	setUltrasoundThreshold(410); //--104in
 	setPresence(false);
 }
 

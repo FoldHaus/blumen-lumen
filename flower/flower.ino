@@ -37,6 +37,8 @@ Sensors sensors;
 unsigned long lastAnimationSwitch;
 bool switchAnimAutomatically = true;
 
+unsigned long lastTimeMsgReceived;
+
 //-----------------------------------------------
 void setup() {
 	#ifdef DEBUG 
@@ -49,10 +51,10 @@ void setup() {
 	lasers.init();
 	sensors.init();
 	
-	printKeyboardCommands();
+	// printKeyboardCommands();
 
 	lastAnimationSwitch = millis();
-
+	lastTimeMsgReceived = millis();
 }
 
 //-----------------------------------------------
@@ -67,30 +69,14 @@ void loop() {
 
 
 	//-- check for inputs
-	checkSerialInputs();
-
-	//-- possibly switch to a new animation
-	if ( switchAnimAutomatically &&
-		millis() - lastAnimationSwitch > ANIMATION_TIMEOUT ) {
-		Serial.print("Automatically switching to new animation #");
-
-		// set new light animation (random)
-		uint8_t newAnim = random(1, N_ANIM + 1);
-		Serial.print(newAnim);
-		leds.setAnimationMode( (ANIMATION_t) newAnim );
-
-		// set new lasers behavior
-		Serial.print(", ");
-		lasers.randomize(); // TODO remove if lasers cmds come from controller?
-
-		lastAnimationSwitch = millis();
-	}
+	// checkSerialInputs();
 
 	if ( comm.getRole() == ROLE_RECEIVER ) {
 		checkIncomingMessages(); //-- check for RF messagee
-	} else {
-		uint8_t arr[] = {0x10,0x20,0x30};
-		comm.sendMessage(arr, 3);
+	} 
+
+	if (millis() - lastTimeMsgReceived > NO_COMM_TIMEOUT) { //-- if you don't get anything for 3 min
+		motor.closeFlower();p/
 	}
 
 }
@@ -104,6 +90,7 @@ void checkIncomingMessages() {
 	comm.readBytes();
 	if ( comm.isMsgReady() ){
 		parseMessage();
+		lastTimeMsgReceived = millis();
 	}
 }
 
@@ -172,37 +159,21 @@ void parseMessage() {
 			break;
 
 		case CMD_SET_ULT_THRESH:
-			// sensors.setUltrasoundThreshold();
+				sensors.setUltrasoundThreshold(data1); //-- TODO test
 			break;
 			
 		case CMD_SET_MOTOR_CLOSE_TIME:
-			// motor.setOpenRunTime();//-- TODO combine bytes data 0-3
+			motor.setOpenRunTime(data0 << 24 | data1 << 16 | data2 << 8 | data3 );//-- TODO test
 			break;
 
 		case CMD_SET_MOTOR_OPEN_TIME:
-			// motor.setOpenRunTime();//-- TODO combine bytes data 0-3
+			motor.setOpenRunTime( data0 << 24 | data1 << 16 | data2 << 8 | data3 ) ;//-- TODO test
 			break;
 
 		default:
 			break;
 
 	}
-
-
-		// switch( comm.commandMsg[2] ) {
-		// 	case CMD_MOTOR_OPEN:
-		// 		motor.openFlower();
-		// 		break;
-		// 	case CMD_MOTOR_CLOSE:
-		// 		motor.closeFlower();
-		// 		break;
-		// 	case CMD_MOTOR_STOP:
-		// 		motor.stop();
-		// 		break;
-		// 	default:
-		// 		break;
-		// } 
-    // } 	
 }
 
 void respondToUltrasoundRequest() {
@@ -213,7 +184,7 @@ void respondToUltrasoundRequest() {
 	if(sensors.getPresence()) {
 		arr[1] = 0x01;
 	} else {
-		arr[1] = 0x02;
+		arr[1] = 0x00;
 	}
 	comm.sendMessage(arr, 2);
 	comm.switchToPipeRx();

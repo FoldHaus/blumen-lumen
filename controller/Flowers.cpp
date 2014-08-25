@@ -12,7 +12,7 @@
 
 
 
-Adafruit_NeoPixel birdseyeMap = Adafruit_NeoPixel(N_LEDS, LED_MAP, NEO_GRB + NEO_KHZ800);
+// Adafruit_NeoPixel birdseyeMap = Adafruit_NeoPixel(N_LEDS, LED_MAP, NEO_GRB + NEO_KHZ800);
 
 
 Flowers::Flowers() {
@@ -34,7 +34,7 @@ void Flowers::init() {
 }
 
 void Flowers::initUltrasonic() {
-	for( int i = 0; i < N_ULTRASONIC; i++ ) {
+	for( uint8_t i = 0; i < N_ULTRASONIC; i++ ) {
 		ultrasonicState[ i ] = false;
 		ultrasonicIndexes[ i ] = i*2; // 0, 2, 4 
 	}
@@ -200,169 +200,218 @@ void Flowers::printUltrasonicState() {
 }
 
 //-----------------------------------------------
-void  Flowers::allOff() {
-	setColorAll(0,0,0);
-	Serial.println("Turning OFF mode all flowers");
+bool* Flowers::getUltrasonicState() {
+	return ultrasonicState;
+}
 
-	for( uint8_t flowerNum=0; flowerNum < N_FLOWERS; flowerNum++) {
+//-----------------------------------------------
+void Flowers::sendCommandToAll(uint8_t cmdType, uint8_t cmd) {
+	for( uint8_t i = 0; i < N_FLOWERS; i++) {
 
 		// Query current flower
-		communicateWithFlower( flowerNum );
+		communicateWithFlower(i);
 
 		// Send request
-		uint8_t arr[] = { CMD_TYPE_LED, CMD_LED_OFF };
+		uint8_t arr[] = { cmdType, cmd };
 		comm.sendMessage(arr, 2);
 
 	}
 }
 
-void  Flowers::off() {
+void Flowers::allLEDRGB(uint8_t r, uint8_t g, uint8_t b) {
+	// setColorAll(r,g,b);
+	for( uint8_t i = 0; i < N_FLOWERS; i++) {
+		communicateWithFlower(i);
+		uint8_t arr[] = { CMD_TYPE_LED_RGB, r, g, b };
+		comm.sendMessage(arr, 4);
 
+	}
+}
+
+//-----------------------------------------------
+void  Flowers::allLEDOff() {
+	// setColorAll(0,0,0); //--neopixels
+	Serial.println("Turning off all LEDs");
+	sendCommandToAll(CMD_TYPE_LED, CMD_LED_OFF );
+}
+
+//-----------------------------------------------
+void Flowers::allLasersOff() {
+	Serial.println("turning off lasers on all flowers");
+	sendCommandToAll(CMD_TYPE_LASER, CMD_LASER_OFF );
+}
+
+//-----------------------------------------------
+void Flowers::allLasersOn() {
+	Serial.println("turning off lasers on all flowers");
+	sendCommandToAll(CMD_TYPE_LASER, CMD_LASER_ON );
+}
+
+//-----------------------------------------------
+void  Flowers::allClose() {
+	Serial.println("closing all flowers");
+	sendCommandToAll(CMD_TYPE_MOTOR, CMD_MOTOR_CLOSE );
+}
+
+//-----------------------------------------------
+void Flowers::allOpen() {
+	Serial.println("opening all flowers");
+	sendCommandToAll(CMD_TYPE_MOTOR, CMD_MOTOR_OPEN );
+}
+
+//-----------------------------------------------
+void Flowers::allStop() {
+	Serial.println("stopping all flowers");
+	sendCommandToAll(CMD_TYPE_MOTOR, CMD_MOTOR_STOP );
+}
+
+//-----------------------------------------------
+void  Flowers::off() {
 	uint8_t arr[] = { CMD_TYPE_LED, CMD_LED_OFF };
 	comm.sendMessage(arr, 2);
 }
 
 //-----------------------------------------------
-void Flowers::setFlowerRGB(uint8_t flowerNum, uint8_t r, uint8_t g, uint8_t b) {
-	birdseyeMap.setPixelColor(flowerNum, birdseyeMap.Color(r,g,b));
-	birdseyeMap.show();
-}
+// void Flowers::setFlowerRGB(uint8_t flowerNum, uint8_t r, uint8_t g, uint8_t b) {
+// 	birdseyeMap.setPixelColor(flowerNum, birdseyeMap.Color(r,g,b));
+// 	birdseyeMap.show();
+// }
 
 //-- breathe lights from 30-180, slow pulse, easing function
 //-----------------------------------------------
-void Flowers::breathe(uint8_t flowerNum) {
-	const uint8_t startIntensity = 30;
-	const uint8_t endIntensity = 180;
-	const uint8_t delayTime = 20;
+// void Flowers::breathe(uint8_t flowerNum) {
+// 	const uint8_t startIntensity = 30;
+// 	const uint8_t endIntensity = 180;
+// 	const uint8_t delayTime = 20;
 
-	static bool isDelayDone = false;
-	static uint8_t i = startIntensity;
-	static unsigned long lastTime = millis();
-	static uint8_t delta = 1;
+// 	static bool isDelayDone = false;
+// 	static uint8_t i = startIntensity;
+// 	static unsigned long lastTime = millis();
+// 	static uint8_t delta = 1;
 
-	if ( millis()-lastTime > delayTime - 10 * getEasedDelayTime(i, startIntensity, endIntensity)) {
-		isDelayDone = true;
-		lastTime = millis();
-	}
+// 	if ( millis()-lastTime > delayTime - 10 * getEasedDelayTime(i, startIntensity, endIntensity)) {
+// 		isDelayDone = true;
+// 		lastTime = millis();
+// 	}
 	
-	if ( isDelayDone && i <= endIntensity && i >= startIntensity ) { //-- nonblocking for loop
-		setFlowerRGB(flowerNum, i,0,i);
-		isDelayDone = false;
-		i += delta;
-	} else if ( i < startIntensity ) {
-		i = startIntensity+1;
-		isDelayDone = false;
-		delta *= -1;
-	} else if ( i > endIntensity ) {
-		i = endIntensity-1;
-		isDelayDone = false;
-		delta *= -1;
-	}
-}
+// 	if ( isDelayDone && i <= endIntensity && i >= startIntensity ) { //-- nonblocking for loop
+// 		setFlowerRGB(flowerNum, i,0,i);
+// 		isDelayDone = false;
+// 		i += delta;
+// 	} else if ( i < startIntensity ) {
+// 		i = startIntensity+1;
+// 		isDelayDone = false;
+// 		delta *= -1;
+// 	} else if ( i > endIntensity ) {
+// 		i = endIntensity-1;
+// 		isDelayDone = false;
+// 		delta *= -1;
+// 	}
+// }
 
 //-- breathe alternating lights from 30-180, slow pulse, easing function
 //-----------------------------------------------
-void Flowers::breatheChecker() {
-	const uint8_t startIntensity = 30;
-	const uint8_t endIntensity = 120;
-	const uint8_t delayTime = 20;
+// void Flowers::breatheChecker() {
+// 	const uint8_t startIntensity = 30;
+// 	const uint8_t endIntensity = 120;
+// 	const uint8_t delayTime = 20;
 
-	static bool isDelayDone = false;
-	static uint8_t i = startIntensity;
-	static unsigned long lastTime = millis();
-	static uint8_t delta = 1;
+// 	static bool isDelayDone = false;
+// 	static uint8_t i = startIntensity;
+// 	static unsigned long lastTime = millis();
+// 	static uint8_t delta = 1;
 
-	if ( millis()-lastTime > delayTime - 10 * getEasedDelayTime(i, startIntensity, endIntensity)) {
-		isDelayDone = true;
-		lastTime = millis();
-	}
+// 	if ( millis()-lastTime > delayTime - 10 * getEasedDelayTime(i, startIntensity, endIntensity)) {
+// 		isDelayDone = true;
+// 		lastTime = millis();
+// 	}
 	
-	if ( isDelayDone && i <= endIntensity && i >= startIntensity ) { //-- nonblocking for loop
-		for( uint8_t flowerNum=0; flowerNum < birdseyeMap.numPixels(); flowerNum++) {
-			if (flowerNum % 2 == 0) {
-				setFlowerRGB(flowerNum,0,i,i);
-			} else {
-				setFlowerRGB(flowerNum,endIntensity-i,0,endIntensity-i);
-			}
-		}
-		isDelayDone = false;
-		i += delta;
-	} else if ( i < startIntensity ) {
-		i = startIntensity+1;
-		isDelayDone = false;
-		delta *= -1;
-	} else if ( i > endIntensity ) {
-		i = endIntensity-1;
-		isDelayDone = false;
-		delta *= -1;
-	}
-}
+// 	if ( isDelayDone && i <= endIntensity && i >= startIntensity ) { //-- nonblocking for loop
+// 		for( uint8_t flowerNum=0; flowerNum < birdseyeMap.numPixels(); flowerNum++) {
+// 			if (flowerNum % 2 == 0) {
+// 				setFlowerRGB(flowerNum,0,i,i);
+// 			} else {
+// 				setFlowerRGB(flowerNum,endIntensity-i,0,endIntensity-i);
+// 			}
+// 		}
+// 		isDelayDone = false;
+// 		i += delta;
+// 	} else if ( i < startIntensity ) {
+// 		i = startIntensity+1;
+// 		isDelayDone = false;
+// 		delta *= -1;
+// 	} else if ( i > endIntensity ) {
+// 		i = endIntensity-1;
+// 		isDelayDone = false;
+// 		delta *= -1;
+// 	}
+// }
 
 //-- spinning slowly, spinning quickly, and eventually breath in
 //-----------------------------------------------
-void Flowers::comboAnimation() {
+// void Flowers::comboAnimation() {
 
-	const uint8_t cycles = 10;
-	const uint8_t startPixel = 0;
-	const uint8_t endPixel = N_LEDS;
-	const uint8_t nLEDsOn = 4;
+// 	const uint8_t cycles = 10;
+// 	const uint8_t startPixel = 0;
+// 	const uint8_t endPixel = N_LEDS;
+// 	const uint8_t nLEDsOn = 4;
 
-	static unsigned int delayTime = 45;
-	static bool isDelayDone = false;
-	static uint8_t i = startPixel;
-	static unsigned long lastTime = millis();
-	static uint8_t stage = 0;
+// 	static unsigned int delayTime = 45;
+// 	static bool isDelayDone = false;
+// 	static uint8_t i = startPixel;
+// 	static unsigned long lastTime = millis();
+// 	static uint8_t stage = 0;
 
-	if ( millis()-lastTime > delayTime ) {
-		isDelayDone = true;
-		lastTime = millis();
-	}
+// 	if ( millis()-lastTime > delayTime ) {
+// 		isDelayDone = true;
+// 		lastTime = millis();
+// 	}
 	
-	if ( isDelayDone ) {
-		if(stage == 0) { 	//-- spin slowly
-			if(i < endPixel*cycles) {
-				//-- pick a random pixel and change the intensity randomly
-				if (i < endPixel*cycles) setColorAll(0,0,0);
-				for(uint8_t j = 0; j < nLEDsOn; j++ ) {
-					birdseyeMap.setPixelColor((i+j)%endPixel, birdseyeMap.Color(0,255-j*50,0));
-				}
-				birdseyeMap.show();
-				i++;	
-				isDelayDone = false;
-			} else if (i >= endPixel*cycles) {
-				delayTime = 15;
-				stage = 1;
-				i = startPixel;
-			}
-		}
+// 	if ( isDelayDone ) {
+// 		if(stage == 0) { 	//-- spin slowly
+// 			if(i < endPixel*cycles) {
+// 				//-- pick a random pixel and change the intensity randomly
+// 				if (i < endPixel*cycles) setColorAll(0,0,0);
+// 				for(uint8_t j = 0; j < nLEDsOn; j++ ) {
+// 					birdseyeMap.setPixelColor((i+j)%endPixel, birdseyeMap.Color(0,255-j*50,0));
+// 				}
+// 				birdseyeMap.show();
+// 				i++;	
+// 				isDelayDone = false;
+// 			} else if (i >= endPixel*cycles) {
+// 				delayTime = 15;
+// 				stage = 1;
+// 				i = startPixel;
+// 			}
+// 		}
 
-		else if (stage == 1) { 	//-- spin faster
-			if (i < endPixel*cycles) { //-- nonblocking for loop
-				if (i < endPixel*(cycles-1)) setColorAll(0,0,0);
-				for(uint8_t j = 0; j < nLEDsOn; j++ ) {
-					birdseyeMap.setPixelColor((i+j)%endPixel, birdseyeMap.Color(0,255-j*50,0));
-				}
-				isDelayDone = false;
-				i++;
-				birdseyeMap.show();
-			} else if ( i >= endPixel*cycles ) {
-				isDelayDone = false;
-				i = startPixel;
-				delayTime = 1000;
-				stage = 2;
-			}
-		}
-		// else if (stage == 2) { //-- i don't know what this does
-		// 	if ( i <= endPixel ) {
-		// 		birdseyeMap.setPixelColor(i, birdseyeMap.Color(255,0,0));
-		// 		isDelayDone = false;
-		// 		i++;
-		// 		birdseyeMap.show();
-		// 	}
-		// }
-	}
+// 		else if (stage == 1) { 	//-- spin faster
+// 			if (i < endPixel*cycles) { //-- nonblocking for loop
+// 				if (i < endPixel*(cycles-1)) setColorAll(0,0,0);
+// 				for(uint8_t j = 0; j < nLEDsOn; j++ ) {
+// 					birdseyeMap.setPixelColor((i+j)%endPixel, birdseyeMap.Color(0,255-j*50,0));
+// 				}
+// 				isDelayDone = false;
+// 				i++;
+// 				birdseyeMap.show();
+// 			} else if ( i >= endPixel*cycles ) {
+// 				isDelayDone = false;
+// 				i = startPixel;
+// 				delayTime = 1000;
+// 				stage = 2;
+// 			}
+// 		}
+// 		// else if (stage == 2) { //-- i don't know what this does
+// 		// 	if ( i <= endPixel ) {
+// 		// 		birdseyeMap.setPixelColor(i, birdseyeMap.Color(255,0,0));
+// 		// 		isDelayDone = false;
+// 		// 		i++;
+// 		// 		birdseyeMap.show();
+// 		// 	}
+// 		// }
+// 	}
 
-}
+// }
 
 
 //-- Start at high intensity then fade out slowly
@@ -375,7 +424,7 @@ void Flowers::doDroplets() {
 	const int startTimes[] = {0, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800}; //offset for individual timelines
 
 
-	for( uint8_t flowerNum=0; flowerNum < birdseyeMap.numPixels(); flowerNum++) {
+	for( uint8_t flowerNum=0; flowerNum < N_FLOWERS; flowerNum++) {
 		if( millis() - startTime > startTimes[ flowerNum ] && !hasBeenActivated[ flowerNum ] ) {
 			Serial.print("Enabling DROPLET mode on flower ");
 			Serial.println(flowerNum);
@@ -398,7 +447,7 @@ void Flowers::doRainbow() {
 	const uint8_t startTimes[] = {0, 200, 400, 600, 800, 1000, 1200, 1400, 1600, 1800}; //offset for individual timelines
 
 
-	for( uint8_t flowerNum=0; flowerNum < birdseyeMap.numPixels(); flowerNum++) {
+	for( uint8_t flowerNum=0; flowerNum < N_FLOWERS; flowerNum++) {
 		if( millis() - startTime > startTimes[ flowerNum ] && !hasBeenActivated[ flowerNum ] ) {
 			Serial.print("Enabling RAINBOW mode on flower ");
 			Serial.println(flowerNum);
@@ -429,7 +478,7 @@ void Flowers::doLSD() {
 
 void Flowers::doAnimationOnAllFlowers(ANIMATION_t animation) {
 
-	for( uint8_t flowerNum=0; flowerNum < birdseyeMap.numPixels(); flowerNum++) {
+	for( uint8_t flowerNum=0; flowerNum < N_FLOWERS; flowerNum++) {
 		communicateWithFlower(flowerNum);
 
 		switch( animation ) {
@@ -472,9 +521,9 @@ float Flowers::getEasedDelayTime(int i, int min_i, int max_i) {
 
 //-- set color for guard NeoPixel ring
 //-----------------------------------------------
-void Flowers::setColorAll(uint8_t r, uint8_t g, uint8_t b) {
-	for(uint8_t i=0; i < birdseyeMap.numPixels(); i++) {
-		birdseyeMap.setPixelColor(i, birdseyeMap.Color(r,g,b));
-	}
-	birdseyeMap.show(); //-- move this out of the loop to make instantaneous
-}
+// void Flowers::setColorAll(uint8_t r, uint8_t g, uint8_t b) {
+// 	for(uint8_t i=0; i < birdseyeMap.numPixels(); i++) {
+// 		birdseyeMap.setPixelColor(i, birdseyeMap.Color(r,g,b));
+// 	}
+// 	birdseyeMap.show(); //-- move this out of the loop to make instantaneous
+// }

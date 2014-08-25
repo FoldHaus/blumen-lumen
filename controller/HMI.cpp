@@ -24,17 +24,17 @@ void HMI::init() {
 bool HMI::isOpenBtnPushed() {
 	static unsigned long lastDebounceTime;
 	static bool lastVal = HIGH;
-	// static bool isPushed = false; //-- commented out lines are if you want this to return a push only once
+	static bool isPushed = false; //-- commented out lines are if you want this to return a push only once
 	bool currVal = digitalRead(OPEN_BTN);
     if( currVal == LOW && lastVal == HIGH ) {
-    	// isPushed = false;
+    	isPushed = false;
     	lastDebounceTime = millis();
     }
 
     lastVal = currVal;
     
     if ( currVal == LOW && millis() - lastDebounceTime > DEBOUNCE_DELAY ) {//&& !isPushed ) {
-    	// isPushed = true;
+    	isPushed = true;
     	return true;
     }
     return false;
@@ -44,8 +44,10 @@ bool HMI::isOpenBtnPushed() {
 bool HMI::isCloseBtnPushed() {
 	static unsigned long lastDebounceTime;
 	static bool lastVal = HIGH;
+    static bool isPushed = false; //-- commented out lines are if you want this to return a push only once
 	bool currVal = digitalRead(CLOSE_BTN);
     if( currVal == LOW && lastVal == HIGH ) {
+        isPushed = false;
     	lastDebounceTime = millis();
     }
 

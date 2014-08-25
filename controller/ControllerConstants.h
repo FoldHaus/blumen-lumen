@@ -1,3 +1,4 @@
+#pragma once
 //-- Jimmy Chion
 //-- Blumen Lumen, controller arduino code
 //-- IDEO, 2014
@@ -56,7 +57,7 @@
 
 
 /*** SENSORS ***/
-#define SENSORS_UPDATE_PERIOD 3000
+#define SENSORS_UPDATE_PERIOD 10000
 
 // Ultrasonic distance sensor
 #define ULTRASONIC_REQUEST_TIMEOUT 500
@@ -76,4 +77,31 @@
 #define MIN_SPEED		0
 #define MAX_SPEED		32.4
 
+#define WIND_SPEED_CALM_TIME 10000
+
 #define CONTROLLER_ANIM_TIMEOUT 30000 //TODO is this enough/too much?
+
+#define PASSIVE_OPEN_CLOSE_TIME 60000 //-- 40s
+
+#define NO_MOTION_FOR_A_WHILE_TIME 720000 //-- six minutes
+
+typedef enum {
+	EV_ENTRY,
+	EV_EXIT,
+	WIND_SPEED_EXCESSIVE,
+	WIND_SPEED_NOMINAL,
+	NIGHT_TIME_DETECTED,
+	DAY_TIME_DETECTED,
+	MOTION_DETECTED,
+	NO_MOTION_FOR_A_WHILE,
+	NO_EVENT
+} EVENT_t;
+
+typedef enum {
+	STANDBY,
+	DAY_PASSIVE,
+	DAY_REACTIVE,
+	NIGHT_REACTIVE,
+	NIGHT_PASSIVE,
+	NIGHT_PARTY
+} STATE_t;

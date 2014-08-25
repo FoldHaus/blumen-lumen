@@ -42,12 +42,8 @@ private:
 	uint8_t myID;
 
 
-	char* role_friendly_name[]; // The debug-friendly names of those roles
 	ROLE_t currRole; // The role of the current running sketch
 
-	uint8_t msgIndex;
-	bool isMsgProcessed;
-	bool isInMsg;
 	bool hasBeenRead;
 	unsigned long msgStartTimestamp;
 
