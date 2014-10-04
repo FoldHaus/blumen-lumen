@@ -39,24 +39,17 @@ void Radio::init() {
 
     uint8_t reading = EEPROM.read(EEPROM_ADDR_LOCATION);
     if (reading >= 0 && reading <= 15) {
-    	myID = reading;
+    	myID = ID_MASTER;
     	Serial.print("ID read: ");
     	Serial.println(myID);
     }
 
-    if (myID == ID_MASTER ) {
-    	switchToPipeTx(0);
-    } else {
-    	switchToPipeRx(myID);
-    }
-
+	switchToPipeRx(13);
+    
 }
 
 void Radio::switchToPipeRx(uint8_t flowerNum){
 	// if(currRole != ROLE_RECEIVER) {
-		if (myID != ID_MASTER) {
-			flowerNum = myID;
-		}
 		currRole = ROLE_RECEIVER;
 		radio.openReadingPipe(1,pipes[flowerNum]);
 		radio.startListening();
@@ -66,9 +59,6 @@ void Radio::switchToPipeRx(uint8_t flowerNum){
 
 void Radio::switchToPipeTx( uint8_t flowerNum) {
 	// if(currRole != ROLE_TRANSMITTER) {
-		if (myID != ID_MASTER) {
-			flowerNum = myID;
-		}
 		currRole = ROLE_TRANSMITTER;
 		radio.stopListening();
 		radio.openWritingPipe(pipes[flowerNum]);
@@ -160,7 +150,7 @@ void Radio::readBytes() {
 
 	if( radio.available() ) {
 	 	uint8_t incomingByte = readByte();
-	 	Serial.println(incomingByte, HEX);
+	 	// Serial.println(incomingByte, HEX);
 	 	//if( incomingByte == CMD_START_BYTE && !isInMsg )
 	 	if( incomingByte == CMD_START_BYTE ) { //-- start of message (no matter when received)
 	 		isInMsg = true;

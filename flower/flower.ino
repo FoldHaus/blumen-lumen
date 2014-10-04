@@ -51,7 +51,7 @@ void setup() {
 	lasers.init();
 	sensors.init();
 	
-	// printKeyboardCommands();
+	printKeyboardCommands();
 
 	lastAnimationSwitch = millis();
 	lastTimeMsgReceived = millis();
@@ -69,14 +69,14 @@ void loop() {
 
 
 	//-- check for inputs
-	// checkSerialInputs();
+	checkSerialInputs();
 
 	if ( comm.getRole() == ROLE_RECEIVER ) {
 		checkIncomingMessages(); //-- check for RF messagee
 	} 
 
 	if (millis() - lastTimeMsgReceived > NO_COMM_TIMEOUT) { //-- if you don't get anything for 3 min
-		motor.closeFlower();p/
+		motor.closeFlower();
 	}
 
 }

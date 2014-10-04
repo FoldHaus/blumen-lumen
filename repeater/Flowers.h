@@ -26,13 +26,6 @@ public:
 	void allOpen();
 	void allStop();
 	void allLEDRGB(uint8_t r, uint8_t g, uint8_t b);
-	void allBeat();
-	void allRainbow();
-	void allDroplets();
-	void allLSD();
-	void setUltrasonicThresoldAll(uint8_t _thresh);
-
-	void sendPingsToAll();
 
 	// commands
 	void communicateWithFlower(uint8_t flowerNum);

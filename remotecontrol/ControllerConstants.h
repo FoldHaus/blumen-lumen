@@ -81,13 +81,9 @@
 
 #define CONTROLLER_ANIM_TIMEOUT 30000 //TODO is this enough/too much?
 
-#define PASSIVE_OPEN_CLOSE_TIME 50000 //-- 40s
-#define LED_ROTATE_TIME 120000
+#define PASSIVE_OPEN_CLOSE_TIME 60000 //-- 40s
 
 #define NO_MOTION_FOR_A_WHILE_TIME 720000 //-- six minutes
-
-#define ANIMATION_TIMEOUT 120000  // TODO is this enough/too much?
-
 
 typedef enum {
 	EV_ENTRY,

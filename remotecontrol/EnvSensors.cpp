@@ -14,49 +14,24 @@ void EnvSensors::init() {
 	//-- sound detector, CdS resistor and anemometer on analog
 
 	// TODO set thresholds
-	setWindThreshold(180);
-	setLightThreshold(800);
+	setWindThreshold(160);
+	setLightThreshold(700);
 }
 
 bool EnvSensors::isTooWindy() {
-	static unsigned long timeAtTransition = millis();
-	static bool didTransition = false;
-
 	if ( getWindSpeed() > windThreshold ) {
-		if( didTransition && millis() - timeAtTransition > 10000 ) {
-			didTransition = false;
-			return true;
-		}
-		if( !didTransition ) {
-			timeAtTransition = millis();
-			didTransition = true;
-		}
+		return true;
 	} else {
-		didTransition = false;
 		return false;
 	}
-	return false;
 }
 
 bool EnvSensors::isDaytime() {
-	static unsigned long timeAtTransition = millis();
-	static bool didTransition = false;
-	uint8_t val = getLightValue();
-	if ( val > lightThreshold + 100 ) { //-- the less light the lower the value
-		if( didTransition && millis() - timeAtTransition > 10000 ) {
-			didTransition = false;
-			Serial.println(val);
-			return true;
-		}
-		if( !didTransition ) {
-			timeAtTransition = millis();
-			didTransition = true;
-		}
+	if ( getLightValue() > lightThreshold ) {
+		return true;
 	} else {
-		didTransition = false;
 		return false;
 	}
-	return false;
 }
 
 bool EnvSensors::isSoundLoud() {

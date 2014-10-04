@@ -183,16 +183,13 @@ void Flowers::updateUltrasonicState() {
 		if( comm.isMsgReady() ) {
 			if( comm.getMessage()[2] == 0x00 ) { // no person detected
 				ultrasonicState[ curUltrasonic ] = false;
-			} else {
+			}
+			else {
 				ultrasonicState[ curUltrasonic ] = true;
 			}
 		}
 
 	}	
-}
-
-void Flowers::sendPingsToAll() {
-	sendCommandToAll(CMD_TYPE_DUMMY, CMD_TYPE_DUMMY);
 }
 
 void Flowers::printUltrasonicState() {
@@ -221,11 +218,6 @@ void Flowers::sendCommandToAll(uint8_t cmdType, uint8_t cmd) {
 	}
 }
 
-
-void Flowers::setUltrasonicThresoldAll(uint8_t _thresh) {
-	sendCommandToAll(CMD_SET_ULT_THRESH, _thresh);
-}
-
 void Flowers::allLEDRGB(uint8_t r, uint8_t g, uint8_t b) {
 	// setColorAll(r,g,b);
 	for( uint8_t i = 0; i < N_FLOWERS; i++) {
@@ -241,30 +233,6 @@ void  Flowers::allLEDOff() {
 	// setColorAll(0,0,0); //--neopixels
 	Serial.println("Turning off all LEDs");
 	sendCommandToAll(CMD_TYPE_LED, CMD_LED_OFF );
-}
-
-//-----------------------------------------------
-void  Flowers::allBeat() {
-	Serial.println("all rainbows");
-	doAnimationOnAllFlowers(ANIMATION_BEAT);
-}
-
-//-----------------------------------------------
-void  Flowers::allRainbow() {
-	Serial.println("all rainbows");
-	doAnimationOnAllFlowers(ANIMATION_RAINBOW);
-}
-
-//-----------------------------------------------
-void  Flowers::allDroplets() {
-	Serial.println("all rainbows");
-	doAnimationOnAllFlowers(ANIMATION_DROPLET);
-}
-
-//-----------------------------------------------
-void  Flowers::allLSD() {
-	Serial.println("all rainbows");
-	doAnimationOnAllFlowers(ANIMATION_LSD);
 }
 
 //-----------------------------------------------

@@ -39,7 +39,7 @@ void Radio::init() {
 
     uint8_t reading = EEPROM.read(EEPROM_ADDR_LOCATION);
     if (reading >= 0 && reading <= 15) {
-    	myID = reading;
+    	myID = ID_MASTER; //--------!!!!!!!!!!!!!!!!!!!!hack should be = reading;
     	Serial.print("ID read: ");
     	Serial.println(myID);
     }

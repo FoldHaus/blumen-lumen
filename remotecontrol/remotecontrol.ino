@@ -62,8 +62,6 @@ void setup() {
 	printKeyboardCommands();
 
 	lastAnimationSwitch = millis();
-
-	flowers.setUltrasonicThresoldAll(1000);
 }
 
 //-----------------------------------------------
@@ -73,8 +71,9 @@ void loop() {
 	//-- to change the EEPROM-saved ID
 	// writeEEPROMAddress(); return;
 
-	checkEnvSensors();
+	// checkEnvSensors();
 	checkSerialInputs(); //-- check for Serial Monitor input
+	checkHMIInputs();
 	flowers.update();
 
 	runStateMachine(NO_EVENT);
@@ -87,8 +86,6 @@ void loop() {
 	// }
 
 	// Serial.println(sensors.getSoundAmplitude());
-	// Serial.println(sensors.getLightValue());
-	// Serial.println(sensors.getWindSpeed());
 
 	//-- possibly switch to a new animation
 	// if ( switchAnimAutomatically && millis() - lastAnimationSwitch > ANIMATION_TIMEOUT ) {
@@ -97,19 +94,117 @@ void loop() {
 	// 	// set new light animation (random)
 	// 	uint8_t newAnim = random(1, N_ANIM + 1);
 	// 	Serial.print(newAnim);
-	// 	flowers.doAnimationOnAllFlowers( (ANIMATION_t) newAnim );
+	// 	leds.setAnimationMode( (ANIMATION_t) newAnim );
+
+	// 	// set new lasers behavior
+	// 	Serial.print(", ");
+	// 	lasers.randomize(); // TODO remove if lasers cmds come from controller?
 
 	// 	lastAnimationSwitch = millis();
 	// }
 
-	if (millis() - lastPingTime > 60000) {
-		flowers.sendPingsToAll();
-		lastPingTime = millis();
-	}
+	// if (millis() - lastPingTime > 60000) {
+	// 	flowers.sendPingsToAll();
+	// 	lastPingTime = millis();
+	// }
 
 }
 
 
+//-----------------------------------------------
+void checkHMIInputs() {
+	static uint8_t ledIncrement = 0;
+	static uint8_t modeIncrement = 0;
+	static uint8_t flowerSelection = 0;
+	static bool isAll = false;
+
+	if(hmi.getFlowerSelection() != flowerSelection) {
+		flowerSelection = hmi.getFlowerSelection();
+		flowers.communicateWithFlower(flowerSelection);
+		if(flowerSelection > 10) {
+			isAll = true;
+		} else {
+			isAll = false;
+		}
+		Serial.print("flower select: ");
+		Serial.println(flowerSelection);
+
+	}
+
+	if ( hmi.isOpenBtnPushed() ) {
+		Serial.println("open");
+		flowers.openFlower();
+		if (isAll ) flowers.allOpen();
+	} else if ( hmi.isCloseBtnPushed() ) {
+		Serial.println("close");
+		flowers.closeFlower();
+		if (isAll ) flowers.allClose();
+	} else if ( hmi.isLEDTogglePushed() ) {
+		Serial.println("LED");
+		ledIncrement++;
+		switch (ledIncrement % 9) {
+			case 0:
+			flowers.setRGB(255,255,0);
+			if (isAll) flowers.allLEDRGB(255,255,0);
+			break;
+
+			case 1:
+			flowers.setRGB(255,0,255);
+			if (isAll) flowers.allLEDRGB(255,0,255);
+			break;
+
+			case 2:
+			flowers.setRGB(0,255,255);
+			if (isAll) flowers.allLEDRGB(255,255,0);
+			break;
+
+			case 3:
+			flowers.off();
+			if (isAll) flowers.allLEDOff();
+			break;
+
+			case 4:
+			flowers.startAnimationRainbow();
+			break;
+
+			case 5:
+			flowers.startAnimationDroplets();
+			break;
+
+			case 6:
+			flowers.startAnimationSlowFade();
+			break;
+
+			case 7:
+			flowers.startAnimationBeat();
+			break;
+
+			case 8:
+			flowers.startAnimationLSD();
+			break;
+		}
+
+	} else if ( hmi.isModeTogglePushed() ) {
+		
+		Serial.println("lasers");
+
+		//-- cycle through the states
+		modeIncrement++;
+		switch ( modeIncrement % 3 ) {
+			case 0:
+			flowers.turnLasersOn();
+			if (isAll) flowers.allLasersOn();
+			break;
+			case 1:
+			flowers.lasersStrobe();
+			break;
+			case 2:
+			flowers.turnLasersOff();
+			if (isAll) flowers.allLasersOff();
+			break;
+		}
+	}
+}
 
 //-----------------------------------------------
 bool isAnyUltrasoundActivated() {
@@ -377,30 +472,15 @@ void checkSerialInputs() {
 void checkEnvSensors() {
 	static unsigned long lastTimeDetected;
 	static bool previouslyDay = false;
-	static bool alreadyHappened = false;
 
-
-	if ( sensors.isTooWindy() && millis() > 4000) {
+	if ( sensors.isTooWindy() ) {
 		Serial.println("wind speed excessive");
-		Serial.println(sensors.getWindSpeed());
-		if( sensors.isTooWindy() ) {
-			runStateMachine(WIND_SPEED_EXCESSIVE);
-		}
-	}
-
-	if (!alreadyHappened) {
-		if(sensors.isDaytime() ) {
-			previouslyDay = false;
-		} else {
-			previouslyDay = true;
-		}
-		alreadyHappened = true;
+		runStateMachine(WIND_SPEED_EXCESSIVE);
 	}
 
 	//-- check this not as often maybe
 	if ( sensors.isDaytime() && !previouslyDay) {
 		Serial.println("turned day");
-
 		runStateMachine(DAY_TIME_DETECTED);
 		previouslyDay = true;
 	} else if ( !sensors.isDaytime() && previouslyDay) {
@@ -459,10 +539,10 @@ void runStateMachine(uint8_t event) {
 				    nextState = NIGHT_PASSIVE;
 				    break;
 
-					// case MOTION_DETECTED:
-					// makeTransition = true;
-					// nextState = DAY_REACTIVE;
-					// break;
+					case MOTION_DETECTED:
+					makeTransition = true;
+					nextState = DAY_REACTIVE;
+					break;
 				}
 			}
 		break; //-- </DAY_PASSIVE>
@@ -492,10 +572,10 @@ void runStateMachine(uint8_t event) {
 			event = duringNightPassive(event);
 			if ( event != NO_EVENT ) {
 				switch ( event ) {
-					// case MOTION_DETECTED:
-					// makeTransition = true;
-					// nextState = NIGHT_REACTIVE;
-					// break;
+					case MOTION_DETECTED:
+					makeTransition = true;
+					nextState = NIGHT_REACTIVE;
+					break;
 
 					case DAY_TIME_DETECTED:
 					makeTransition = true;
@@ -554,9 +634,10 @@ uint8_t duringStandby(uint8_t ev) {
 
 	if ( ev == EV_ENTRY) {
 		Serial.println("Standby state");
-		for(uint8_t i = 0; i < 2; i++ ) { //-- make sure it closes;
+		for(uint8_t i = 0; i < 100; i++ ) { //-- make sure it closes;
 			flowers.allClose(); //-- close flowers
 		}
+		flowers.allLEDOff(); //-- turn off all lights
 	} else if ( ev == EV_EXIT) {
 		//-- keep flowers closed
 	} else { //-- during function
@@ -586,7 +667,7 @@ uint8_t duringDayPassive(uint8_t ev) {
 
 	if ( ev == EV_ENTRY) {
 		Serial.println("State: Day passive");
-		for(uint8_t i = 0; i < 1; i++){
+		for(uint8_t i = 0; i < 10; i++){
 			flowers.allClose();
 			flowers.allLEDOff();
 		}
@@ -645,10 +726,11 @@ uint8_t duringNightPassive(uint8_t ev) {
 	static uint8_t prevRandomFlower = randomFlower;
 	static unsigned long lastMvtTime;
 	static unsigned long lastLEDTime;
+
 	static uint8_t ledIncrement = 0;
 
 	if ( ev == EV_ENTRY) {
-		for(uint8_t i = 0; i < 1; i++){
+		for(uint8_t i = 0; i < 10; i++){
 			flowers.allOpen();
 			flowers.allRainbow();
 		}
@@ -664,25 +746,17 @@ uint8_t duringNightPassive(uint8_t ev) {
 			Serial.println(randomFlower);
 			flowers.communicateWithFlower(randomFlower); //-- send command to close that flower
 			flowers.closeFlower();
-			if(randomFlower+1 < N_FLOWERS) { //-- close another flower;
-				flowers.communicateWithFlower(randomFlower+1);	
-				flowers.closeFlower();
-			}
 			flowers.communicateWithFlower(prevRandomFlower); //-- send command to open the last flower=sy
 			flowers.openFlower();
-			if(prevRandomFlower+1 < N_FLOWERS) { //-- open the second flower;
-				flowers.communicateWithFlower(prevRandomFlower+1);	
-				flowers.openFlower();
-			}
 			prevRandomFlower = randomFlower; //-- keep track of flower
 			lastMvtTime = millis();
 		}
 
 	    //-- cycle through LED animations
 		
-		if ( millis() - lastLEDTime > LED_ROTATE_TIME) {
+		if ( millis() - lastLEDTime > PASSIVE_OPEN_CLOSE_TIME) {
 			ledIncrement++;
-			switch ( ledIncrement % 6) {
+			switch ( ledIncrement % 4) {
 				case 0:
 				flowers.startAnimationRainbow();
 				break;
@@ -697,14 +771,6 @@ uint8_t duringNightPassive(uint8_t ev) {
 
 				case 3:
 				flowers.startAnimationLSD();
-				break;
-
-				case 4:
-				flowers.allClose();
-				break;
-
-				case 5:
-				flowers.allOpen();
 				break;
 			}
 

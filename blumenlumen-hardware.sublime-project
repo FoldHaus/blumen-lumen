@@ -12,6 +12,14 @@
 		{
 			"follow_symlinks": true,
 			"path": "tests"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "repeater"
+		},
+		{
+			"follow_symlinks": true,
+			"path": "remotecontrol"
 		}
 	]
 }

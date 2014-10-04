@@ -45,7 +45,6 @@ typedef enum {
 #define CMD_SET_ULT_THRESH		0x16 //-- data1 should be threshold value
 #define CMD_SET_MOTOR_OPEN_TIME	0x17 //-- data1,2,3,4 should be unsigned long time
 #define CMD_SET_MOTOR_CLOSE_TIME 0x18 //-- data1,2,3,4 should be unsigned long time
-#define CMD_TYPE_DUMMY			0x19
 
 //-- motor commands
 #define CMD_MOTOR_OPEN			0x20

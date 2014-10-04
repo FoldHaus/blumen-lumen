@@ -183,7 +183,8 @@ void Flowers::updateUltrasonicState() {
 		if( comm.isMsgReady() ) {
 			if( comm.getMessage()[2] == 0x00 ) { // no person detected
 				ultrasonicState[ curUltrasonic ] = false;
-			} else {
+			}
+			else {
 				ultrasonicState[ curUltrasonic ] = true;
 			}
 		}
@@ -219,11 +220,6 @@ void Flowers::sendCommandToAll(uint8_t cmdType, uint8_t cmd) {
 		comm.sendMessage(arr, 2);
 
 	}
-}
-
-
-void Flowers::setUltrasonicThresoldAll(uint8_t _thresh) {
-	sendCommandToAll(CMD_SET_ULT_THRESH, _thresh);
 }
 
 void Flowers::allLEDRGB(uint8_t r, uint8_t g, uint8_t b) {

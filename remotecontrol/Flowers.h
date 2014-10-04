@@ -30,7 +30,6 @@ public:
 	void allRainbow();
 	void allDroplets();
 	void allLSD();
-	void setUltrasonicThresoldAll(uint8_t _thresh);
 
 	void sendPingsToAll();
 
