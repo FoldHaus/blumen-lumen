@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-=======
 #pragma once
->>>>>>> treasure-island-14
 //-- Jimmy Chion
 //-- Blumen Lumen, controller arduino code
 //-- IDEO, 2014
@@ -56,20 +53,15 @@
 #define ANALOG_MARGIN 30
 
 #define N_LEDS 10
-<<<<<<< HEAD
-
-#define SENSORS_UPDATE_PERIOD 3000
-#define ULTRASONIC_REQUEST_TIMEOUT 500
-#define N_ULTRASONIC 3
-
-
-// Anemomenter details:
-=======
-#define N_FLOWERS 14
+#define N_FLOWERS 10
 
 
 /*** SENSORS ***/
+<<<<<<< HEAD:controller/MasterConstants.h
+#define SENSORS_UPDATE_PERIOD 3000
+=======
 #define SENSORS_UPDATE_PERIOD 10000
+>>>>>>> treasure-island-14:repeater/ControllerConstants.h
 
 // Ultrasonic distance sensor
 #define ULTRASONIC_REQUEST_TIMEOUT 500
@@ -81,7 +73,6 @@
 #define MAX_BPM 250
 
 // Anemomenter
->>>>>>> treasure-island-14
 // range from 0.4V (0 m/s wind) up to 2.0V (for 32.4m/s wind speed)
 // 0.4V is 82
 // 2.0V is 409
@@ -89,20 +80,14 @@
 #define MAX_WIND		409
 #define MIN_SPEED		0
 #define MAX_SPEED		32.4
-<<<<<<< HEAD
-=======
 
 #define WIND_SPEED_CALM_TIME 10000
 
 #define CONTROLLER_ANIM_TIMEOUT 30000 //TODO is this enough/too much?
 
-#define PASSIVE_OPEN_CLOSE_TIME 50000 //-- 40s
-#define LED_ROTATE_TIME 120000
+#define PASSIVE_OPEN_CLOSE_TIME 60000 //-- 40s
 
 #define NO_MOTION_FOR_A_WHILE_TIME 720000 //-- six minutes
-
-#define ANIMATION_TIMEOUT 120000  // TODO is this enough/too much?
-
 
 typedef enum {
 	EV_ENTRY,
@@ -124,4 +109,3 @@ typedef enum {
 	NIGHT_PASSIVE,
 	NIGHT_PARTY
 } STATE_t;
->>>>>>> treasure-island-14

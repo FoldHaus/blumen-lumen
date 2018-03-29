@@ -4,6 +4,7 @@
 		"selected_items":
 		[
 			[
+<<<<<<< HEAD
 				"CMD",
 				"CMD_LASER_ON"
 			],
@@ -182,10 +183,390 @@
 			[
 				"LED",
 				"LED_TOGGLE"
+=======
+				"wrtie",
+				"writeEEPROMAddress"
+>>>>>>> treasure-island-14
+			],
+			[
+				"write",
+				"writeEEPROMAddress"
+			],
+			[
+				"last",
+				"lastAnimationSwitch"
+			],
+			[
+				"this",
+				"thisID"
+			],
+			[
+				"time",
+				"timeSinceLastTrigger"
+			],
+			[
+				"open",
+				"opening"
+			],
+			[
+<<<<<<< HEAD
+				"on",
+				"onStartTime"
+=======
+				"close",
+				"closeFlower"
+			],
+			[
+				"get",
+				"getID"
+>>>>>>> treasure-island-14
 			],
 			[
 				"is",
-				"isPushed"
+				"isSomeonePresent"
+			],
+			[
+<<<<<<< HEAD
+				"LED_",
+				"LED_B"
+=======
+				"un",
+				"unsigned"
+			],
+			[
+				"day",
+				"isDaytime"
+			],
+			[
+				"previ",
+				"previouslyDay"
+>>>>>>> treasure-island-14
+			],
+			[
+				"set",
+				"setLightThreshold"
+			],
+			[
+				"ANI",
+				"ANIMATION_BEAT"
+			],
+			[
+				"AN",
+				"ANIMATION_RAINBOW"
+			],
+			[
+				"ANIMA",
+				"ANIMATION_LSD"
+			],
+			[
+				"allL",
+				"allLasersOff"
+			],
+			[
+				"allLED",
+				"allLEDOff"
+			],
+			[
+				"N",
+				"N_FLOWERS"
+			],
+			[
+				"turnLas",
+				"turnLasersOff"
+			],
+			[
+				"strob",
+				"lasersStrobe"
+			],
+			[
+				"flower",
+				"flowerSelection"
+			],
+			[
+				"CMD_LED",
+				"CMD_TYPE_LED_RGB"
+			],
+			[
+				"send",
+				"sendCommandToAll"
+			],
+			[
+<<<<<<< HEAD
+				"getCRU",
+				"getCurrentRGB"
+			],
+			[
+				"POL",
+				"POLL_END_BYTE"
+			],
+			[
+				"pass",
+				"passMessageViaDefault"
+=======
+				"wind",
+				"windSpeed"
+			],
+			[
+				"DAY",
+				"DAY_TIME_DETECTED"
+			],
+			[
+				"EXC",
+				"WIND_SPEED_EXCESSIVE"
+			],
+			[
+				"CMD_LASER",
+				"CMD_LASER_OFF"
+			],
+			[
+				"turn",
+				"turnLasersOff"
+			],
+			[
+				"DA",
+				"DAY_TIME_DETECTED"
+>>>>>>> treasure-island-14
+			],
+			[
+				"WIND",
+				"WIND_SPEED_NOMINAL"
+			],
+			[
+				"comm",
+				"communicateWithFlower"
+			],
+			[
+				"random",
+				"randomFlower"
+			],
+			[
+				"rand",
+				"randomFlower"
+			],
+			[
+				"NIGHT",
+				"NIGHT_TIME_DETECTED"
+			],
+			[
+				"com",
+				"communicateWithFlower"
+			],
+			[
+				"led",
+				"ledIncrement"
+			],
+			[
+<<<<<<< HEAD
+				"IF_CLOSE_",
+				"IF_CLOSE_MASTER"
+=======
+				"NO",
+				"NO_MOTION_FOR_A_WHILE"
+			],
+			[
+				"during",
+				"duringNightParty"
+>>>>>>> treasure-island-14
+			],
+			[
+				"duri",
+				"duringNightPassive"
+			],
+			[
+				"dur",
+				"duringDayReactive"
+			],
+			[
+<<<<<<< HEAD
+				"comma",
+				"commandMsg"
+=======
+				"DAY_",
+				"DAY_PASSIVE"
+			],
+			[
+				"make",
+				"makeTransition"
+>>>>>>> treasure-island-14
+			],
+			[
+				"CMD_MOTO",
+				"CMD_MOTOR_CLOSE"
+			],
+			[
+				"check",
+				"checkHMIInputs"
+			],
+			[
+				"CMD",
+				"CMD_LASER_ON"
+			],
+			[
+				"swit",
+				"switchToPipeTx"
+			],
+			[
+				"CMD_TYPE",
+				"CMD_TYPE_LED_RGB"
+			],
+			[
+<<<<<<< HEAD
+				"message",
+				"messageRead"
+=======
+				"start",
+				"startPulsing"
+			],
+			[
+				"laser",
+				"lasers"
+>>>>>>> treasure-island-14
+			],
+			[
+				"CMD_MOT",
+				"CMD_MOTOR_STOP"
+			],
+			[
+				"CMD_SET",
+				"CMD_SET_MOTOR_OPEN_TIME"
+			],
+			[
+				"respon",
+				"respondToUltrasoundRequest"
+			],
+			[
+				"CMD_TY",
+				"CMD_TYPE_ULT_RQ"
+			],
+			[
+				"CMD_T",
+				"CMD_TYPE_REPLY"
+			],
+			[
+				"ultra",
+				"ultrasonicIndexes"
+			],
+			[
+				"cur",
+				"curUltrasonic"
+			],
+			[
+				"init",
+				"initUltrasonic"
+			],
+			[
+				"switch",
+				"switchToPipeRx"
+			],
+			[
+				"ID",
+				"ID_MASTER"
+			],
+			[
+				"switchToPip",
+				"switchToPipeRx"
+			],
+			[
+				"0x",
+				"0xF0F0F0F0D2LL"
+			],
+			[
+				"STAT",
+				"STATUS_RECEIVING"
+			],
+			[
+				"b",
+				"b_pipes"
+			],
+			[
+				"a",
+				"a_pipes"
+			],
+			[
+				"ROLE_",
+				"ROLE_SLAVE_FLOWER"
+			],
+			[
+				"ROLE",
+				"ROLE_MASTER_REPEATER"
+			],
+			[
+				"data",
+				"dataLength"
+			],
+			[
+				"_",
+				"_d2"
+			],
+			[
+				"CMD_",
+				"CMD_START_BYTE"
+			],
+			[
+				"rec",
+				"receiveMode"
+			],
+			[
+				"transm",
+				"transmitMode"
+			],
+			[
+				"got",
+				"got_time"
+			],
+			[
+				"ROL",
+				"ROLE_RECEIVER"
+			],
+			[
+				"curr",
+				"currRole"
+			],
+			[
+				"stop",
+				"stopListening"
+			],
+			[
+<<<<<<< HEAD
+				"blockSt",
+				"blockStackIndex"
+=======
+				"sound",
+				"soundThreshold"
+			],
+			[
+				"ligh",
+				"lightThreshold"
+>>>>>>> treasure-island-14
+			],
+			[
+				"ana",
+				"analogRead"
+			],
+			[
+				"mill",
+				"milliOff"
+			],
+			[
+				"mil",
+				"milliOn"
+			],
+			[
+<<<<<<< HEAD
+				"IS",
+				"IS_COMPILE"
+=======
+				"_mill",
+				"_millisOn"
+			],
+			[
+				"lasers",
+				"lasersOnOff"
+			],
+			[
+				"LED",
+				"LED_TOGGLE"
+>>>>>>> treasure-island-14
 			],
 			[
 				"Neo",
@@ -208,10 +589,6 @@
 				"onStartTime"
 			],
 			[
-				"time",
-				"timeToPause"
-			],
-			[
 				"LED_",
 				"LED_B"
 			],
@@ -220,12 +597,17 @@
 				"uint8_t"
 			],
 			[
+<<<<<<< HEAD
+				"measure",
+				"measureSpeed"
+=======
 				"g",
 				"g"
 			],
 			[
 				"ultr",
 				"ultrasonicThreshold"
+>>>>>>> treasure-island-14
 			],
 			[
 				"PIR",
@@ -240,6 +622,10 @@
 				"pinMode"
 			],
 			[
+<<<<<<< HEAD
+				"str",
+				"strong"
+=======
 				"Mot",
 				"MOTOR_IN_1"
 			],
@@ -366,176 +752,63 @@
 			[
 				"read",
 				"readUpstream"
-			],
-			[
-				"def",
-				"defaultSoftSerial"
-			],
-			[
-				"messag",
-				"messageIndex"
-			],
-			[
-				"comm",
-				"command"
-			],
-			[
-				"index",
-				"indexOf"
-			],
-			[
-				"LED_CO",
-				"LED_CONNECTING"
-			],
-			[
-				"setDim",
-				"setDimCyan"
-			],
-			[
-				"fade",
-				"fadeIntoSolidColor"
-			],
-			[
-				"commandM",
-				"commandMsgInt"
-			],
-			[
-				"command",
-				"commandMsgInt"
-			],
-			[
-				"input",
-				"inputLine"
-			],
-			[
-				"new",
-				"new_r"
-			],
-			[
-				"animat",
-				"animationDelayTime"
-			],
-			[
-				"aniom",
-				"animationDelayTime"
-			],
-			[
-				"r",
-				"rIncrement"
-			],
-			[
-				"block",
-				"blockStackLengh"
-			],
-			[
-				"upd",
-				"updateBlockState"
-			],
-			[
-				"M",
-				"MAX_PING_TIME"
-			],
-			[
-				"isEnd",
-				"isEnd_lastTime"
-			],
-			[
-				"blockStack",
-				"blockStackIndex"
-			],
-			[
-				"crea",
-				"createArray"
-			],
-			[
-				"blockSt",
-				"blockStackIndex"
-			],
-			[
-				"BLOCK",
-				"BLOCK_STACK_RX_LEN"
-			],
-			[
-				"block_",
-				"block_state_false"
-			],
-			[
-				"com",
-				"commandMsg"
-			],
-			[
-				"IS",
-				"IS_COMPILE"
-			],
-			[
-				"port",
-				"portOut"
-			],
-			[
-				"comput",
-				"computedCheckSum"
-			],
-			[
-				"gener",
-				"generateChecksum"
-			],
-			[
-				"u",
-				"uint8_t"
-			],
-			[
-				"IS_",
-				"IS_COMPILE"
-			],
-			[
-				"Digital",
-				"digitalWrite"
-			],
-			[
-				"ack",
-				"ackReceived"
-			],
-			[
-				"measure",
-				"measureSpeed"
-			],
-			[
-				"incomi",
-				"incomingByte"
-			],
-			[
-				"dec",
-				"decreaseStripeSpeed"
-			],
-			[
-				"increas",
-				"increaseStripeSpeed"
-			],
-			[
-				"str",
-				"strong"
+>>>>>>> treasure-island-14
 			]
 		]
 	},
 	"buffers":
 	[
 		{
+<<<<<<< HEAD
 			"file": "controller/controller.ino",
 			"settings":
 			{
 				"buffer_size": 6490,
+=======
+			"file": "flower/flower.ino",
+			"settings":
+			{
+				"buffer_size": 7983,
+				"encoding": "UTF-8",
 				"line_ending": "Unix"
 			}
 		},
 		{
+			"file": "flower/Radio.h",
+			"settings":
+			{
+				"buffer_size": 1269,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "flower/Sensors.cpp",
+			"settings":
+			{
+				"buffer_size": 1048,
+				"encoding": "UTF-8",
+>>>>>>> treasure-island-14
+				"line_ending": "Unix"
+			}
+		},
+		{
+<<<<<<< HEAD
 			"file": "flower/Lasers.h",
 			"settings":
 			{
 				"buffer_size": 673,
+=======
+			"file": "flower/Motor.cpp",
+			"settings":
+			{
+				"buffer_size": 2062,
+				"encoding": "UTF-8",
+>>>>>>> treasure-island-14
 				"line_ending": "Unix"
 			}
 		},
 		{
+<<<<<<< HEAD
 			"file": "controller/ControllerConstants.h",
 			"settings":
 			{
@@ -548,10 +821,27 @@
 			"settings":
 			{
 				"buffer_size": 3941,
+=======
+			"contents": "Searching 48 files for \"EEprom\"\n\n/Users/jimmy/Dropbox (IDEO)/Burningman-Flowers/Arduino/blumenlumen-hardware/controller/controller.ino:\n   21  //-- for nRF24L01\n   22  #include <SPI.h>\n   23: #include <EEPROM.h>\n   24  #include \"RF24.h\"\n   25  #include \"Radio.h\"\n   ..\n   79  \tstatic unsigned long lastPingTime = millis();\n   80  \n   81: \t//-- to change the EEPROM-saved ID\n   82: \t// writeEEPROMAddress(); return;\n   83  \n   84  \tcheckEnvSensors();\n   ..\n  501  \n  502  //-----------------------------------------------\n  503: // void writeEEPROMAddress() {\n  504  // \tif (Serial.available()){\n  505  // \t\tchar c = Serial.read();\n  506: // \t\tEEPROM.write(EEPROM_ADDR_LOCATION, c-'0');\n  507  \n  508  // \t\t// And we are done right now (no easy way to soft reset)\n\n/Users/jimmy/Dropbox (IDEO)/Burningman-Flowers/Arduino/blumenlumen-hardware/controller/Radio.cpp:\n    1  #include \"Radio.h\"\n    2: #include <EEPROM.h>\n    3  \n    4  \n    .\n   38  \thasBeenRead = false;\n   39  \n   40:     uint8_t reading = EEPROM.read(EEPROM_ADDR_LOCATION);\n   41      if (reading >= 0 && reading <= 15) {\n   42      \tmyID = reading;\n\n/Users/jimmy/Dropbox (IDEO)/Burningman-Flowers/Arduino/blumenlumen-hardware/controller/RadioConstants.h:\n   75  #define CMD_TIMEOUT\t\t\t\t800\n   76  \n   77: #define EEPROM_ADDR_LOCATION 0\n   78  \n   79  \n\n/Users/jimmy/Dropbox (IDEO)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/flower.ino:\n   17  //-- for nRF24L01\n   18  #include <SPI.h>\n   19: #include <EEPROM.h>\n   20  \n   21  // #include \"nRF24L01.h\"\n   ..\n   78  //-----------------------------------------------\n   79  void loop() {\n   80: \t// writeEEPROMAddress();\n   81  \n   82  \t//-- update calls to each system\n   ..\n  219  }\n  220  \n  221: void writeEEPROMAddress() {\n  222  \tif (Serial.available()){\n  223  \t\tchar c = Serial.read();\n  224: \t\tEEPROM.write(EEPROM_ADDR_LOCATION, c-'0');\n  225  \n  226  \t\t// And we are done right now (no easy way to soft reset)\n\n/Users/jimmy/Dropbox (IDEO)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/Radio.cpp:\n    1  #include \"Radio.h\"\n    2: #include <EEPROM.h>\n    3  \n    4  \n    .\n   43  \thasBeenRead = false;\n   44  \n   45:     uint8_t reading = EEPROM.read(EEPROM_ADDR_LOCATION);\n   46      if (reading >= 0 && reading <= 15) {\n   47      \tmyID = reading;\n\n/Users/jimmy/Dropbox (IDEO)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/RadioConstants.h:\n   74  #define CMD_TIMEOUT\t\t\t\t800\n   75  \n   76: #define EEPROM_ADDR_LOCATION 0\n   77  \n   78  \n\n/Users/jimmy/Dropbox (IDEO)/Burningman-Flowers/Arduino/blumenlumen-hardware/repeater/Radio.cpp:\n    1  #include \"Radio.h\"\n    2: #include <EEPROM.h>\n    3  \n    4  \n    .\n   38  \thasBeenRead = false;\n   39  \n   40:     uint8_t reading = EEPROM.read(EEPROM_ADDR_LOCATION);\n   41      if (reading >= 0 && reading <= 15) {\n   42      \tmyID = ID_MASTER;\n\n/Users/jimmy/Dropbox (IDEO)/Burningman-Flowers/Arduino/blumenlumen-hardware/repeater/RadioConstants.h:\n   74  #define CMD_TIMEOUT\t\t\t\t800\n   75  \n   76: #define EEPROM_ADDR_LOCATION 0\n   77  \n   78  \n\n/Users/jimmy/Dropbox (IDEO)/Burningman-Flowers/Arduino/blumenlumen-hardware/repeater/repeater.ino:\n   12  //-- for nRF24L01\n   13  #include <SPI.h>\n   14: #include <EEPROM.h>\n   15  #include \"RF24.h\"\n   16  #include \"Radio.h\"\n   ..\n   34  void loop() {\n   35  \n   36: \t//-- to change the EEPROM-saved ID\n   37: \t// writeEEPROMAddress(); return;\n   38  \n   39  \n   ..\n   56  \n   57  //-----------------------------------------------\n   58: void writeEEPROMAddress() {\n   59  \tif (Serial.available()){\n   60  \t\tchar c = Serial.read();\n   61: \t\tEEPROM.write(EEPROM_ADDR_LOCATION, c-'0');\n   62  \n   63  \t\t// And we are done right now (no easy way to soft reset)\n\n/Users/jimmy/Dropbox (IDEO)/Burningman-Flowers/Arduino/blumenlumen-hardware/remotecontrol/Radio.cpp:\n    1  #include \"Radio.h\"\n    2: #include <EEPROM.h>\n    3  \n    4  \n    .\n   38  \thasBeenRead = false;\n   39  \n   40:     uint8_t reading = EEPROM.read(EEPROM_ADDR_LOCATION);\n   41      if (reading >= 0 && reading <= 15) {\n   42      \tmyID = ID_MASTER; //--------!!!!!!!!!!!!!!!!!!!!hack should be = reading;\n\n/Users/jimmy/Dropbox (IDEO)/Burningman-Flowers/Arduino/blumenlumen-hardware/remotecontrol/RadioConstants.h:\n   75  #define CMD_TIMEOUT\t\t\t\t800\n   76  \n   77: #define EEPROM_ADDR_LOCATION 0\n   78  \n   79  \n\n/Users/jimmy/Dropbox (IDEO)/Burningman-Flowers/Arduino/blumenlumen-hardware/remotecontrol/remotecontrol.ino:\n   16  //-- for nRF24L01\n   17  #include <SPI.h>\n   18: #include <EEPROM.h>\n   19  #include \"RF24.h\"\n   20  #include \"Radio.h\"\n   ..\n   73  \tstatic unsigned long lastPingTime = millis();\n   74  \n   75: \t//-- to change the EEPROM-saved ID\n   76: \t// writeEEPROMAddress(); return;\n   77  \n   78  \t// checkEnvSensors();\n   ..\n  768  \n  769  //-----------------------------------------------\n  770: // void writeEEPROMAddress() {\n  771  // \tif (Serial.available()){\n  772  // \t\tchar c = Serial.read();\n  773: // \t\tEEPROM.write(EEPROM_ADDR_LOCATION, c-'0');\n  774  \n  775  // \t\t// And we are done right now (no easy way to soft reset)\n\n39 matches across 12 files\n",
+			"settings":
+			{
+				"buffer_size": 5085,
+				"line_ending": "Unix",
+				"name": "Find Results",
+				"scratch": true
+			}
+		},
+		{
+			"file": "flower/FlowerConstants.h",
+			"settings":
+			{
+				"buffer_size": 1264,
+>>>>>>> treasure-island-14
 				"line_ending": "Unix"
 			}
 		},
 		{
+<<<<<<< HEAD
 			"file": "flower/LEDs.cpp",
 			"settings":
 			{
@@ -596,16 +886,46 @@
 			"settings":
 			{
 				"buffer_size": 1524,
+=======
+			"file": "flower/Radio.cpp",
+			"settings":
+			{
+				"buffer_size": 5015,
+>>>>>>> treasure-island-14
 				"line_ending": "Unix"
 			}
 		}
 	],
 	"build_system": "Packages/ArduinoUpload/ArduinoUpload.sublime-build",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
 	"command_palette":
 	{
 		"height": 392.0,
+<<<<<<< HEAD
+=======
+		"last_filter": "ar",
+>>>>>>> treasure-island-14
 		"selected_items":
 		[
+			[
+				"ar",
+				"Set Syntax: Arduino"
+			],
+			[
+				"setard",
+				"Set Syntax: Arduino"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"hor",
+				"Snippet: Arduino horizontal separator"
+			],
 			[
 				"hori",
 				"Snippet: Arduino horizontal separator"
@@ -661,10 +981,6 @@
 			[
 				"pytho",
 				"Set Syntax: Python"
-			],
-			[
-				"package",
-				"Package Control: List Packages"
 			],
 			[
 				"arduino",
@@ -759,16 +1075,12 @@
 				"Indentation: Reindent Lines"
 			],
 			[
-				"snippp	",
+				"snippp\t",
 				"Snippet: Arduino print"
 			],
 			[
 				"alig",
 				"Preferences: Alignment Key Bindings – Default"
-			],
-			[
-				"ar",
-				"Set Syntax: Arduino"
 			],
 			[
 				"snip",
@@ -851,7 +1163,7 @@
 				"Set Syntax: C++"
 			]
 		],
-		"width": 593.0
+		"width": 415.0
 	},
 	"console":
 	{
@@ -870,8 +1182,13 @@
 		"side_bar_visible": false,
 		"status_bar_visible": false
 	},
+	"expanded_folders":
+	[
+		"/Users/jimmy/Dropbox (IDEO)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower"
+	],
 	"file_history":
 	[
+<<<<<<< HEAD
 		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/FlowerConstants.h",
 		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/controller/RadioConstants.h",
 		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/Radio.cpp",
@@ -900,17 +1217,67 @@
 		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/controller/HMI.cpp",
 		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/controller/controller.ino",
 		"/Users/jchion/Downloads/Anemometer_v1_0/Anemometer_v1_0.ino",
+=======
+		"/Users/jimmy/Dropbox/Burningman-Flowers/Arduino/blumenlumen-hardware/controller/Radio.cpp",
+		"/Users/jimmy/Dropbox/Burningman-Flowers/Arduino/blumenlumen-hardware/remotecontrol/remotecontrol.ino",
+		"/Users/jimmy/Dropbox/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/Sensors.cpp",
+		"/Users/jimmy/Dropbox/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/RadioConstants.h",
+		"/Users/jimmy/Dropbox/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/LEDs.cpp",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/flower.ino",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/repeater/repeater.ino",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/FlowerConstants.h",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/Motor.cpp",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/RadioConstants.h",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/Motor.h",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/controller/ControllerConstants.h",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/controller/controller.ino",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/Sensors.cpp",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/Sensors.h",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/Radio.h",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/Radio.cpp",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/controller/Flowers.cpp",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/controller/Flowers.h",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/controller/EnvSensors.cpp",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/tests/ComputerControl/ComputerControl.ino",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/tests/laserdebug/laserdebug.ino",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/remotecontrol/HMI.cpp",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/remotecontrol/remotecontol.ino",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/controller/RadioConstants.h",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/controller/Radio.cpp",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/repeater/Radio.h",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/repeater/Radio.cpp",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/repeater/ControllerConstants.h",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/controller/HMI.cpp",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/repeater/HMI.cpp",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/controller/Radio.h",
+		"/Users/jchion/Downloads/Anemometer_v1_0/Anemometer_v1_0.ino",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/Lasers.cpp",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/controller/EnvSensors.h",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/tests/ComputerControl/printf.h",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/controller/HMI.h",
+		"/Users/jchion/Documents/projects/JDV/jdv-arduino/watchdog_arduino/watchdog_arduino.ino",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/LEDs.h",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/LEDs.cpp",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/Lasers.h",
+		"/Users/jchion/Documents/Arduino/libraries/Radio/RadioConstants.h",
+		"/Users/jchion/Documents/Arduino/libraries/Radio/Radio.h",
+		"/Users/jchion/Documents/Arduino/libraries/Radio/Radio.cpp",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/RF24/examples/starping/starping.pde",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/RF24/examples/GettingStarted/GettingStarted.pde",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/controller/NeopixelMap.h",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/controller/MasterConstants.h",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/RF24/Doxyfile",
+		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/controller/NeopixelMap.cpp",
+>>>>>>> treasure-island-14
 		"/Users/jchion/Dropbox (ideo.com)/Fence_Fence_Revolution/02 design prototypes/code/ffr_final/ffr_final.ino",
 		"/Users/jchion/Dropbox (ideo.com)/Fence_Fence_Revolution/02 design prototypes/code/ffr_final/animations.ino",
 		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/controller/remoteControl.ino",
 		"/Users/jchion/Documents/Arduino/libraries/Adafruit_NeoPixel/examples/strandtest/strandtest.pde",
-		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/tests/laserdebug/laserdebug.ino",
 		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/tests/laserdebug.ino",
 		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/LED-animations.h",
 		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/Kubo.sublime-project",
 		"/Users/jchion/Documents/projects/Kubits/kubo-hardware/Arduino/Kubo/MoveBlock2.cpp",
 		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/flower/laser-animations.h",
-		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/blumenlumen-hardware/tests/ComputerControl/ComputerControl.ino",
 		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/controller/controller.ino",
 		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/flower/flower.ino",
 		"/Users/jchion/Dropbox (ideo.com)/Burningman-Flowers/Arduino/LEDTest/LEDTest.ino",
@@ -979,6 +1346,7 @@
 		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/Generalized_Block_code/KuboBlock.cpp",
 		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/Generalized_Block_code/KuboBlock.h",
 		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/Generalized_Block_code/KuboBlock.ino",
+<<<<<<< HEAD
 		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/bluetoothExp/bluetoothExp.ino",
 		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/Generalized_Block_code/debuggingcharbyte.txt",
 		"/Users/jchion/Documents/Arduino/libraries/SoftwareSerial/SoftwareSerial.cpp",
@@ -1000,6 +1368,9 @@
 		"/Users/jchion/Documents/side projects/web/portfoliosite/templates/base.html",
 		"/Users/jchion/Documents/side projects/web/portfoliosite/pages/onesqonecircle.html",
 		"/Users/jchion/Documents/side projects/web/portfoliosite/pages/index.html"
+=======
+		"/Users/jchion/Documents/projects/kubo-hardware/Arduino/bluetoothExp/bluetoothExp.ino"
+>>>>>>> treasure-island-14
 	],
 	"find":
 	{
@@ -1015,9 +1386,71 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": true,
+		"case_sensitive": false,
 		"find_history":
 		[
+<<<<<<< HEAD
+=======
+			"EEprom",
+			"random",
+			"ultrasound",
+			"setUltrasound",
+			"ultrasonic",
+			"ANIMATION_RAINBOW",
+			"lastAnimationSwitch",
+			"comm.getID()",
+			"duty cycle",
+			"TIME_BETWEEN_USOUNDTRIGGER",
+			"timeSinceLastTrigger",
+			"ultra",
+			"sensors",
+			"ultrasound",
+			"turned night",
+			"parseMessage",
+			"setUltrasonicThreshold",
+			"excessive",
+			"Motion_detected",
+			"new random flower",
+			"ANIMATION_TIMEOUT",
+			"animation_timeout",
+			"animation",
+			"ANIMATION_TIMEOUT",
+			"checkEnvSensors",
+			"EXCESSIVE",
+			"ddddddddddddddd",
+			"wind",
+			"lasers",
+			"startAnimationDroplets();",
+			"doDrop",
+			"thresh",
+			"ultra",
+			"requestUltrasonic",
+			"update",
+			"ultrasonic",
+			"requestUltrasonicState",
+			"switchAnimAutomatically",
+			"doAnimation",
+			"NO_MOTION",
+			"isMsg",
+			"hasbeen",
+			"isMsg",
+			"role",
+			"msgIndex",
+			"setAllRGB",
+			"allOff",
+			"alloff",
+			"flowerNum",
+			"runStateMachine",
+			"NO_MOTION",
+			"turning OFF mode all flowers",
+			"\");",
+			"lastTime",
+			"EVENT_T",
+			"closeAll",
+			"void",
+			"Controller_anim_timeout",
+			"ARDUINO_WATCHDOG_DEBUG",
+>>>>>>> treasure-island-14
 			"comm.commandMsg[2]",
 			"{",
 			"uint8_t",
@@ -1041,7 +1474,11 @@
 			"commandMsg",
 			"thisAddr",
 			"upStreamIndex",
+<<<<<<< HEAD
 			"				",
+=======
+			"\t\t\t\t",
+>>>>>>> treasure-island-14
 			"printf",
 			"5",
 			"guard",
@@ -1086,6 +1523,7 @@
 			"i",
 			"return",
 			"strip.Color(",
+<<<<<<< HEAD
 			"WheelPos",
 			"digitalWrite",
 			"Lasers",
@@ -1146,6 +1584,9 @@
 			"_isTerminalBlock",
 			"toStartTimer",
 			"startStopTimer"
+=======
+			"WheelPos"
+>>>>>>> treasure-island-14
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -1165,7 +1606,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 2,
 			"sheets":
 			[
 				{
@@ -1174,55 +1615,116 @@
 					"semi_transient": false,
 					"settings":
 					{
+<<<<<<< HEAD
 						"buffer_size": 6490,
+=======
+						"buffer_size": 7983,
+>>>>>>> treasure-island-14
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								952,
 								952
+=======
+								1464,
+								1464
+>>>>>>> treasure-island-14
 							]
 						],
 						"settings":
 						{
+<<<<<<< HEAD
 							"syntax": "Cache/User/Arduino/Syntaxes/Arduino.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 408.0,
+=======
+							"syntax": "Packages/Arduino-like IDE/Arduino.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1469.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
+					"buffer": 1,
+					"file": "flower/Radio.h",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1269,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+>>>>>>> treasure-island-14
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+<<<<<<< HEAD
 					"buffer": 1,
 					"file": "flower/Lasers.h",
 					"semi_transient": false,
 					"settings":
 					{
 						"buffer_size": 673,
+=======
+					"buffer": 2,
+					"file": "flower/Sensors.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1048,
+>>>>>>> treasure-island-14
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								294,
 								294
+=======
+								210,
+								210
+>>>>>>> treasure-island-14
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.tmLanguage",
+							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 1.0,
 						"zoom_level": 1.0
 					},
+<<<<<<< HEAD
 					"stack_index": 9,
 					"type": "text"
 				},
@@ -1233,24 +1735,47 @@
 					"settings":
 					{
 						"buffer_size": 1878,
+=======
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "flower/Motor.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2062,
+>>>>>>> treasure-island-14
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								181,
 								181
+=======
+								166,
+								166
+>>>>>>> treasure-island-14
 							]
 						],
 						"settings":
 						{
+<<<<<<< HEAD
 							"syntax": "Packages/C++/C++.tmLanguage"
+=======
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"translate_tabs_to_spaces": false
+>>>>>>> treasure-island-14
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+<<<<<<< HEAD
 					"stack_index": 6,
 					"type": "text"
 				}
@@ -1269,16 +1794,199 @@
 						"buffer_size": 3941,
 						"regions":
 						{
+=======
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5085,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										202,
+										208
+									],
+									[
+										358,
+										364
+									],
+									[
+										390,
+										396
+									],
+									[
+										541,
+										547
+									],
+									[
+										643,
+										649
+									],
+									[
+										656,
+										662
+									],
+									[
+										905,
+										911
+									],
+									[
+										1003,
+										1009
+									],
+									[
+										1015,
+										1021
+									],
+									[
+										1277,
+										1283
+									],
+									[
+										1478,
+										1484
+									],
+									[
+										1628,
+										1634
+									],
+									[
+										1734,
+										1740
+									],
+									[
+										1827,
+										1833
+									],
+									[
+										1840,
+										1846
+									],
+									[
+										2082,
+										2088
+									],
+									[
+										2180,
+										2186
+									],
+									[
+										2192,
+										2198
+									],
+									[
+										2450,
+										2456
+									],
+									[
+										2629,
+										2635
+									],
+									[
+										2727,
+										2733
+									],
+									[
+										2739,
+										2745
+									],
+									[
+										3001,
+										3007
+									],
+									[
+										3206,
+										3212
+									],
+									[
+										3329,
+										3335
+									],
+									[
+										3361,
+										3367
+									],
+									[
+										3490,
+										3496
+									],
+									[
+										3583,
+										3589
+									],
+									[
+										3596,
+										3602
+									],
+									[
+										3845,
+										3851
+									],
+									[
+										3943,
+										3949
+									],
+									[
+										3955,
+										3961
+									],
+									[
+										4278,
+										4284
+									],
+									[
+										4493,
+										4499
+									],
+									[
+										4649,
+										4655
+									],
+									[
+										4681,
+										4687
+									],
+									[
+										4835,
+										4841
+									],
+									[
+										4937,
+										4943
+									],
+									[
+										4950,
+										4956
+									]
+								],
+								"scope": ""
+							}
+>>>>>>> treasure-island-14
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								1881,
 								1881
+=======
+								0,
+								0
+>>>>>>> treasure-island-14
 							]
 						],
 						"settings":
 						{
+<<<<<<< HEAD
 							"syntax": "Cache/User/Arduino/Syntaxes/Arduino.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
@@ -1296,24 +2004,61 @@
 					"settings":
 					{
 						"buffer_size": 4538,
+=======
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 1,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 532.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				}
+			]
+		},
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 5,
+					"file": "flower/FlowerConstants.h",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1264,
+>>>>>>> treasure-island-14
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								662,
 								591
+=======
+								1045,
+								1045
+>>>>>>> treasure-island-14
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.tmLanguage"
+							"syntax": "Packages/Arduino-like IDE/Arduino.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
+<<<<<<< HEAD
 					"stack_index": 1,
 					"type": "text"
 				},
@@ -1382,19 +2127,36 @@
 					"settings":
 					{
 						"buffer_size": 4974,
+=======
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "flower/Radio.cpp",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 5015,
+>>>>>>> treasure-island-14
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
+<<<<<<< HEAD
 								219,
 								219
+=======
+								0,
+								0
+>>>>>>> treasure-island-14
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.tmLanguage",
+							"syntax": "Packages/C++/C++.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
@@ -1403,6 +2165,7 @@
 					},
 					"stack_index": 4,
 					"type": "text"
+<<<<<<< HEAD
 				},
 				{
 					"buffer": 8,
@@ -1461,6 +2224,8 @@
 					},
 					"stack_index": 7,
 					"type": "text"
+=======
+>>>>>>> treasure-island-14
 				}
 			]
 		}
@@ -1493,7 +2258,11 @@
 		"cols":
 		[
 			0.0,
+<<<<<<< HEAD
 			0.525785311078,
+=======
+			0.479820695703,
+>>>>>>> treasure-island-14
 			1.0
 		],
 		"rows":
@@ -1519,6 +2288,7 @@
 	{
 		"height": 100.0
 	},
+	"pinned_build_system": "",
 	"project": "blumenlumen-hardware.sublime-project",
 	"replace":
 	{
@@ -1528,6 +2298,7 @@
 	"select_file":
 	{
 		"height": 0.0,
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -1548,6 +2319,7 @@
 	"select_project":
 	{
 		"height": 308.0,
+		"last_filter": "",
 		"selected_items":
 		[
 		],
@@ -1555,12 +2327,18 @@
 	},
 	"select_symbol":
 	{
-		"height": 0.0,
+		"height": 267.0,
+		"last_filter": "",
 		"selected_items":
 		[
+			[
+				"ultra",
+				"getUltrasonicState"
+			]
 		],
-		"width": 0.0
+		"width": 392.0
 	},
+	"selected_group": 0,
 	"settings":
 	{
 	},

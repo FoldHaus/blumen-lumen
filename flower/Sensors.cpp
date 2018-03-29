@@ -10,11 +10,13 @@ Sensors::~Sensors() {
 
 void Sensors::init() {
 	pinMode(PIR_SIG, INPUT);
-	setUltrasoundThreshold(300);
+	setUltrasoundThreshold(220);
 	setPresence(false);
+
 }
 
 void Sensors::update() {
+	// Serial.println(analogRead(ULTRASONIC));
 }
 
 void Sensors::readUltrasonic() {
@@ -25,15 +27,12 @@ void Sensors::readUltrasonic() {
 	}
 }
 
+//-- returns true if someone is within 3ft of it
 bool Sensors::isSomeonePresent() {
-	// bool pirRead = false;
 	bool ultrasonicRead = false;
-	// if ( isNight ) {
-		//-- use PIR too
-		// pirRead = digitalRead( PIR_SIG );
-	// } 
 
-	if ((analogRead( ULTRASONIC ) < ultrasonicThreshold) ) {
+
+	if ( (analogRead( ULTRASONIC ) < ultrasonicThreshold)  ) {
 		return true;
 	} else {
 		return false;
@@ -62,4 +61,3 @@ void Sensors::setPresence(bool _b) {
 bool Sensors::getPresence() {
 	return presence;
 }
-

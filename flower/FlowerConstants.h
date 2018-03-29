@@ -14,15 +14,15 @@
 //          	   NC   -  |RX            GND| - GND
 //          	   NC   -  |RST           RST| - NC
 //         		   GND  -  |GND           VCC| - NC
-//  				PIR	-> |2              A3| - NC
-//  			BLUE    <~ |3 ~            A2| - NC
-// 				LASER   <- |4              A1| - NC
-//     			RED     <~ |5 ~            A0| - ULTRASONIC_SENSOR
-//       		GREEN 	<~ |6 ~            13| <-> SCK
-//			   MOT_IN_1 <- |7              12| <- MISO
+//  							PIR	-> |2              A3| - NC
+//  					BLUE    <~ |3 ~            A2| - NC
+// 						LASER   <- |4              A1| - NC
+//    	 			RED     <~ |5 ~            A0| - ULTRASONIC_SENSOR
+//       			GREEN 	<~ |6 ~            13| <-> SCK
+//				   MOT_IN_1 <- |7              12| <- MISO
 //     		   MOT_IN_2 <- |8            ~ 11| -> MOSI
-//             	CE	    <- |9 ~          ~ 10| -> SS
-//               	 	   -------------------
+//           	CE	    <- |9 ~          ~ 10| -> SS
+//            	   	 	   -------------------
 
 #define PIR_SIG 	2
 #define LED_B 		3
@@ -34,13 +34,12 @@
 #define ULTRASONIC 	A0
 //-- pins 9-13 are defined by RF24 library
 
-#define DEFAULT_ANIM_DURATION 300
-#define DEFAULT_ANIM_DELAY 40
 
 
-typedef enum {
-	ANIMATION_MANUAL,
-	ANIMATION_OFF,
-	ANIMATION_RAINBOW,
-	ANIMATION_DROPLET
-} ANIMATION_t;
+#define ANIMATION_TIMEOUT 120000  // TODO is this enough/too much?
+
+#define NO_COMM_TIMEOUT 180000
+
+
+#define TIME_BETWEEN_USOUNDTRIGGER 120000 //50% duty cycle
+#define TIME_BETWEEN_ANIMSWITCH 180000

@@ -5,6 +5,7 @@
 //-- complete a given animation
 
 #include "Arduino.h"
+#include "RadioConstants.h"
 #include "FlowerConstants.h"
 #include <Easing.h>
 
@@ -30,11 +31,20 @@ public:
 	void doRainbow();
 	void startRainbow();
 	void breathe();
+<<<<<<< HEAD
 	void doDroplet( int delay = DEFAULT_ANIM_DELAY, int duration = DEFAULT_ANIM_DURATION );
+=======
+	void doDroplet();
+	void doSlowFade();
+	void doBeat();
+	void doLSD();
+	void doAnimation(int min, int maxDuration);
+>>>>>>> treasure-island-14
 	
 
 private:
 	bool isRainbowing;
+	bool doBeatNow;
 	void HSBToRGB(unsigned int inHue, unsigned int inSaturation, unsigned int inBrightness, unsigned int *oR, unsigned int *oG, unsigned int *oB );
 
 

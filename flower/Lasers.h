@@ -20,6 +20,7 @@ public:
 	void on(); //-- implements duty cycle 60s 2s off
 	void off();
 	void startPulsing(unsigned int _millisOn = 500, unsigned int _millisOff = 800);
+	void randomize();
 
 	// void pattern()
 	

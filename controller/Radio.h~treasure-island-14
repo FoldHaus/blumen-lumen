@@ -5,11 +5,7 @@
 
 #include "Arduino.h"
 #include "RadioConstants.h"
-<<<<<<< HEAD:controller/Radio.h
-#include "../RF24/RF24.h"
-=======
 #include "RF24.h"
->>>>>>> treasure-island-14:flower/Radio.h
 
 
 //-- for nRF24L01
@@ -35,10 +31,6 @@ public:
 	void testMode();
 	uint8_t* getMessage();
 	bool isMsgReady();
-<<<<<<< HEAD:controller/Radio.h
-=======
-	uint8_t getID();
->>>>>>> treasure-island-14:flower/Radio.h
 
 	uint8_t commandMsg[CMD_LENGTH]; 
 private:
@@ -50,12 +42,8 @@ private:
 	uint8_t myID;
 
 
-	char* role_friendly_name[]; // The debug-friendly names of those roles
 	ROLE_t currRole; // The role of the current running sketch
 
-	uint8_t msgIndex;
-	bool isMsgProcessed;
-	bool isInMsg;
 	bool hasBeenRead;
 	unsigned long msgStartTimestamp;
 

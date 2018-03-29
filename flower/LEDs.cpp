@@ -13,23 +13,48 @@ void LEDs::init() {
 	pinMode(LED_G, OUTPUT);
 	pinMode(LED_B, OUTPUT);
 	isRainbowing = false;
+	doBeatNow = false;
 }
 
 void LEDs::update() {
 	switch( animationMode ) {
-		case ANIMATION_MANUAL:	
-		break;
-		case ANIMATION_OFF:
-			off();
-		break;
+		// case ANIMATION_MANUAL:
+		// break;
 
+		// case ANIMATION_OFF:
+		// 	off();
+		// break;
 		case ANIMATION_RAINBOW:
 			doRainbow();
 		break;
 
-		case ANIMATION_DROPLET:
-			doDroplet();
+		// case ANIMATION_DROPLET:
+		// 	doDroplet();
+		// break;
+
+		// case ANIMATION_SLOWFADE:
+		// 	doSlowFade();
+		// break;
+
+		// case ANIMATION_BEAT:
+		// 	doBeat();
+		// break;
+
+		// case ANIMATION_LSD:
+		// 	doLSD();
+		// break;
+
+		default:
+			doRainbow();
 		break;
+	}
+}
+
+void LEDs::setAnimationMode( ANIMATION_t mode ) {
+	animationMode = mode;
+
+	if( animationMode == ANIMATION_BEAT ) {
+		doBeatNow = true; // resets animation
 	}
 	// if (isRainbowing) {
 	// 	doRainbow();
@@ -119,28 +144,138 @@ void LEDs::doRainbow() {
 
 }
 
-void LEDs::doDroplet(int delayTime, int duration) {
 
-	const uint8_t startIntensity = 0;
-	const uint8_t endIntensity = 255;
+void LEDs::doDroplet() {
+	const unsigned long duration = 100;
+	const unsigned long delayTime = 40;
+	static uint8_t startIntensity = 0;
+	static uint8_t endIntensity = random(170,250);
 
-	static uint8_t currentTime = 0; //timeline position
 	static unsigned long lastTime = millis();
+	static int currentTime = 0; //timeline position
 	
-	if (millis()-lastTime > delayTime){
+	if(millis() - lastTime > delayTime) {
 		//fade
 		uint8_t r = Easing::easeInBounce(currentTime, endIntensity, (startIntensity-endIntensity), duration);
 		uint8_t g = Easing::easeInOutBounce(currentTime, endIntensity, (startIntensity-endIntensity), duration);
 		uint8_t b = Easing::easeOutBounce(currentTime, endIntensity, (startIntensity-endIntensity), duration);
 		setRGB(r, g, b);
-	}
-		
-	//reset individual timeline
-	if (currentTime++ > duration){
-		currentTime = 0;
+
+
+		//reset individual timeline
+		if (currentTime++ > duration){
+			currentTime = 0;
+			endIntensity = random(170,250);
+		}
+
+		lastTime = millis();
 	}
 
-	lastTime = millis();
+}
+
+void LEDs::doSlowFade() {
+	doAnimation(350, 1000);
+}
+
+void LEDs::doBeat() {
+	const unsigned long duration = 500;
+
+	static uint8_t startIntensity_r = 220 + random(0, 35);
+	static uint8_t startIntensity_g = 220 + random(0, 35);
+	static uint8_t startIntensity_b = 220 + random(0, 35);
+	static uint8_t endIntensity = 0;
+
+	static uint16_t currentTime = 0; //timeline position
+
+	if (currentTime > duration && doBeatNow) {
+		doBeatNow = false;
+		currentTime = 0;
+		startIntensity_r = 220 + random(0, 35);
+		startIntensity_g = 220 + random(0, 35);
+		startIntensity_b = 220 + random(0, 35);
+		endIntensity = 0;
+		return;
+	}
+	else if (currentTime > duration && !doBeatNow) {
+		return;
+	}
+
+	uint8_t r = Easing::easeInExpo(currentTime, endIntensity, (startIntensity_r-endIntensity), duration);
+	uint8_t g = Easing::easeOutExpo(currentTime, endIntensity, (startIntensity_g-endIntensity), duration);
+	uint8_t b = Easing::easeInOutExpo(currentTime, endIntensity, (startIntensity_b-endIntensity), duration);
+	setRGB(r, g, b);
+		
+	currentTime++;
+
+}
+
+
+void LEDs::doLSD() {
+	doAnimation(10, 50);
+}
+
+void LEDs::doAnimation(int minDuration, int maxDuration) {
+	static uint8_t startIntensity_r = random(0, 100);
+	static uint8_t startIntensity_g = random(0, 100);
+	static uint8_t startIntensity_b = random(0, 100);
+	static uint8_t endIntensity_r = 200 + random(-55, 55);
+	static uint8_t endIntensity_g = 200 + random(-55, 55);
+	static uint8_t endIntensity_b = 200 + random(-55, 55);
+
+	static uint16_t duration = random(minDuration, maxDuration);
+	static bool invert = false;
+
+	const unsigned long delayTime = 40;
+
+	static unsigned long lastTime = millis();
+	static int currentTime = 0; //timeline position
+	
+	if(millis() - lastTime > delayTime) {
+		uint8_t r, g, b;
+
+		if(invert) {
+			r = Easing::easeInExpo(currentTime, startIntensity_r, (endIntensity_r-startIntensity_r), duration);
+			g = Easing::easeOutExpo(currentTime, startIntensity_g, (endIntensity_g-startIntensity_g), duration);
+			b = Easing::easeInOutExpo(currentTime, startIntensity_b, (endIntensity_b-startIntensity_b), duration);
+		}
+		else {
+			r = Easing::easeInExpo(currentTime, endIntensity_r, (startIntensity_r-endIntensity_r), duration);
+			g = Easing::easeOutExpo(currentTime, endIntensity_g, (startIntensity_g-endIntensity_g), duration);
+			b = Easing::easeInOutExpo(currentTime, endIntensity_b, (startIntensity_b-endIntensity_b), duration);
+		}
+
+		setRGB(r, g, b);
+			
+		//reset individual timeline
+		if (currentTime++ > duration){
+			currentTime = 0;
+			duration = random(minDuration, maxDuration);
+
+			if(invert) {
+				startIntensity_r = endIntensity_r;
+				startIntensity_g = endIntensity_g;
+				startIntensity_b = endIntensity_b;
+
+				endIntensity_r =  200 + random(-55, 55);
+				endIntensity_g =  200 + random(-55, 55);
+				endIntensity_b =  200 + random(-55, 55);
+			}
+			else {
+				endIntensity_r = startIntensity_r;
+				endIntensity_g = startIntensity_g;
+				endIntensity_b = startIntensity_b;
+
+				startIntensity_r = random(0, 100);
+				startIntensity_g = random(0, 100);
+				startIntensity_b = random(0, 100);
+			}
+
+			invert = !invert;
+		}
+
+		lastTime = millis();
+	}
+
 }
 
 //-------------------------------------------------

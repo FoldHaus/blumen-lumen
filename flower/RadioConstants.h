@@ -45,10 +45,6 @@ typedef enum {
 #define CMD_SET_ULT_THRESH		0x16 //-- data1 should be threshold value
 #define CMD_SET_MOTOR_OPEN_TIME	0x17 //-- data1,2,3,4 should be unsigned long time
 #define CMD_SET_MOTOR_CLOSE_TIME 0x18 //-- data1,2,3,4 should be unsigned long time
-<<<<<<< HEAD
-=======
-#define CMD_TYPE_DUMMY			0x19
->>>>>>> treasure-island-14
 
 //-- motor commands
 #define CMD_MOTOR_OPEN			0x20
@@ -59,14 +55,10 @@ typedef enum {
 #define CMD_LED_OFF				0x30
 #define CMD_LED_RAINBOW			0x31
 #define CMD_LED_DROPLET			0x32
-<<<<<<< HEAD
-//-- etc
-=======
 #define CMD_LED_SLOWFADE		0x33
 #define CMD_LED_BEAT			0x34
 #define CMD_LED_LSD				0x35
 
->>>>>>> treasure-island-14
 
 //-- LASER commands
 #define CMD_LASER_ON			0x40
@@ -98,32 +90,25 @@ typedef enum {
 
 //-- master brain:
 //-- 13
-<<<<<<< HEAD
-#define ID_MASTER 	13
-=======
 #define ID_MASTER 	13 // TODO make sure this is 13
->>>>>>> treasure-island-14
 
 //-- remote controls:
 //-- 14, 15
 #define ID_RC_A 	14
 #define ID_RC_B 	15
-<<<<<<< HEAD
-=======
 
 
-#define N_ANIM		6 // not including ANIMATION_MANUAL
+#define N_ANIM		2
 
 typedef enum { 
+	ANIMATION_RAINBOW,
+	ANIMATION_SLOWFADE,
+	ANIMATION_LSD,
 	ANIMATION_MANUAL,
 	ANIMATION_OFF,
-	ANIMATION_RAINBOW,
 	ANIMATION_DROPLET,
-	ANIMATION_SLOWFADE,
-	ANIMATION_BEAT,
-	ANIMATION_LSD
+	ANIMATION_BEAT
 } ANIMATION_t;
 
 #define DEFAULT_ANIM_DELAY 40
 #define DEFAULT_ANIM_DURATION 300
->>>>>>> treasure-island-14

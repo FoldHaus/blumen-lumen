@@ -27,4 +27,3 @@ private:
 	uint8_t ultrasonicThreshold;
 	bool presence;
 };
-

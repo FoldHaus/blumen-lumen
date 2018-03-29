@@ -13,8 +13,8 @@ void Motor::init() {
 	pinMode(MOT_IN_2, OUTPUT);
 	stop();
 
-	timeToOpen = 33500;
-	timeToClose = 33500;
+	timeToOpen = 33000;
+	timeToClose = 33000;
 	timeToPause = 300;
 	isOpening = false;
 	isClosing = false;
@@ -51,6 +51,7 @@ void Motor::openFlower() {
 	}
 	isOpening = true;
 	lastTime = millis();
+	currMotorState = MOTOR_STATE_OPEN;
 }
 
 void Motor::closeFlower() {
@@ -61,6 +62,7 @@ void Motor::closeFlower() {
 	}
 	isClosing = true;
 	lastTime = millis();
+	currMotorState = MOTOR_STATE_CLOSE;
 }
 
 void Motor::stop() {
@@ -81,6 +83,10 @@ void Motor::setCloseRunTime( unsigned long _t) {
 
 bool Motor::isFlowerMoving( ){
 	return (isClosing || isOpening || isPausing);
+}
+
+uint8_t Motor::getApproxState() {
+	return currMotorState;
 }
 
 void Motor::continuallyOpenClose() {

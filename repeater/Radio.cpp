@@ -1,10 +1,6 @@
 #include "Radio.h"
 #include <EEPROM.h>
 
-<<<<<<< HEAD:controller/Radio.cpp
-//-- marco!
-=======
->>>>>>> treasure-island-14:flower/Radio.cpp
 
 RF24 radio(9,10);
 
@@ -31,8 +27,6 @@ void Radio::init() {
 	pipes[11] = 0xF0F0F0F0ABLL;
 	pipes[12] = 0xF0F0F0F0ACLL;
 	pipes[13] = 0xF0F0F0F0ADLL;
-	role_friendly_name[0] = "receiever";
-	role_friendly_name[1] = "transmitter";
 
 	radio.begin();
 	
@@ -41,35 +35,21 @@ void Radio::init() {
 
 	// radio.printDetails();
 
-	msgIndex = 0;
-	isMsgProcessed = true;
-	isInMsg = false;
 	hasBeenRead = false;
 
     uint8_t reading = EEPROM.read(EEPROM_ADDR_LOCATION);
     if (reading >= 0 && reading <= 15) {
-    	myID = reading;
-<<<<<<< HEAD:controller/Radio.cpp
+    	myID = ID_MASTER;
     	Serial.print("ID read: ");
-=======
-    	Serial.print("ID of this flower: ");
->>>>>>> treasure-island-14:flower/Radio.cpp
     	Serial.println(myID);
     }
 
-    if (myID == ID_MASTER ) {
-    	switchToPipeTx(0);
-    } else {
-    	switchToPipeRx(myID);
-    }
-
+	switchToPipeRx(13);
+    
 }
 
 void Radio::switchToPipeRx(uint8_t flowerNum){
 	// if(currRole != ROLE_RECEIVER) {
-		if (myID != ID_MASTER) {
-			flowerNum = myID;
-		}
 		currRole = ROLE_RECEIVER;
 		radio.openReadingPipe(1,pipes[flowerNum]);
 		radio.startListening();
@@ -79,9 +59,6 @@ void Radio::switchToPipeRx(uint8_t flowerNum){
 
 void Radio::switchToPipeTx( uint8_t flowerNum) {
 	// if(currRole != ROLE_TRANSMITTER) {
-		if (myID != ID_MASTER) {
-			flowerNum = myID;
-		}
 		currRole = ROLE_TRANSMITTER;
 		radio.stopListening();
 		radio.openWritingPipe(pipes[flowerNum]);
@@ -167,7 +144,10 @@ bool Radio::isMsgReady() {
 void Radio::readBytes() {
 //-------------------------------
 	static uint8_t bufferArr[CMD_LENGTH]; //-- warning: multiple instances share this
-	
+	static uint8_t msgIndex=0;
+	static bool isMsgProcessed = true;
+	static bool isInMsg = false;
+
 	if( radio.available() ) {
 	 	uint8_t incomingByte = readByte();
 	 	// Serial.println(incomingByte, HEX);
@@ -223,9 +203,4 @@ void Radio::readBytes() {
 void Radio::update() {
 
 
-}
-
-
-uint8_t Radio::getID() {
-	return myID;
 }
