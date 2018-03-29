@@ -2,6 +2,10 @@
 	Arduino code for the controller(master) and remote controllers
 	
 	Written by: Jimmy | 08/2014
+
+	- simpler program/
+	- remote control changes animation pattern, opens/closes,  
+	- otherwise is independent and cycles through light animation when in night time state
 ---------------------------------------*/
 
 //------------
@@ -76,37 +80,11 @@ void loop() {
 	checkHMIInputs();
 	flowers.update();
 
-	runStateMachine(NO_EVENT);
-
-	//-- Update readings from sensors every 5s
-	// if( millis() - lastSensorsUpdate > SENSORS_UPDATE_PERIOD ) {
-	// 	flowers.updateUltrasonicState();
-	// 	flowers.printUltrasonicState();
-	// 	lastSensorsUpdate = millis();
-	// }
-
-	// Serial.println(sensors.getSoundAmplitude());
+	// runStateMachine(NO_EVENT);
 
 	//-- possibly switch to a new animation
 	// if ( switchAnimAutomatically && millis() - lastAnimationSwitch > ANIMATION_TIMEOUT ) {
 	// 	Serial.print("Automatically switching to new animation #");
-
-	// 	// set new light animation (random)
-	// 	uint8_t newAnim = random(1, N_ANIM + 1);
-	// 	Serial.print(newAnim);
-	// 	leds.setAnimationMode( (ANIMATION_t) newAnim );
-
-	// 	// set new lasers behavior
-	// 	Serial.print(", ");
-	// 	lasers.randomize(); // TODO remove if lasers cmds come from controller?
-
-	// 	lastAnimationSwitch = millis();
-	// }
-
-	// if (millis() - lastPingTime > 60000) {
-	// 	flowers.sendPingsToAll();
-	// 	lastPingTime = millis();
-	// }
 
 }
 
@@ -140,8 +118,9 @@ void checkHMIInputs() {
 		flowers.closeFlower();
 		if (isAll ) flowers.allClose();
 	} else if ( hmi.isLEDTogglePushed() ) {
-		Serial.println("LED");
+		Serial.print("LED: ");
 		ledIncrement++;
+		Serial.println(ledIncrement);
 		switch (ledIncrement % 9) {
 			case 0:
 			flowers.setRGB(255,255,0);
@@ -183,27 +162,7 @@ void checkHMIInputs() {
 			flowers.startAnimationLSD();
 			break;
 		}
-
-	} else if ( hmi.isModeTogglePushed() ) {
-		
-		Serial.println("lasers");
-
-		//-- cycle through the states
-		modeIncrement++;
-		switch ( modeIncrement % 3 ) {
-			case 0:
-			flowers.turnLasersOn();
-			if (isAll) flowers.allLasersOn();
-			break;
-			case 1:
-			flowers.lasersStrobe();
-			break;
-			case 2:
-			flowers.turnLasersOff();
-			if (isAll) flowers.allLasersOff();
-			break;
-		}
-	}
+	} 
 }
 
 //-----------------------------------------------

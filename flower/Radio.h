@@ -31,6 +31,7 @@ public:
 	void testMode();
 	uint8_t* getMessage();
 	bool isMsgReady();
+	uint8_t getID();
 
 	uint8_t commandMsg[CMD_LENGTH]; 
 private:

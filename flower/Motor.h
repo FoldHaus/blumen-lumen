@@ -6,6 +6,9 @@
 #include "FlowerConstants.h"
 
 
+#define MOTOR_STATE_OPEN  1
+#define MOTOR_STATE_CLOSE 0
+
 class Motor {
 
 public:
@@ -20,6 +23,7 @@ public:
 	void setCloseRunTime(unsigned long time);
 	bool isFlowerMoving();
 	void continuallyOpenClose(); //-- not yet correctly implemented as non-blocking, single-call
+	uint8_t getApproxState();
 
 private:
 	unsigned long timeToOpen;
@@ -28,6 +32,6 @@ private:
 	unsigned long lastTime;
 	bool isOpening;
 	bool isClosing;
-	bool isPausing; //-- transition between opening and closing a flower instantaneously
-
+	bool isPausing; //-- transition between opening and closing a flower instantaneous
+	uint8_t currMotorState;
 };

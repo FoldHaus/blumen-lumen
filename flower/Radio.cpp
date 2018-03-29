@@ -45,7 +45,7 @@ void Radio::init() {
     uint8_t reading = EEPROM.read(EEPROM_ADDR_LOCATION);
     if (reading >= 0 && reading <= 15) {
     	myID = reading;
-    	Serial.print("ID read: ");
+    	Serial.print("ID of this flower: ");
     	Serial.println(myID);
     }
 
@@ -215,4 +215,9 @@ void Radio::readBytes() {
 void Radio::update() {
 
 
+}
+
+
+uint8_t Radio::getID() {
+	return myID;
 }

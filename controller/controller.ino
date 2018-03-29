@@ -2,6 +2,15 @@
 	Arduino code for the controller(master) and remote controllers
 	
 	Written by: Jimmy | 08/2014
+
+	Build for Treasure Island Music Festival 2014
+	- no lasers
+	- no sound detection
+	- no wind speed
+	- each flower is reactive with ultrasonic, independent of master
+	- simpler program/
+	- remote control changes animation pattern, opens/closes,  
+	- otherwise is independent and cycles through light animation when in night time state
 ---------------------------------------*/
 
 //------------
@@ -63,7 +72,6 @@ void setup() {
 
 	lastAnimationSwitch = millis();
 
-	flowers.setUltrasonicThresoldAll(1000);
 }
 
 //-----------------------------------------------
@@ -79,16 +87,8 @@ void loop() {
 
 	runStateMachine(NO_EVENT);
 
-	//-- Update readings from sensors every 5s
-	// if( millis() - lastSensorsUpdate > SENSORS_UPDATE_PERIOD ) {
-	// 	flowers.updateUltrasonicState();
-	// 	flowers.printUltrasonicState();
-	// 	lastSensorsUpdate = millis();
-	// }
-
 	// Serial.println(sensors.getSoundAmplitude());
 	// Serial.println(sensors.getLightValue());
-	// Serial.println(sensors.getWindSpeed());
 
 	//-- possibly switch to a new animation
 	// if ( switchAnimAutomatically && millis() - lastAnimationSwitch > ANIMATION_TIMEOUT ) {
@@ -110,16 +110,6 @@ void loop() {
 }
 
 
-
-//-----------------------------------------------
-bool isAnyUltrasoundActivated() {
-	for ( uint8_t i = 0; i < N_ULTRASONIC; i++ ) {
-		if ( flowers.getUltrasonicState()[i] ) {
-			return true;
-		}
-	}
-	return false;
-}
 
 
 //-----------------------------------------------
@@ -154,30 +144,21 @@ void printKeyboardCommands() {
 	Serial.println("beat [b]");
 	Serial.println("lsd [n]");
 
-	Serial.println("\n--laser commands--");
-	Serial.println("on [q]");
-	Serial.println("off [w]");
-	Serial.println("strobe [e]");
 
 	Serial.println("\n--switch states, inject events--");
 	// Serial.println("standby [e]");
 	// Serial.println("state: day passive [t]");
 	// Serial.println("state: day reactive [r]");
 	// Serial.println("state: night passive [y]");
-	// Serial.println("state: night reactive [w]");
-	Serial.println("event: excessive wind [!]");
-	Serial.println("event: normal wind [@]");
+	// Serial.println("state: night reactive [w]")
 	Serial.println("event: night time [<]");
 	Serial.println("event: day time [>]");
-	Serial.println("event: motion detected [,]");
-	Serial.println("event: no motion in a while [.]");
+
 
 
 
 	Serial.println("toggle anim auto switch [#]");
 
-
-	Serial.println("\nultrasound query [u]\n");
 
 }
 
@@ -203,21 +184,6 @@ void checkSerialInputs() {
 				flowers.communicateWithFlower(selectedFlower);
 				break;
 
-			case 'q':
-				Serial.println("> laser on");
-				flowers.turnLasersOn();
-				// lasers.on();
-				break;
-
-			case 'w':
-				Serial.println("> laser off");
-				flowers.turnLasersOff();
-				break;
-
-			case 'e':
-				Serial.println("> laser strobe.");
-				flowers.lasersStrobe();
-				break;
 
 			case 'o':
 				Serial.println("> opening flower.");
@@ -276,10 +242,6 @@ void checkSerialInputs() {
 				flowers.allLEDRGB(0,255,255);
 				break;
 
-			case 'u':
-				flowers.updateUltrasonicState();
-				flowers.printUltrasonicState();
-				break;
 
 			case 'f':
 				Serial.println("leds off");
@@ -322,45 +284,11 @@ void checkSerialInputs() {
 			// 	Serial.println( switchAnimAutomatically ?
 			// 			"switch anim automatically" : "do not switch anim automatically" );
 			// 	break;
-
-			// case 'z':
-			// 	Serial.println("state: standby [e]");
-			// 	break;
 			// case 't':
 			// 	Serial.println("state: day passive [t]");
 			// 	break;
-			// case 'r':
-			// 	Serial.println("state: day reactive [r]");
-			// 	break;
 			// case 'y':
 			// 	Serial.println("state: night passive [y]");
-			// 	break;
-			// case 'w':
-			// 	Serial.println("state: night reactive [w]");
-			// 	break;
-			// case '!':
-			// 	Serial.println("event: excessive wind");
-			// 	runStateMachine(WIND_SPEED_EXCESSIVE);
-			// 	break;
-			// case '@':
-			// 	runStateMachine(WIND_SPEED_NOMINAL);
-			// 	Serial.println("event: normal wind");
-			// 	break;
-			// case '<':
-			// 	runStateMachine(NIGHT_TIME_DETECTED);
-			// 	Serial.println("event: night time");
-			// 	break;
-			// case '>':
-			// 	runStateMachine(DAY_TIME_DETECTED);
-			// 	Serial.println("event: day time");
-			// 	break;
-			// case ',':
-			// 	runStateMachine(MOTION_DETECTED);
-			// 	Serial.println("event: motion detected");
-			// 	break;
-			// case '.':
-			// 	runStateMachine(NO_MOTION_FOR_A_WHILE);
-			// 	Serial.println("event: no motion in a while");
 			// 	break;
 
 			case '?':
@@ -378,15 +306,6 @@ void checkEnvSensors() {
 	static unsigned long lastTimeDetected;
 	static bool previouslyDay = false;
 	static bool alreadyHappened = false;
-
-
-	if ( sensors.isTooWindy() && millis() > 4000) {
-		Serial.println("wind speed excessive");
-		Serial.println(sensors.getWindSpeed());
-		if( sensors.isTooWindy() ) {
-			runStateMachine(WIND_SPEED_EXCESSIVE);
-		}
-	}
 
 	if (!alreadyHappened) {
 		if(sensors.isDaytime() ) {
@@ -409,15 +328,6 @@ void checkEnvSensors() {
 		previouslyDay = false;
 	}
 
-	// if ( isAnyUltrasoundActivated() ) {
-	// 	runStateMachine(MOTION_DETECTED);
-	// 	lastTimeDetected = millis();
-	// } else {
-	// 	if ( millis() - lastTimeDetected > NO_MOTION_FOR_A_WHILE_TIME) { //
-	// 		runStateMachine(NO_MOTION_FOR_A_WHILE);
-	// 	}
-	// }
-
 
 }
 
@@ -427,27 +337,11 @@ void runStateMachine(uint8_t event) {
 	boolean makeTransition = false;
 	uint8_t nextState = currState;
 
-	//-- above all, if wind is nuts, go to standby
-	if ( event == WIND_SPEED_EXCESSIVE ) {
-		makeTransition = true;
-		nextState = STANDBY;
-	}
 
 	//-- Different states: DAY_PASSIVE, DAY_REACTIVE, NIGHT_PASSIVE, NIGHT_REACTIVE, NIGHT_PARTY
 	switch ( currState ) {
 
-		//-- Standby until wind is not that strong anymore
-		case STANDBY:
-			event = duringStandby(event);
-			if ( event != NO_EVENT ) {
-				switch ( event ) {
-					case WIND_SPEED_NOMINAL:
-					makeTransition = true;
-					nextState = DAY_PASSIVE;
-					break;
-				}
-			}
-		break;
+
 
 		//-- Day Passive does ambient animations until movement
 		case DAY_PASSIVE:
@@ -459,32 +353,10 @@ void runStateMachine(uint8_t event) {
 				    nextState = NIGHT_PASSIVE;
 				    break;
 
-					// case MOTION_DETECTED:
-					// makeTransition = true;
-					// nextState = DAY_REACTIVE;
-					// break;
 				}
 			}
 		break; //-- </DAY_PASSIVE>
 
-		//-- Day Reactive opens up and is more alive than passive
-		case DAY_REACTIVE:
-			event = duringDayReactive(event);
-			if ( event != NO_EVENT ) {
-				switch ( event ) {
-
-					case NO_MOTION_FOR_A_WHILE:
-					makeTransition = true;
-					nextState = DAY_PASSIVE;
-					break;
-
-					case NIGHT_TIME_DETECTED:
-					makeTransition = true;
-					nextState = NIGHT_PASSIVE;
-					break;
-				}
-			}
-		break; //-- </DAY_REACTIVE>
 
 		//-- Night Passive does inverse ambient animations
 		//-- except for the downward flowers
@@ -492,10 +364,6 @@ void runStateMachine(uint8_t event) {
 			event = duringNightPassive(event);
 			if ( event != NO_EVENT ) {
 				switch ( event ) {
-					// case MOTION_DETECTED:
-					// makeTransition = true;
-					// nextState = NIGHT_REACTIVE;
-					// break;
 
 					case DAY_TIME_DETECTED:
 					makeTransition = true;
@@ -505,38 +373,7 @@ void runStateMachine(uint8_t event) {
 			}
 		break; //-- </NIGHT_PASSIVE>
 
-		//-- Night Reactive reacts to people's movements
-		case NIGHT_REACTIVE:
-			event = duringNightReactive(event);
-			if ( event != NO_EVENT ) {
-				switch ( event ) {
-					case DAY_TIME_DETECTED:
-					makeTransition = true;
-					nextState = DAY_PASSIVE;
-					break;
 
-					case NO_MOTION_FOR_A_WHILE:
-					makeTransition = true;
-					nextState = NIGHT_PASSIVE;
-					break;
-				}
-			}
-		break; //-- </NIGHT_REACTIVE
-
-		//-- Night Party reacts to music
-		case NIGHT_PARTY:
-			event = duringNightParty(event);
-			if ( event != NO_EVENT ) {
-				switch ( event ) {
-					case DAY_TIME_DETECTED:
-					makeTransition = true;
-					nextState = DAY_PASSIVE;
-					break;
-
-					//-- what else breaks out of party mode
-				}
-			}
-		break; //-- </NIGHT_PARTY>
 	}//-- end switch
 
   if ( makeTransition ) {
@@ -547,35 +384,6 @@ void runStateMachine(uint8_t event) {
 
 }
 
-//-----------------------------------------------
-uint8_t duringStandby(uint8_t ev) {
-	static bool firstTimeNotWindy = true;
-	static unsigned long startTime;
-
-	if ( ev == EV_ENTRY) {
-		Serial.println("Standby state");
-		for(uint8_t i = 0; i < 2; i++ ) { //-- make sure it closes;
-			flowers.allClose(); //-- close flowers
-		}
-	} else if ( ev == EV_EXIT) {
-		//-- keep flowers closed
-	} else { //-- during function
-	    //-- monitor the wind speed
-	    if ( !sensors.isTooWindy() ) {
-	    	if( firstTimeNotWindy ) {
-		    	startTime = millis();
-		    	firstTimeNotWindy = false;
-		    } else if ( millis() - startTime > WIND_SPEED_CALM_TIME ) {
-		    	Serial.println("Wind speed nominal");
-		    	ev = WIND_SPEED_NOMINAL;
-		    }
-	    } else {
-	    	ev = WIND_SPEED_EXCESSIVE;
-	    }
-
-	} 
-	return ev;
-}
 
 //-- all open, close one at a time.
 //-----------------------------------------------
@@ -612,30 +420,6 @@ uint8_t duringDayPassive(uint8_t ev) {
 	  return ev;
 }
 
-//-----------------------------------------------
-uint8_t duringDayReactive(uint8_t ev) {
-	if ( ev == EV_ENTRY) {
-
-	} else if ( ev == EV_EXIT) {
-
-	} else { //-- during function
-		//-- check the ultrasound
-		for ( uint8_t i = 0; i < N_ULTRASONIC; i++ ) {
-			if ( flowers.getUltrasonicState()[i] ) {
-				flowers.communicateWithFlower(i);
-				flowers.openFlower();
-				//-- after some delay, open the asociated flowers
-				// if (millis() - lastTime > ASSOCIATED_FLOWER_DELAY ) {
-
-				// 
-				//-- somehow open the three asociated flowers
-				ev = DAY_REACTIVE;
-			}
-
-		}	
-	} 
-	  return ev;
-}
 
 
 //-- all closed, and they open one at a time
@@ -713,32 +497,6 @@ uint8_t duringNightPassive(uint8_t ev) {
 
 	} 
 	return ev;
-}
-
-
-//-----------------------------------------------
-uint8_t duringNightReactive(uint8_t ev) {
-	if ( ev == EV_ENTRY) {
-
-	} else if ( ev == EV_EXIT) {
-
-	} else { //-- during function
-	    
-	} 
-	  return ev;
-}
-
-
-//-----------------------------------------------
-uint8_t duringNightParty(uint8_t ev) {
-	if ( ev == EV_ENTRY) {
-
-	} else if ( ev == EV_EXIT) {
-
-	} else { //-- during function
-	    
-	} 
-	  return ev;
 }
 
 //-----------------------------------------------

@@ -18,34 +18,35 @@ void LEDs::init() {
 
 void LEDs::update() {
 	switch( animationMode ) {
-		case ANIMATION_MANUAL:
-		break;
+		// case ANIMATION_MANUAL:
+		// break;
 
-		case ANIMATION_OFF:
-			off();
-		break;
+		// case ANIMATION_OFF:
+		// 	off();
+		// break;
 
 		case ANIMATION_RAINBOW:
 			doRainbow();
 		break;
 
-		case ANIMATION_DROPLET:
-			doDroplet();
-		break;
+		// case ANIMATION_DROPLET:
+		// 	doDroplet();
+		// break;
 
-		case ANIMATION_SLOWFADE:
-			doSlowFade();
-		break;
+		// case ANIMATION_SLOWFADE:
+		// 	doSlowFade();
+		// break;
 
-		case ANIMATION_BEAT:
-			doBeat();
-		break;
+		// case ANIMATION_BEAT:
+		// 	doBeat();
+		// break;
 
-		case ANIMATION_LSD:
-			doLSD();
-		break;
+		// case ANIMATION_LSD:
+		// 	doLSD();
+		// break;
 
 		default:
+			doRainbow();
 		break;
 	}
 }
