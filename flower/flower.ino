@@ -8,6 +8,10 @@ last updated for omaha install
 
 ---------------------------------------*/
 
+//-- change this number to change the frequency that the flowers open and close
+//-- in milliseconds
+#define TIME_BETWEEN_MOVING 5400000
+
 //-- for nRF24L01
 #include <SPI.h>
 #include <EEPROM.h>
@@ -16,7 +20,6 @@ last updated for omaha install
 
 // #include "RF24.h"
 #include "Easing.h"
->>>>>>> treasure-island-14
 #include "FlowerConstants.h"
 #include "LEDs.h"
 // #include "Radio.h"
@@ -131,10 +134,10 @@ void loop() {
 	// }
 
 	//-- randomly open and close
-	static long randomMoveTimeInterval = random(7200000,10000000);
+	static long randomMoveTimeInterval = random(TIME_BETWEEN_MOVING,TIME_BETWEEN_MOVING+300000);
 	if ( thisID != 0 && thisID != 2 && thisID != 4 ) {
 		if ( millis() - lastMoveTime > randomMoveTimeInterval ) {
-			randomMoveTimeInterval = random(7200000,10000000);
+			randomMoveTimeInterval = random(TIME_BETWEEN_MOVING,TIME_BETWEEN_MOVING+300000);
 			Serial.print("random time interval to open/close: ");
 			Serial.println(randomMoveTimeInterval);
 			if (motor.getApproxState() == MOTOR_STATE_OPEN ) {

@@ -49,18 +49,6 @@ void LEDs::update() {
 		break;
 	}
 }
-
-void LEDs::setAnimationMode( ANIMATION_t mode ) {
-	animationMode = mode;
-
-	if( animationMode == ANIMATION_BEAT ) {
-		doBeatNow = true; // resets animation
-	}
-	// if (isRainbowing) {
-	// 	doRainbow();
-	// }
-}
-
 void LEDs::setAnimationMode( ANIMATION_t mode ) {
 	animationMode = mode;
 }
